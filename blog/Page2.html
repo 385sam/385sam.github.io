@@ -1,0 +1,142 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="../graph.png">
+  <title>Monte Carlo Simulation for Dividend Investors: Percentiles and Risk</title>
+  <meta name="description" content="Learn how DCSimulator’s Monte Carlo percentiles (P50/P75/P90) work for required-capital planning, and how to stress-test yield, inflation, taxes, fees, and volatility.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: "Inter", sans-serif; color: #1a1a1a; background: #fafafa; line-height: 1.6; }
+    .header { background: #fff; border-bottom: 1px solid #f0f0f0; position: sticky; top: 0; z-index: 100; }
+    .header-top { display: flex; justify-content: space-between; align-items: center; max-width: 1400px; margin: 0 auto; padding: 20px 40px; }
+    .logo { font-family: "Playfair Display", serif; font-size: 28px; font-weight: 700; color: #1a1a1a; text-decoration: none; }
+    .nav-main { display: flex; gap: 40px; }
+    .nav-main a { text-decoration: none; font-size: 13px; font-weight: 600; color: #666; }
+    .article-hero { background: linear-gradient(135deg, #f5f5f5 0%, #fff 100%); padding: 60px 40px; }
+    .breadcrumb { font-size: 12px; color: #999; margin-bottom: 28px; }
+    .breadcrumb a { color: #c9a84c; text-decoration: none; font-weight: 600; }
+    .article-eyebrow { font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: #c9a84c; font-weight: 700; margin-bottom: 14px; }
+    h1 { font-family: "Playfair Display", serif; font-size: clamp(28px, 5vw, 44px); font-weight: 700; line-height: 1.3; margin-bottom: 24px; }
+    .article-meta { display: flex; gap: 24px; margin-top: 20px; flex-wrap: wrap; font-size: 13px; color: #999; }
+    .article-tags { display: flex; gap: 10px; margin-top: 20px; flex-wrap: wrap; }
+    .tag { display: inline-block; padding: 6px 14px; background: rgba(201, 168, 76, 0.1); color: #c9a84c; font-size: 12px; font-weight: 700; border: 1px solid rgba(201, 168, 76, 0.2); border-radius: 20px; }
+    .article-wrapper { max-width: 900px; margin: 0 auto; padding: 60px 40px; }
+    article h2 { font-family: "Playfair Display", serif; font-size: clamp(24px, 3vw, 32px); font-weight: 700; margin: 40px 0 16px 0; }
+    article h3 { font-size: 18px; font-weight: 700; margin: 28px 0 12px 0; }
+    article p { font-size: 16px; color: #666; line-height: 1.9; margin-bottom: 16px; }
+    article ul { margin: 16px 0 16px 20px; }
+    article li { font-size: 15px; color: #666; line-height: 1.7; margin-bottom: 8px; }
+    .box { background: linear-gradient(135deg, #f9f7f4 0%, #fff 100%); padding: 24px; border-radius: 6px; border: 1px solid #f0f0f0; margin: 20px 0; }
+    .cta { padding: 12px 28px; font-size: 13px; font-weight: 700; text-transform: uppercase; text-decoration: none; display: inline-block; border-radius: 4px; background: linear-gradient(135deg, #c9a84c 0%, #b89436 100%); color: #fff; margin-top: 24px; }
+    .footer { background: #fff; border-top: 1px solid #f0f0f0; padding: 60px 40px; margin-top: 80px; }
+    .footer-content { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 40px; }
+    .footer-section h4 { font-size: 13px; text-transform: uppercase; font-weight: 700; margin-bottom: 16px; }
+    .footer-section ul { list-style: none; }
+    .footer-section a { text-decoration: none; color: #666; font-size: 13px; }
+    .footer-bottom { border-top: 1px solid #f0f0f0; padding-top: 32px; font-size: 12px; color: #999; }
+  </style>
+  <link rel="stylesheet" href="../css/cookie-consent.css">
+</head>
+<body>
+  <header class="header">
+    <div class="header-top">
+      <a href="../index.html" class="logo">DCSimulator</a>
+      <nav class="nav-main">
+        <a href="../index.html">Home</a>
+        <a href="../blog.html">Blog</a>
+        <a href="../about.html">About</a>
+      </nav>
+    </div>
+  </header>
+  <section class="article-hero">
+    <p class="breadcrumb"><a href="../index.html">Home</a> › <a href="../blog.html">Blog</a></p>
+    <p class="article-eyebrow">Advanced Tools</p>
+    <h1>Monte Carlo Simulation for Dividend Investors: Percentiles and Risk</h1>
+    <div class="article-meta">
+      <span>📅 April 2026</span>
+      <span>⏱️ 7 min</span>
+      <span>👤 DCS team</span>
+    </div>
+    <div class="article-tags"><span class="tag">Simulation</span><span class="tag">Risk Analysis</span><span class="tag">Tools</span></div>
+  </section>
+  <div class="article-wrapper">
+    <article>
+      <p>Monte Carlo planning is useful when one “average” number hides risk. Instead of betting on a single future, you run thousands of plausible futures and study the range.</p>
+
+      <p>DCSimulator uses Monte Carlo for a specific dividend question: <strong>how much capital is required</strong> to generate your desired <strong>after-tax monthly dividend income</strong> at a chosen horizon, accounting for inflation, taxes, fees, and uncertainty.</p>
+
+      <h2>What the simulation is actually doing</h2>
+
+      <p>Each simulation path repeats the same steps for every year in your horizon:</p>
+
+      <ul>
+        <li><strong>Inflation-adjusts</strong> your income target so purchasing power stays constant.</li>
+        <li>Converts gross yield into <strong>net yield</strong> after taxes and fees: <strong>net yield = gross yield × (1 − tax rate) − expense ratio</strong>.</li>
+        <li>Computes the <strong>required capital</strong> as: <strong>required capital = annual income target ÷ net yield</strong>.</li>
+        <li>Evolves dividend yield over time using your <strong>annual growth</strong> assumption plus <strong>growth volatility</strong> (year-to-year variability).</li>
+      </ul>
+
+      <p>The output is a distribution of required capital at your final year (the “horizon”). Lower required capital is better; higher required capital is safer and more conservative.</p>
+
+      <h2>Why P10 is “very favorable” and P90 is “safety”</h2>
+
+      <p>Many people learn percentiles on performance charts (where higher is better). Here the metric is <strong>required capital</strong>, so the interpretation flips:</p>
+
+      <div class="box"><strong>Quick read:</strong> <strong>P10</strong> is an optimistic / very favorable requirement (you need less capital), <strong>P50</strong> is the median, <strong>P75</strong> is a prudent planning anchor, and <strong>P90</strong> is a safety-first buffer (you need more capital).</div>
+
+      <h2>How to use the percentile cards</h2>
+
+      <p><strong>P10 (Very favorable):</strong> only ~10% of simulations require <em>less</em> capital than this. Treat it as an optimistic “tailwind” case, not a plan.</p>
+
+      <p><strong>P25 (Favorable):</strong> still optimistic, but closer to a realistic best-case environment.</p>
+
+      <p><strong>P50 (Central):</strong> the median requirement. Useful context, but not conservative enough on its own for retirement planning.</p>
+
+      <p><strong>P75 (Prudent):</strong> a stronger baseline for most users. If you plan around P75, you’re building in downside protection without over-allocating.</p>
+
+      <p><strong>P90 (Safety planning):</strong> the “sleep at night” stress test. Planning to this level means most simulated paths require the same or less capital.</p>
+
+      <h2>What moves the conservative number most (P75/P90)</h2>
+
+      <ul>
+        <li><strong>Lower net yield</strong> (because of lower dividend yield, higher taxes, or higher fees).</li>
+        <li><strong>Higher inflation</strong> (your income target rises every year).</li>
+        <li><strong>Higher growth volatility</strong> (widens the range; P90 typically rises).</li>
+        <li><strong>Shorter horizons</strong> (less time for dividend growth to offset inflation).</li>
+      </ul>
+
+      <h2>A 60-second workflow</h2>
+
+      <ul>
+        <li>Set your <strong>after-tax</strong> monthly income target.</li>
+        <li>Pick a horizon that matches your plan (e.g., “income needed in 10 years”).</li>
+        <li>Set realistic <strong>tax</strong> and <strong>expense ratio</strong> values (these directly lower net yield).</li>
+        <li>Run two passes: one with “best estimate” yield/growth, then a stress test with lower yield or higher inflation.</li>
+        <li>Use <strong>P75</strong> as your baseline number and check <strong>P90</strong> for resilience.</li>
+      </ul>
+
+      <h2>Common interpretation mistakes</h2>
+
+      <ul>
+        <li>Planning off <strong>gross yield</strong> and ignoring taxes/fees (net yield is what funds spending).</li>
+        <li>Anchoring to <strong>P10</strong> because it “looks achievable” (it’s the favorable tail).</li>
+        <li>Forgetting the horizon is a <strong>future capital requirement</strong> (it’s the number you’re trying to reach by that year).</li>
+      </ul>
+
+      <p><a href="../index.html" class="cta">Run Your Monte Carlo Scenario</a></p>
+    </article>
+  </div>
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section"><h4>Platform</h4><ul><li><a href="../index.html">Simulator</a></li><li><a href="../blog.html">Blog</a></li></ul></div>
+      <div class="footer-section"><h4>Learn</h4><ul><li><a href="article-dividend-basics.html">Basics</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><p>&copy; 2026 DCSimulator.</p></div>
+  </footer>
+  <script src="../js/cookie-consent.js"></script>
+</body>
+</html>
