@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="graph.png">
+  <title>About Dividend Capital Simulator | FIRE Planning Tools and Dividend Research</title>
+  <meta name="description" content="Learn how Dividend Capital Simulator builds realistic FIRE and dividend-income planning tools with transparent Monte Carlo methodology, risk-aware assumptions, and practical investor education.">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Dividend Capital Simulator PRO">
+
+  <link rel="canonical" href="https://dcsimulator.me/about.html">
+  <meta property="og:site_name" content="Dividend Capital Simulator PRO">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="About Dividend Capital Simulator | FIRE Planning Tools and Dividend Research">
+  <meta property="og:description" content="Learn how Dividend Capital Simulator builds realistic FIRE and dividend-income planning tools with transparent Monte Carlo methodology, risk-aware assumptions, and practical investor education.">
+  <meta property="og:url" content="https://dcsimulator.me/about.html">
+  <meta property="og:image" content="https://dcsimulator.me/graph.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="About Dividend Capital Simulator | FIRE Planning Tools and Dividend Research">
+  <meta name="twitter:description" content="Learn how Dividend Capital Simulator builds realistic FIRE and dividend-income planning tools with transparent Monte Carlo methodology, risk-aware assumptions, and practical investor education.">
+  <meta name="twitter:image" content="https://dcsimulator.me/graph.png">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: "Inter", sans-serif; color: #1a1a1a; background-color: #fafafa; line-height: 1.6; }
+    
+    .header { background: #ffffff; border-bottom: 1px solid #f0f0f0; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+    .header-top { display: flex; justify-content: space-between; align-items: center; max-width: 1400px; margin: 0 auto; padding: 20px 40px; }
+    .logo { font-family: "Playfair Display", serif; font-size: 28px; font-weight: 700; letter-spacing: -1px; color: #1a1a1a; text-decoration: none; }
+    
+    .nav-main { display: flex; gap: 40px; align-items: center; }
+    .nav-main a { text-decoration: none; font-size: 13px; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; color: #666; transition: color 0.3s ease; position: relative; }
+    .nav-main a:hover, .nav-main a.active { color: #1a1a1a; }
+    .nav-main a.active::after { content: ""; position: absolute; bottom: -8px; left: 0; width: 100%; height: 2px; background: #c9a84c; }
+    
+    .hero { background: linear-gradient(135deg, #f5f5f5 0%, #ffffff 100%); padding: 100px 40px; max-width: 1400px; margin: 0 auto; text-align: center; }
+    .hero h1 { font-family: "Playfair Display", serif; font-size: clamp(32px, 6vw, 56px); font-weight: 700; line-height: 1.2; margin-bottom: 20px; color: #1a1a1a; max-width: 900px; margin-left: auto; margin-right: auto; }
+    .hero-subtitle { font-size: 16px; color: #666; max-width: 700px; margin: 0 auto; line-height: 1.7; }
+    
+    .content { max-width: 1400px; margin: 0 auto; padding: 80px 40px; }
+    
+    .section { margin-bottom: 80px; }
+    .section h2 { font-family: "Playfair Display", serif; font-size: clamp(24px, 4vw, 42px); font-weight: 700; line-height: 1.35; margin-bottom: 32px; background: linear-gradient(135deg, #1a1a1a 0%, #c9a84c 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .section > p { font-size: 16px; color: #666; line-height: 1.9; margin-bottom: 20px; max-width: 900px; }
+    
+    .mission-card { background: linear-gradient(135deg, #ffffff 0%, #fafbfc 100%); padding: 50px 40px; border-radius: 8px; border: 1px solid #f0f0f0; box-shadow: 0 8px 24px rgba(0,0,0,0.05); margin: 32px 0; }
+    
+    .mission-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px; margin-top: 40px; }
+    .mission-item { background: #ffffff; padding: 36px 32px; border-radius: 6px; border: 1px solid #f0f0f0; transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+    .mission-item:hover { border-color: #c9a84c; box-shadow: 0 20px 40px rgba(201, 168, 76, 0.12); transform: translateY(-8px); }
+    
+    .mission-icon { font-size: 48px; margin-bottom: 16px; }
+    .mission-item h3 { font-family: "Playfair Display", serif; font-size: 22px; font-weight: 700; margin-bottom: 12px; color: #1a1a1a; }
+    .mission-item p { font-size: 14px; color: #888; line-height: 1.7; }
+    
+    .quote-box { background: linear-gradient(135deg, #1a1a1a 0%, #333 100%); color: #ffffff; padding: 60px 50px; border-radius: 8px; margin: 50px 0; text-align: center; box-shadow: 0 12px 36px rgba(0,0,0,0.15); }
+    .quote-box blockquote { font-family: "Playfair Display", serif; font-size: clamp(20px, 3vw, 32px); font-weight: 600; line-height: 1.6; font-style: italic; color: #c9a84c; }
+    
+    .methodology-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px; margin-top: 40px; }
+    .methodology-card { background: linear-gradient(135deg, #ffffff 0%, #fafbfc 100%); padding: 40px 36px; border-radius: 6px; border: 1px solid #f0f0f0; box-shadow: 0 2px 8px rgba(0,0,0,0.04); transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); }
+    .methodology-card:hover { border-color: #c9a84c; transform: translateY(-6px); box-shadow: 0 16px 32px rgba(201, 168, 76, 0.1); }
+    
+    .card-icon { font-size: 40px; margin-bottom: 16px; display: block; }
+    .methodology-card strong { font-family: "Playfair Display", serif; font-size: 18px; color: #1a1a1a; display: block; margin-bottom: 12px; font-weight: 700; }
+    .methodology-card span { font-size: 14px; color: #888; line-height: 1.7; }
+    
+    .principles-list { background: linear-gradient(135deg, #f9f7f4 0%, #ffffff 100%); padding: 40px 40px 40px 56px; border-radius: 6px; border-left: 4px solid #c9a84c; margin: 32px 0; }
+    .principles-list li { font-size: 15px; color: #666; line-height: 1.8; margin-bottom: 18px; list-style: none; position: relative; padding-left: 20px; }
+    .principles-list li::before { content: "→"; position: absolute; left: 0; color: #c9a84c; font-weight: 700; }
+    .principles-list strong { color: #1a1a1a; font-weight: 700; }
+    
+    .credentials-container { background: linear-gradient(135deg, #ffffff 0%, #fafbfc 100%); padding: 50px 40px; border-radius: 8px; border: 1px solid #f0f0f0; box-shadow: 0 8px 24px rgba(0,0,0,0.05); margin: 40px 0; }
+    .credentials-container > p { font-size: 16px; color: #666; line-height: 1.9; margin-bottom: 32px; }
+    
+    .credentials-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 28px; }
+    .credential-item { background: #ffffff; padding: 32px 28px; border-radius: 6px; border: 1px solid #f0f0f0; transition: all 0.3s ease; }
+    .credential-item:hover { border-color: #c9a84c; box-shadow: 0 8px 20px rgba(201, 168, 76, 0.1); }
+    
+    .credential-title { font-family: "Playfair Display", serif; font-size: 16px; font-weight: 700; color: #1a1a1a; margin-bottom: 12px; }
+    .credential-item p:last-child { font-size: 14px; color: #888; line-height: 1.7; }
+    
+    .cta-section { max-width: 1400px; margin: 100px auto; padding: 60px 40px; background: linear-gradient(135deg, #1a1a1a, #333); color: #fff; text-align: center; border-radius: 8px; box-shadow: 0 12px 36px rgba(0,0,0,0.15); }
+    .cta-section h2 { font-family: "Playfair Display", serif; font-size: 40px; font-weight: 700; margin-bottom: 20px; line-height: 1.3; background: none; background-clip: unset; -webkit-text-fill-color: unset; color: #ffffff; }
+    .cta-section p { font-size: 16px; margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto; line-height: 1.8; }
+    
+    .cta-buttons { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
+    .btn { padding: 14px 32px; font-size: 13px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; border: none; cursor: pointer; transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); text-decoration: none; display: inline-block; border-radius: 4px; }
+    .btn-primary { background: linear-gradient(135deg, #c9a84c 0%, #b89436 100%); color: #fff; box-shadow: 0 4px 12px rgba(201, 168, 76, 0.3); }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(201, 168, 76, 0.4); }
+    .btn-secondary { background: transparent; color: #c9a84c; border: 2px solid #c9a84c; }
+    .btn-secondary:hover { background: #c9a84c; color: #1a1a1a; }
+    
+    .footer { background: #fff; border-top: 1px solid #f0f0f0; padding: 60px 40px; margin-top: 100px; }
+    .footer-content { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 40px; }
+    .footer-section h4 { font-size: 13px; text-transform: uppercase; letter-spacing: 2px; font-weight: 700; margin-bottom: 20px; color: #1a1a1a; }
+    .footer-section ul { list-style: none; }
+    .footer-section li { margin-bottom: 12px; }
+    .footer-section a { text-decoration: none; color: #666; font-size: 13px; transition: color 0.3s ease; }
+    .footer-section a:hover { color: #1a1a1a; }
+    
+    .footer-bottom { border-top: 1px solid #f0f0f0; padding-top: 40px; display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: #999; max-width: 1400px; margin: 0 auto; }
+    
+    @media (max-width: 768px) {
+      .header-top { padding: 16px 20px; }
+      .nav-main { gap: 20px; font-size: 12px; }
+      .hero { padding: 60px 20px; }
+      .content { padding: 60px 20px; }
+      .mission-card { padding: 40px 24px; }
+      .credentials-container { padding: 40px 24px; }
+      .cta-section { padding: 40px 20px; }
+      .footer-content { grid-template-columns: 1fr 1fr; gap: 24px; padding: 0 20px; }
+      .footer-bottom { flex-direction: column; gap: 20px; text-align: center; }
+    }
+  </style>
+  
+  <link rel="stylesheet" href="css/cookie-consent.css">
+</head>
+
+<body>
+  <header class="header">
+    <div class="header-top">
+      <a href="index.html" class="logo">DCSimulator</a>
+      <nav class="nav-main">
+        <a href="index.html">Home</a>
+        <a href="blog.html">Blog</a>
+        <a href="about.html" class="active">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <h1>We Build Planning Tools That Survive Reality</h1>
+    <p class="hero-subtitle">Transparent Monte Carlo methodology, risk-aware assumptions, and practical frameworks for long-term dividend investors.</p>
+  </section>
+
+  <div class="content">
+    <section class="section">
+      <h2>The Problem with Clean Numbers</h2>
+      <p>Most dividend calculators hide uncertainty behind clean numbers. Real portfolios face drawdowns, dividend cuts, inflation shocks, and tax friction. We built this project to make those constraints visible before capital is committed.</p>
+      <p>The objective is practical: stronger assumptions, safer capital targets, and better behavior during market stress.</p>
+    </section>
+
+    <section class="section">
+      <h2>Our Mission</h2>
+      <div class="mission-card">
+        <p style="font-size: 16px; color: #666; line-height: 1.9; margin-bottom: 0;">
+          We help investors transform uncertainty into a structured plan. Our tools encourage disciplined decisions, realistic expectations, and long-term consistency instead of short-term guesswork.
+        </p>
+        <div class="mission-grid">
+          <div class="mission-item">
+            <div class="mission-icon">👁️</div>
+            <h3>Make Risk Visible</h3>
+            <p>Show downside scenarios early, before assumptions become costly.</p>
+          </div>
+          <div class="mission-item">
+            <div class="mission-icon">🎯</div>
+            <h3>Protect Decision Quality</h3>
+            <p>Prioritize frameworks that support calm, repeatable portfolio actions.</p>
+          </div>
+          <div class="mission-item">
+            <div class="mission-icon">🧭</div>
+            <h3>Build for Real Life</h3>
+            <p>Keep planning grounded in taxes, inflation, and changing market cycles.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="quote-box">
+      <blockquote>"No single-output fantasy projections. Net income logic after taxes and costs. Scenario ranges to plan with margin."</blockquote>
+    </div>
+
+    <section class="section">
+      <h2>Our Methodology</h2>
+      <div class="methodology-grid">
+        <div class="methodology-card">
+          <div class="card-icon">📊</div>
+          <strong>Monte Carlo Simulation</strong>
+          <span>Thousands of portfolio paths to evaluate probability bands rather than static percentages.</span>
+        </div>
+        <div class="methodology-card">
+          <div class="card-icon">💰</div>
+          <strong>Net Income Core</strong>
+          <span>Focus intensely on what remains after taxes, fees, and persistent inflation pressure.</span>
+        </div>
+        <div class="methodology-card">
+          <div class="card-icon">📈</div>
+          <strong>Range-Based Mindset</strong>
+          <span>Use percentile outcomes to avoid brittle, one-number planning and build resilient models.</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Our Principles</h2>
+      <ul class="principles-list">
+        <li><strong>Conservative First:</strong> Always avoid overpromising timelines or capital outcomes.</li>
+        <li><strong>Transparent Inputs:</strong> Assumptions are explicit, visible, and user-adjustable.</li>
+        <li><strong>Actionable Output:</strong> Each simulation result should immediately support the next investment decision.</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>Built by Dividend Investors</h2>
+      <div class="credentials-container">
+        <p>Dividend Capital Simulator is built and maintained by a team of long-term dividend investors and financial engineers with 10+ years of portfolio experience. We've tested these frameworks in real markets, through dividend cuts, inflation shocks, and regime changes. We build what we use.</p>
+        <div class="credentials-list">
+          <div class="credential-item">
+            <p class="credential-title">📋 Methodology Review</p>
+            <p>All major assumptions—dividend growth, tax rates, inflation, yield persistence—are sourced from 20+ years of public market data and independently verified.</p>
+          </div>
+          <div class="credential-item">
+            <p class="credential-title">🔍 Continuous Validation</p>
+            <p>Instrument data (ETF yields, payout ratios, fees) is updated quarterly. Monte Carlo parameters are stress-tested annually against historical market cycles.</p>
+          </div>
+          <div class="credential-item">
+            <p class="credential-title">📚 Editorial Standards</p>
+            <p>Every published article is fact-checked against primary sources: SEC filings, fund prospectuses, published academic research on dividend sustainability.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 id="sezione-mail">Editorial Direction</h2>
+      <p>Articles and guides are designed to reduce cognitive noise: fewer slogans, more frameworks. We emphasize scenario thinking, risk budgeting, and habit-building for long horizons.</p>
+      <p style="color: #c9a84c; font-weight: 600; margin-top: 24px;">Have a use case we should model better? Email us at <a href="mailto:samuele.cryp@gmail.com">samuele.cryp@gmail.com</a> with your target income, horizon, contribution pace, and portfolio constraints.</p>
+    </section>
+  </div>
+
+  <section class="cta-section">
+    <h2>Start Your Planning Journey</h2>
+    <p>Turn uncertainty into a structured, testable plan backed by data and realistic assumptions.</p>
+    <div class="cta-buttons">
+      <a href="index.html" class="btn btn-primary">Launch Simulator</a>
+      <a href="blog.html" class="btn btn-secondary">Explore Blog</a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>Platform</h4>
+        <ul>
+          <li><a href="index.html">Simulator</a></li>
+          <li><a href="blog.html">Blog & Guides</a></li>
+          <li><a href="about.html">About Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="blog/Page.html">Roadmap</a></li>
+          <li><a href="blog/article-dividend-basics.html">Beginner Guide</a></li>
+          <li><a href="blog/article-100k-dividends.html">Advanced Topics</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="tecnical/privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="tecnical/cookie-policy.html">Cookie Policy</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="blog.html">GitHub</a></li>
+          <li><a href="#sezione-mail">Email</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2024–2026 Dividend Capital Simulator. All rights reserved.</p>
+      <p>Built with data. Designed for execution.</p>
+    </div>
+  </footer>
+
+  <script src="js/cookie-consent.js"></script>
+</body>
+
+</html>

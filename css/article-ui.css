@@ -1,0 +1,54 @@
+/* Minimal UI polish for blog article pages (keeps existing palette/layout) */
+
+/* Header/nav: improve mobile wrapping without changing desktop look */
+.header-top {
+  gap: 24px;
+}
+
+.nav-main {
+  flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+  .header-top {
+    padding: 16px 20px;
+    flex-wrap: wrap;
+    gap: 12px 16px;
+  }
+
+  .nav-main {
+    gap: 16px;
+  }
+}
+
+/* Tables: make wide tables usable on mobile */
+@media (max-width: 768px) {
+  article table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    width: 100%;
+  }
+
+  article th,
+  article td {
+    white-space: nowrap;
+  }
+}
+
+/* Footer: match spacing on small screens */
+@media (max-width: 768px) {
+  .footer {
+    padding: 40px 20px;
+  }
+
+  .footer-content {
+    gap: 24px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+}

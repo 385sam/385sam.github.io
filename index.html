@@ -1,0 +1,3129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="graph.png">
+  <title>Dividend Income Target Calculator for FIRE | Monte Carlo Capital Planner</title>
+  <meta name="description"
+    content="Plan your FIRE number with a dividend income target calculator. Estimate the capital needed to live off dividends using Monte Carlo simulations, inflation, taxes, fees, growth, and savings.">
+  <meta name="keywords"
+    content="FIRE calculator, dividend income target calculator, dividend income calculator, financial independence retire early, required capital, dividend portfolio planner, Monte Carlo FIRE, passive income target">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="author" content="Dividend Capital Simulator PRO">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="canonical" href="https://dcsimulator.me/">
+  <meta property="og:site_name" content="Dividend Capital Simulator PRO">
+  <meta property="og:title" content="Dividend Income Target Calculator for FIRE | Monte Carlo Capital Planner">
+  <meta property="og:description"
+    content="Calculate your FIRE number and dividend income target with a Monte Carlo planner built for dividend investors, inflation, taxes, fees, growth, and savings.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://dcsimulator.me/">
+  <meta property="og:image" content="https://dcsimulator.me/graph.png">
+  <meta property="og:image:alt" content="Dividend Income Target Calculator for FIRE">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Dividend Income Target Calculator for FIRE | Monte Carlo Capital Planner">
+  <meta name="twitter:description"
+    content="Estimate the capital needed to reach FIRE through dividends with a Monte Carlo calculator that models inflation, taxes, fees, growth, and savings.">
+  <meta name="twitter:image" content="https://dcsimulator.me/graph.png">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600;700&family=DM+Mono:wght@300;400;500&display=swap"
+    rel="stylesheet">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Dividend Income Target Calculator for FIRE",
+      "alternateName": "Dividend Capital Simulator PRO",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Web",
+      "url": "https://dcsimulator.me/",
+      "description": "Plan your FIRE number with a dividend income target calculator that estimates required capital using Monte Carlo simulations, inflation, taxes, fees, growth, and savings.",
+      "image": "https://dcsimulator.me/graph.png",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    }
+  </script>
+  <style>
+    /* ====== VARIABLES & RESET ====== */
+    :root {
+      --bg: #f8f6f1;
+      --surface: #ffffff;
+      --surface2: #f9f7f4;
+      --surface3: #f4efe6;
+      --border: #ece7df;
+      --gold: #c9a84c;
+      --gold-dim: #b89436;
+      --gold-glow: rgba(201, 168, 76, 0.18);
+      --teal-glow: rgba(56, 168, 157, 0.14);
+      --green: #3dba7a;
+      --green-dim: rgba(61, 186, 122, 0.12);
+      --teal: #38a89d;
+      --orange: #d4843e;
+      --red: #e05555;
+      --red-dim: rgba(224, 85, 85, 0.1);
+      --text: #1a1a1a;
+      --text-dim: #4f5a6a;
+      --text-mid: #5e697a;
+      --label-aa: #475365;
+      --radius: 12px;
+      --radius-lg: 20px;
+      --shadow-soft: 0 10px 24px rgba(24, 24, 24, 0.06);
+      --shadow-strong: 0 18px 44px rgba(24, 24, 24, 0.1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background:
+        radial-gradient(circle at 8% 8%, rgba(201, 168, 76, 0.14), transparent 36%),
+        radial-gradient(circle at 92% 4%, rgba(56, 168, 157, 0.11), transparent 34%),
+        radial-gradient(circle at 50% 120%, rgba(201, 168, 76, 0.08), transparent 44%),
+        linear-gradient(180deg, #faf8f3 0%, #f4f1ea 100%);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      min-height: 100vh;
+      line-height: 1.6;
+      padding: 0 20px 80px;
+      overflow-x: hidden;
+    }
+
+    p {
+      line-height: 1.72;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.08;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 28px auto 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ====== HEADER ====== */
+    .header {
+      background: rgba(255, 255, 255, 0.86);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(236, 231, 223, 0.8);
+      margin: 0 -20px 24px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+    }
+
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 20px 40px;
+    }
+
+    .logo {
+      font-family: "Playfair Display", serif;
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -1px;
+      color: #1a1a1a;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .logo:hover {
+      color: var(--gold);
+    }
+
+    .nav-main {
+      display: flex;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .nav-main a {
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      color: #666;
+      transition: color 0.3s ease;
+      position: relative;
+    }
+
+    .nav-main a:hover,
+    .nav-main a.active {
+      color: #1a1a1a;
+    }
+
+    .nav-main a.active::after {
+      content: "";
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: var(--gold);
+    }
+
+
+    /* ====== HERO HEADER ====== */
+    .hero-header {
+      text-align: center;
+      margin-bottom: 56px;
+      animation: fadeDown 0.8s ease both;
+      padding: 84px 40px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      background:
+        radial-gradient(circle at 82% 18%, rgba(56, 168, 157, 0.09), transparent 34%),
+        radial-gradient(circle at 16% 14%, rgba(201, 168, 76, 0.16), transparent 38%),
+        linear-gradient(138deg, #f5f2ea 0%, #515151 55%, #f7f3eb 100%);
+      box-shadow: var(--shadow-strong);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.45), transparent);
+      transform: translateX(-100%);
+      animation: heroSweep 7s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    .hero-header>* {
+      position: relative;
+      z-index: 1;
+    }
+
+    .eyebrow {
+      font-size: 12px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+      font-weight: 700;
+    }
+
+    .pro-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, #c9a84c, #e4c46a);
+      color: #1a1a1a;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      padding: 4px 9px;
+      border-radius: 4px;
+      vertical-align: middle;
+      margin-left: 8px;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(34px, 5.8vw, 62px);
+      font-weight: 700;
+      line-height: 1.08;
+      letter-spacing: -0.015em;
+      color: #1a1a1a;
+      margin-bottom: 20px;
+      text-wrap: balance;
+    }
+
+    h1 span {
+      color: var(--gold);
+      font-style: normal;
+    }
+
+    .subtitle {
+      font-size: clamp(16px, 1.25vw, 18px);
+      color: #ffffff;
+      letter-spacing: 0;
+      max-width: 760px;
+      margin: 0 auto;
+      line-height: 1.75;
+    }
+
+    .seo-link {
+      display: inline-block;
+      margin-top: 24px;
+      color: #fff;
+      text-decoration: none;
+      font-size: 16px;
+      letter-spacing: 0.2px;
+      border-bottom: 1.5px solid #fff;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .seo-link:hover {
+      color: #e4c46a;
+      border-color: rgba(228, 196, 106, 0.75);
+    }
+
+    .divider {
+      width: 84px;
+      height: 2px;
+      background: linear-gradient(90deg, rgba(201, 168, 76, 0.2), var(--gold), rgba(201, 168, 76, 0.2));
+      margin: 28px auto;
+    }
+
+    .hero-highlights {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .hero-highlights span {
+      border: 1px solid rgba(0, 0, 0, 0.4);
+      background: rgba(177, 177, 177, 0);
+      border-radius: 999px;
+      padding: 9px 15px;
+      font-size: 13px;
+      letter-spacing: 0.5px;
+      color: #000000;
+      box-shadow: 0 3px 10px rgba(56, 56, 56, 0.12);
+    }
+
+    /* ====== ARTICLE BYLINE ====== */
+    .article-byline {
+      font-size: 10px;
+      color: var(--text-dim);
+      letter-spacing: 0.5px;
+      margin-top: 12px;
+      margin-bottom: 16px;
+    }
+
+    /* ====== CARDS ====== */
+    .card {
+      background: 
+        radial-gradient(circle at 82% 18%, rgba(56, 168, 157, 0.09), transparent 34%),
+        radial-gradient(circle at 16% 14%, rgba(201, 168, 76, 0.16), transparent 38%),
+        linear-gradient(138deg, #f5f2ea 0%, #515151 55%, #f7f3eb 100%);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 36px;
+      margin-bottom: 24px;
+      animation: fadeUp 0.6s ease both;
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, rgba(201, 168, 76, 0.08), var(--gold), rgba(56, 168, 157, 0.2));
+      opacity: 0.75;
+    }
+
+    .card:hover {
+      transform: translateY(-2px);
+      border-color: #dfd7cc;
+      box-shadow: 0 14px 28px rgba(30, 27, 22, 0.09);
+    }
+
+    .card-title {
+      font-size: 14px;
+      letter-spacing: 2.2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .settings-card {
+      padding: 32px;
+    }
+
+    .settings-section {
+      padding: 24px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: linear-gradient(150deg, #ffffff, #f8f4ec);
+      box-shadow: 0 6px 16px rgba(24, 24, 24, 0.05);
+    }
+
+    .settings-section + .settings-section {
+      margin-top: 18px;
+    }
+
+    .card-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ====== GRID ====== */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    /* ====== USE CASES SECTION ====== */
+    .use-cases-section {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin: 48px 0;
+      animation: fadeUp 0.6s ease both;
+    }
+
+    .use-case-card {
+      background: linear-gradient(325deg, var(--surface) 0%, var(--surface2) 70%, #4c4b49 100%);
+      border-radius: 14px;
+      padding: 28px;
+      text-align: center;
+      transition: all 0.3s ease;
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .use-case-card::before {
+      content: '';
+      position: absolute;
+      inset: auto -30% -55% auto;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(56, 168, 157, 0.08), transparent 70%);
+      pointer-events: none;
+    }
+
+    .use-case-card:hover {
+      border-color: var(--gold);
+      transform: translateY(-4px);
+      box-shadow: 0 16px 30px rgba(201, 168, 76, 0.14);
+    }
+
+    .use-case-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 12px;
+    }
+
+    .use-case-card p {
+      font-size: 14px;
+      color: var(--text-dim);
+      line-height: 1.75;
+      margin-bottom: 18px;
+    }
+
+    .use-case-card a {
+      display: inline-block;
+      font-size: 12px;
+      color: #4c4b49;
+      text-decoration: none;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      font-weight: 700;
+      padding: 10px 18px;
+      border: 2px solid #5b5b5b;
+      border-radius: 400px;
+      transition: all 0.3s ease;
+    }
+
+    .use-case-card a:hover {
+      background: var(--gold);
+      color: var(--bg);
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 20px;
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      gap: 20px;
+    }
+
+    @media (max-width: 700px) {
+
+      .header-top {
+        padding: 16px 20px;
+      }
+
+      .nav-main {
+        gap: 20px;
+      }
+
+      .hero-header {
+        padding: 56px 20px;
+      }
+
+      .hero-header::before {
+        animation: none;
+      }
+
+      .settings-card {
+        padding: 20px;
+      }
+
+      .settings-section {
+        padding: 18px;
+      }
+
+      h1 {
+        line-height: 1.12;
+      }
+
+      .subtitle {
+        font-size: 15px;
+      }
+
+      .grid-2,
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+
+      .grid-4 {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+    /* ====== FORM CONTROLS ====== */
+    .input-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    label {
+      font-size: 11px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--label-aa);
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .input-wrapper {
+      position: relative;
+    }
+
+    .input-prefix {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 13px;
+      color: var(--gold);
+      opacity: 0.7;
+      pointer-events: none;
+    }
+
+    input[type="number"] {
+      width: 100%;
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text);
+      font-family: 'DM Mono', monospace;
+      font-size: 14px;
+      padding: 12px 14px 12px 32px;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      appearance: textfield;
+      -moz-appearance: textfield;
+    }
+
+    input[type="number"]::-webkit-outer-spin-button,
+    input[type="number"]::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+    }
+
+    input[type="number"]:focus {
+      border-color: var(--gold-dim);
+      box-shadow: 0 0 0 3px var(--gold-glow);
+    }
+
+    select {
+      width: 100%;
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text);
+      font-family: 'DM Mono', monospace;
+      font-size: 14px;
+      padding: 12px 36px 12px 14px;
+      outline: none;
+      appearance: none;
+      cursor: pointer;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M3 5l3 3 3-3' fill='none' stroke='%236b7280' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+    }
+
+    select:focus {
+      border-color: var(--gold-dim);
+      box-shadow: 0 0 0 3px var(--gold-glow);
+    }
+
+    /* ====== TOOLTIPS ====== */
+    .tip-wrap {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .tip-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background: var(--border);
+      color: var(--text-dim);
+      font-size: 9px;
+      font-style: normal;
+      cursor: help;
+      margin-left: 6px;
+      transition: background 0.2s, color 0.2s;
+      flex-shrink: 0;
+    }
+
+    .tip-icon:hover {
+      background: var(--gold-dim);
+      color: var(--gold);
+    }
+
+    .tip-text {
+      display: none;
+      position: absolute;
+      bottom: calc(100% + 10px);
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-size: 11px;
+      font-weight: 300;
+      color: var(--text-mid);
+      width: 230px;
+      line-height: 1.5;
+      letter-spacing: 0;
+      text-transform: none;
+      z-index: 100;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+      pointer-events: none;
+    }
+
+    .tip-text::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border: 6px solid transparent;
+      border-top-color: var(--border);
+    }
+
+    .tip-wrap:hover .tip-text,
+    .tip-wrap:focus-within .tip-text {
+      display: block;
+    }
+
+    .tip-button {
+      border: 0;
+      padding: 0;
+      background: transparent;
+    }
+
+    .tip-button:focus-visible {
+      outline: 2px solid var(--gold);
+      outline-offset: 2px;
+    }
+
+    @media (max-width: 700px) {
+      .tip-text {
+        left: 0;
+        transform: none;
+        width: 200px;
+      }
+
+      .tip-text::after {
+        left: 12px;
+        transform: none;
+      }
+    }
+
+    /* ====== SLIDERS ====== */
+    .slider-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .slider-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .slider-value {
+      font-size: 13px;
+      color: #6f5b2d;
+      font-weight: 600;
+      min-width: 50px;
+      text-align: right;
+    }
+
+    input[type="range"] {
+      width: 100%;
+      padding: 0;
+      height: 4px;
+      cursor: pointer;
+      -webkit-appearance: none;
+      appearance: none;
+      background: var(--border);
+      border: none;
+      border-radius: 2px;
+      touch-action: none;
+    }
+
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 16px;
+      height: 16px;
+      background: var(--gold);
+      border-radius: 50%;
+      cursor: pointer;
+      box-shadow: 0 0 8px var(--gold-glow);
+      transition: box-shadow 0.2s;
+    }
+
+    input[type="range"]::-webkit-slider-thumb:hover {
+      box-shadow: 0 0 16px var(--gold-glow);
+    }
+
+    /* ====== BUTTONS ====== */
+    .btn-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn-simulate {
+      flex: 1;
+      min-width: 200px;
+      padding: 18px;
+      background: linear-gradient(135deg, #c9a84c 0%, #b89436 100%);
+      border: 1px solid #b89436;
+      border-radius: 10px;
+      color: #ffffff;
+      font-family: 'DM Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 8px 18px rgba(201, 168, 76, 0.35);
+    }
+
+    .btn-simulate::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(255, 255, 255, 0.14);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+      z-index: -1;
+    }
+
+    .btn-simulate:hover {
+      color: #ffffff;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(201, 168, 76, 0.36);
+    }
+
+    .btn-simulate:hover::before {
+      transform: scaleX(1);
+    }
+
+    .btn-simulate:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
+    .btn-simulate:disabled::before {
+      transform: scaleX(0);
+    }
+
+    .btn-secondary {
+      padding: 18px 24px;
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      color: var(--text-mid);
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.25s;
+      white-space: nowrap;
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--gold-dim);
+      color: #1a1a1a;
+      box-shadow: 0 10px 24px rgba(201, 168, 76, 0.2);
+    }
+
+    /* ====== LOADING ====== */
+    .loading {
+      display: none;
+      text-align: center;
+      padding: 40px;
+      color: var(--text-dim);
+      font-size: 11px;
+      letter-spacing: 3px;
+    }
+
+    .spinner {
+      width: 32px;
+      height: 32px;
+      border: 2px solid var(--border);
+      border-top-color: var(--gold);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin: 0 auto 16px;
+    }
+
+    /* ====== RESULTS ====== */
+    #results {
+      display: none;
+    }
+
+    .print-params {
+      display: none;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      margin-bottom: 24px;
+    }
+
+    .print-params h3 {
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+
+    .print-params-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      font-size: 11px;
+      color: var(--text-mid);
+    }
+
+    .print-report-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 14px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .print-brand {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      min-width: 0;
+    }
+
+    .print-brand-name {
+      font-size: 18px;
+      font-weight: 850;
+      letter-spacing: 0.2px;
+      color: #1a1a1a;
+      line-height: 1.1;
+    }
+
+    .print-brand-sub {
+      font-size: 11px;
+      color: var(--text-mid);
+      line-height: 1.35;
+      max-width: 560px;
+    }
+
+    .print-meta {
+      font-size: 11px;
+      color: var(--text-mid);
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    .print-meta strong {
+      color: #1a1a1a;
+      font-weight: 700;
+    }
+
+    .print-disclaimer {
+      margin-top: 12px;
+      font-size: 10px;
+      color: var(--text-mid);
+      line-height: 1.35;
+    }
+
+    .print-chart-img {
+      display: none;
+      width: 100%;
+      height: auto;
+      margin-top: 10px;
+      border-radius: 12px;
+    }
+
+    /* Hero */
+    .result-hero {
+      text-align: center;
+      padding: 48px 20px;
+      background: linear-gradient(150deg, #f8f4eb 0%, #fcfbf8 100%);
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      margin-bottom: 24px;
+      position: relative;
+      overflow: hidden;
+      animation: fadeUp 0.4s ease both;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .result-hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 200px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+
+    .result-label {
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--label-aa);
+      margin-bottom: 12px;
+    }
+
+    .result-capital {
+      font-family: sans-serif;
+      font-size: clamp(40px, 8vw, 72px);
+      font-weight: 725;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .result-caption {
+      font-size: 11px;
+        color: var(--text-mid);
+      letter-spacing: 1px;
+    }
+
+    /* Savings projection */
+    .savings-projection {
+      display: none;
+      background: linear-gradient(155deg, var(--surface2), #ffffff);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px;
+      margin-bottom: 24px;
+      animation: fadeUp 0.45s ease both;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .savings-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .savings-item {
+      text-align: center;
+    }
+
+    .savings-label {
+      font-size: 9px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--label-aa);
+      margin-bottom: 6px;
+    }
+
+    .savings-value {
+      font-family: sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .savings-sep {
+      color: var(--gold);
+      font-size: 18px;
+      opacity: 0.5;
+    }
+
+    /* Stats row */
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    @media (max-width: 600px) {
+      .stats-row {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .stat-box {
+      background: linear-gradient(160deg, #ffffff, #f7f4ed);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+      text-align: center;
+      animation: fadeUp 0.5s ease both;
+      box-shadow: 0 6px 14px rgba(30, 27, 22, 0.05);
+    }
+
+    .stat-label {
+      font-size: 9px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--label-aa);
+      margin-bottom: 8px;
+    }
+
+    .stat-value {
+      font-size: 15px;
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .stat-value.green {
+      color: var(--green);
+    }
+
+    .stat-value.red {
+      color: var(--red);
+    }
+
+    .stat-value.gold {
+      color: var(--gold);
+    }
+
+    /* Scenarios */
+    .scenarios-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    @media (max-width: 768px) {
+      .scenarios-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .scenarios-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .scenario-card.sc-base {
+        grid-column: 1 / -1;
+      }
+    }
+
+    .scenario-card {
+      border-radius: 14px;
+      padding: 18px 12px;
+      text-align: center;
+      border: 1px solid rgba(236, 231, 223, 0.95);
+      background: linear-gradient(160deg, rgba(255, 255, 255, 0.96) 0%, rgba(249, 247, 244, 0.94) 100%);
+      position: relative;
+      overflow: hidden;
+      animation: fadeUp 0.7s ease both;
+      box-shadow: 0 10px 22px rgba(24, 24, 24, 0.06);
+      transform: translateY(0);
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+
+    .scenario-card::after {
+      content: '';
+      position: absolute;
+      width: 240px;
+      height: 240px;
+      right: -130px;
+      top: -140px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(201, 168, 76, 0.16), transparent 62%);
+      pointer-events: none;
+    }
+
+    .scenario-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 40px rgba(24, 24, 24, 0.1);
+    }
+
+    .scenario-card.sc-p10 {
+      background: linear-gradient(160deg, rgba(61, 186, 122, 0.16) 0%, rgba(255, 255, 255, 0.96) 65%, rgba(61, 186, 122, 0.1) 100%);
+      border-color: rgba(61, 186, 122, 0.34);
+    }
+
+    .scenario-card.sc-p10::after {
+      background: radial-gradient(circle, rgba(61, 186, 122, 0.2), transparent 64%);
+    }
+
+    .scenario-card.sc-p25 {
+      background: linear-gradient(160deg, rgba(56, 168, 157, 0.16) 0%, rgba(255, 255, 255, 0.96) 65%, rgba(56, 168, 157, 0.1) 100%);
+      border-color: rgba(56, 168, 157, 0.34);
+    }
+
+    .scenario-card.sc-p25::after {
+      background: radial-gradient(circle, rgba(56, 168, 157, 0.18), transparent 64%);
+    }
+
+    .scenario-card.sc-base {
+      background: linear-gradient(160deg, rgba(201, 168, 76, 0.16) 0%, rgba(255, 255, 255, 0.96) 65%, rgba(201, 168, 76, 0.1) 100%);
+      border-color: rgba(201, 168, 76, 0.4);
+    }
+
+    .scenario-card.sc-base::after {
+      background: radial-gradient(circle, rgba(201, 168, 76, 0.22), transparent 64%);
+    }
+
+    .scenario-card.sc-p75 {
+      background: linear-gradient(160deg, rgba(212, 132, 62, 0.16) 0%, rgba(255, 255, 255, 0.96) 65%, rgba(212, 132, 62, 0.1) 100%);
+      border-color: rgba(212, 132, 62, 0.34);
+    }
+
+    .scenario-card.sc-p75::after {
+      background: radial-gradient(circle, rgba(212, 132, 62, 0.18), transparent 64%);
+    }
+
+    .scenario-card.sc-p90 {
+      background: linear-gradient(160deg, rgba(224, 85, 85, 0.16) 0%, rgba(255, 255, 255, 0.96) 65%, rgba(224, 85, 85, 0.1) 100%);
+      border-color: rgba(224, 85, 85, 0.34);
+    }
+
+    .scenario-card.sc-p90::after {
+      background: radial-gradient(circle, rgba(224, 85, 85, 0.2), transparent 64%);
+    }
+
+    .scenario-name {
+      font-size: 9px;
+      letter-spacing: 1.6px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(79, 90, 106, 0.14);
+      background: rgba(255, 255, 255, 0.65);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    .sc-p10 .scenario-name {
+      color: var(--green);
+      border-color: rgba(61, 186, 122, 0.22);
+      background: rgba(61, 186, 122, 0.1);
+    }
+
+    .sc-p25 .scenario-name {
+      color: var(--teal);
+      border-color: rgba(56, 168, 157, 0.22);
+      background: rgba(56, 168, 157, 0.1);
+    }
+
+    .sc-base .scenario-name {
+      color: var(--gold);
+      border-color: rgba(201, 168, 76, 0.26);
+      background: rgba(201, 168, 76, 0.1);
+    }
+
+    .sc-p75 .scenario-name {
+      color: var(--orange);
+      border-color: rgba(212, 132, 62, 0.22);
+      background: rgba(212, 132, 62, 0.1);
+    }
+
+    .sc-p90 .scenario-name {
+      color: var(--red);
+      border-color: rgba(224, 85, 85, 0.22);
+      background: rgba(224, 85, 85, 0.1);
+    }
+
+    .scenario-capital {
+      font-family: 'DM Mono', monospace;
+      font-size: 21px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 6px;
+      letter-spacing: -0.4px;
+    }
+
+    .scenario-desc {
+      font-size: 10px;
+      color: var(--text-mid);
+      letter-spacing: 0.2px;
+    }
+
+    .scenario-guide {
+      background: linear-gradient(150deg, #f8f4eb 0%, #ffffff 100%);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px;
+      margin-bottom: 24px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .scenario-guide h3 {
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+
+    .guide-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .guide-card {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--surface);
+      padding: 12px;
+    }
+
+    .guide-card strong {
+      display: block;
+      font-size: 10px;
+      color: var(--text);
+      margin-bottom: 6px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .guide-card p {
+      font-size: 11px;
+      color: var(--text-mid);
+      line-height: 1.45;
+    }
+
+    @media (max-width: 700px) {
+      .guide-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Charts */
+    .chart-container {
+      background: linear-gradient(150deg, #f9f6ef 0%, #ffffff 100%);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 24px;
+      margin-bottom: 24px;
+      animation: fadeUp 0.6s ease both;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .chart-legend {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 12px;
+      flex-wrap: wrap;
+    }
+
+    .chart-legend-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 10px;
+      color: var(--text-mid);
+      letter-spacing: 0.5px;
+    }
+
+    .legend-swatch {
+      width: 14px;
+      height: 14px;
+      border-radius: 3px;
+      flex-shrink: 0;
+    }
+
+    .legend-line {
+      width: 18px;
+      height: 3px;
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+
+    .chart-note {
+      margin-top: 10px;
+      font-size: 11px;
+      color: var(--text-mid);
+      text-align: center;
+      line-height: 1.55;
+    }
+
+    .growth-table-wrap {
+      margin-top: 14px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: auto;
+      max-height: 320px;
+      background: rgba(255, 255, 255, 0.72);
+      box-shadow: 0 10px 22px rgba(24, 24, 24, 0.04);
+    }
+
+    .growth-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      font-size: 11px;
+    }
+
+    .growth-table thead th {
+      position: sticky;
+      top: 0;
+      z-index: 1;
+      text-align: left;
+      font-size: 9px;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      color: var(--label-aa);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.96) 0%, rgba(249, 247, 244, 0.9) 100%);
+      border-bottom: 1px solid rgba(236, 231, 223, 0.9);
+      padding: 11px 12px;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .growth-table th.num,
+    .growth-table td.num {
+      text-align: right;
+    }
+
+    .growth-table tbody td {
+      padding: 10px 12px;
+      border-bottom: 1px solid rgba(236, 231, 223, 0.85);
+      color: var(--text);
+      vertical-align: middle;
+    }
+
+    .growth-table tbody tr:nth-child(odd) {
+      background: rgba(249, 247, 244, 0.55);
+    }
+
+    .growth-table tbody tr:hover {
+      background: rgba(201, 168, 76, 0.08);
+    }
+
+    .growth-table td.num {
+      font-family: 'DM Mono', monospace;
+      letter-spacing: -0.2px;
+    }
+
+    .year-pill {
+      display: inline-flex;
+      align-items: center;
+      padding: 5px 10px;
+      border-radius: 999px;
+      font-size: 10px;
+      letter-spacing: 0.6px;
+      border: 1px solid rgba(79, 90, 106, 0.14);
+      background: rgba(255, 255, 255, 0.7);
+    }
+
+    .net-ink {
+      color: var(--green);
+      font-weight: 800;
+    }
+
+    .coverage-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 5px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(79, 90, 106, 0.14);
+      background: rgba(255, 255, 255, 0.7);
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: -0.2px;
+      min-width: 72px;
+    }
+
+    .coverage-ok {
+      color: var(--green);
+      border-color: rgba(61, 186, 122, 0.22);
+      background: rgba(61, 186, 122, 0.1);
+    }
+
+    .coverage-mid {
+      color: var(--orange);
+      border-color: rgba(212, 132, 62, 0.22);
+      background: rgba(212, 132, 62, 0.1);
+    }
+
+    .coverage-low {
+      color: var(--red);
+      border-color: rgba(224, 85, 85, 0.22);
+      background: rgba(224, 85, 85, 0.1);
+    }
+
+    .growth-table tr.is-final td {
+      border-bottom: none;
+    }
+
+    canvas {
+      width: 100% !important;
+    }
+
+    /* Real instruments recommendations */
+    .rec-panel {
+      background: linear-gradient(135deg, #ffffff 0%, #f9f7f4 100%);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 28px;
+      margin-bottom: 24px;
+      animation: fadeUp 0.6s ease both;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+    }
+
+    .rec-panel::after {
+      content: '';
+      position: absolute;
+      width: 250px;
+      height: 250px;
+      right: -90px;
+      top: -90px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(201, 168, 76, 0.12), transparent 68%);
+      pointer-events: none;
+    }
+
+    .rec-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+
+    .rec-subtitle {
+      color: var(--text-dim);
+      font-size: 13px;
+      line-height: 1.6;
+      max-width: 680px;
+    }
+
+    .rec-profile {
+      display: inline-flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 8px;
+    }
+
+    .rec-chip {
+      border: 1px solid rgba(201, 168, 76, 0.45);
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-size: 11px;
+      color: #6f5b2d;
+      background: rgba(201, 168, 76, 0.1);
+      letter-spacing: 0.6px;
+    }
+
+    .rec-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 16px;
+    }
+
+    .rec-card {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px;
+      background: #ffffff;
+      min-height: 210px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+
+    .rec-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(201, 168, 76, 0.55);
+      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.08), 0 0 30px rgba(201, 168, 76, 0.1);
+    }
+
+    .rec-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: var(--gold);
+    }
+
+    .rec-card::after {
+      content: '';
+      position: absolute;
+      inset: auto -20% -55% auto;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.08), transparent 70%);
+      pointer-events: none;
+    }
+
+    .rec-card.etf::before {
+      background: var(--gold);
+    }
+
+    .rec-card.stock::before {
+      background: var(--teal);
+    }
+
+    .rec-card.reit::before {
+      background: var(--orange);
+    }
+
+    .rec-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: flex-start;
+      margin-bottom: 10px;
+    }
+
+    .rec-ticker {
+      font-family: 'Playfair Display', serif;
+      font-size: 23px;
+      line-height: 1;
+      color: var(--text);
+    }
+
+    .rec-name {
+      color: var(--text-mid);
+      font-size: 11px;
+      margin-top: 4px;
+      line-height: 1.4;
+      max-width: 85%;
+    }
+
+    .rec-type {
+      font-size: 9px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 4px 7px;
+      border-radius: 7px;
+      background: rgba(201, 168, 76, 0.08);
+      border: 1px solid rgba(201, 168, 76, 0.35);
+      color: #6f5b2d;
+    }
+
+    .rec-stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 7px;
+      margin-bottom: 10px;
+    }
+
+    .rec-stat {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--surface2);
+      padding: 8px;
+      text-align: center;
+    }
+
+    .rec-stat-label {
+      font-size: 9px;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      color: var(--label-aa);
+      margin-bottom: 4px;
+    }
+
+    .rec-stat-value {
+      color: var(--text);
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 1.05;
+    }
+
+    .rec-stat-value.highlight {
+      color: var(--gold);
+      text-shadow: 0 0 12px rgba(201, 168, 76, 0.35);
+    }
+
+    .rec-stat-sub {
+      margin-top: 6px;
+      font-size: 10px;
+      line-height: 1.35;
+      color: var(--text-dim);
+      letter-spacing: 0.2px;
+    }
+
+    .rec-fit {
+      color: #7ee6b0;
+      font-size: 11px;
+      margin-bottom: 8px;
+      line-height: 1.5;
+      font-weight: 600;
+    }
+
+    .rec-note {
+      color: var(--text-dim);
+      font-size: 11px;
+      line-height: 1.5;
+    }
+
+    .rec-top-flag {
+      position: absolute;
+      top: 0;
+      right: 0;
+      border-radius: 0 0 0 10px;
+      padding: 4px 9px;
+      font-size: 9px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      background: var(--gold-glow);
+      color: var(--gold);
+      border-left: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(4px);
+    }
+
+    @media (max-width: 980px) {
+      .rec-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .rec-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .rec-stats {
+        grid-template-columns: 1fr;
+      }
+
+      .rec-stat-value {
+        font-size: 18px;
+      }
+    }
+
+    /* Export / Share */
+    .export-card {
+      padding: 20px 36px;
+    }
+
+    .export-row {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .share-feedback {
+      font-size: 11px;
+      color: var(--green);
+      margin-top: 8px;
+      opacity: 0;
+      transition: opacity 0.3s;
+      letter-spacing: 1px;
+    }
+
+    /* Note */
+    .disclaimer-note {
+      font-size: 10px;
+      color: var(--text-dim);
+      text-align: center;
+      letter-spacing: 1px;
+      line-height: 1.6;
+      padding: 16px;
+      border-top: 1px solid var(--border);
+      margin-top: 8px;
+    }
+
+    /* ====== FOOTER ====== */
+
+
+    @keyframes heroSweep {
+      0% {
+        transform: translateX(-110%);
+      }
+
+      35% {
+        transform: translateX(110%);
+      }
+
+      100% {
+        transform: translateX(110%);
+      }
+    }
+
+    .footer { background: #fff; border-top: 1px solid #f0f0f0; padding: 60px 40px; margin-top: 100px; }
+    .footer-content { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 40px; }
+    .footer-section h4 { font-size: 13px; text-transform: uppercase; letter-spacing: 2px; font-weight: 700; margin-bottom: 20px; color: #1a1a1a; }
+    .footer-section ul { list-style: none; }
+    .footer-section li { margin-bottom: 12px; }
+    .footer-section a { text-decoration: none; color: #666; font-size: 13px; transition: color 0.3s ease; }
+    .footer-section a:hover { color: #1a1a1a; }
+    
+    .footer-bottom { border-top: 1px solid #f0f0f0; padding-top: 40px; display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: #999; max-width: 1400px; margin: 0 auto; }
+
+    @media (max-width: 768px) {
+      .footer-content {
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+        padding: 0 20px;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+      }
+    }
+
+    /* ====== ANIMATIONS ====== */
+    @keyframes fadeDown {
+      from {
+        opacity: 0;
+        transform: translateY(-14px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    @media (max-width: 700px) {
+      @keyframes fadeDown {
+        from {
+          opacity: 0;
+          transform: translateY(-8px);
+        }
+
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(6px);
+        }
+
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    }
+
+    .card:nth-child(2) {
+      animation-delay: 0.1s;
+    }
+
+    .card:nth-child(3) {
+      animation-delay: 0.2s;
+    }
+
+    /* ====== PRINT ====== */
+    @page {
+      size: A4;
+      margin: 12mm;
+    }
+
+    @media print {
+      * {
+        box-shadow: none !important;
+        text-shadow: none !important;
+        filter: none !important;
+      }
+
+      body {
+        background: #fff !important;
+        color: #111 !important;
+        padding: 0;
+        font-size: 10pt;
+        line-height: 1.35;
+      }
+
+      body::before {
+        display: none !important;
+      }
+
+      .container {
+        max-width: 100%;
+      }
+
+      /* Print only the report output */
+      .container > :not(#results) {
+        display: none !important;
+      }
+
+      .site-nav,
+      header,
+      #cardTarget,
+      #cardParams,
+      #loading,
+      .btn-row,
+      .seo-link,
+      .export-card,
+      .disclaimer-note,
+      .footer {
+        display: none !important;
+      }
+
+      #results {
+        display: block !important;
+      }
+
+      #results,
+      #results * {
+        color: #111 !important;
+      }
+
+      .print-params {
+        display: block !important;
+        margin-bottom: 10mm;
+        border: 1px solid #d8d8d8 !important;
+        background: #fff !important;
+      }
+
+      .result-hero,
+      .savings-projection,
+      .stat-box,
+      .scenario-card,
+      .scenario-guide,
+      .chart-container,
+      .rec-card,
+      .card {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        border-color: #d7d7d7 !important;
+        background: #fff !important;
+      }
+
+      .result-hero {
+        padding: 8mm 6mm;
+      }
+
+      .result-capital {
+        font-size: 30pt;
+        color: #111 !important;
+      }
+
+      .scenario-capital,
+      .stat-value,
+      .rec-stat-value {
+        color: #111 !important;
+      }
+
+      .card-title,
+      .rec-top-flag,
+      .rec-type,
+      .rec-chip {
+        color: #6b4c1f !important;
+        background: transparent !important;
+        border-color: #d7d7d7 !important;
+      }
+
+      .stats-row {
+        grid-template-columns: repeat(3, 1fr) !important;
+      }
+
+      .scenarios-grid {
+        grid-template-columns: repeat(3, 1fr) !important;
+      }
+
+      .rec-grid {
+        display: block !important;
+        margin-top: 3mm !important;
+      }
+
+      .rec-panel {
+        break-inside: auto !important;
+        page-break-inside: auto !important;
+        margin-top: 6mm;
+        overflow: visible !important;
+      }
+
+      .rec-head {
+        margin-bottom: 4mm;
+      }
+
+      .rec-subtitle {
+        font-size: 9pt !important;
+        line-height: 1.35 !important;
+        max-width: 100% !important;
+      }
+
+      .rec-profile {
+        margin-top: 2mm !important;
+        gap: 1.5mm !important;
+      }
+
+      .rec-chip {
+        font-size: 8pt !important;
+        padding: 1.5mm 2mm !important;
+      }
+
+      .rec-card {
+        display: block !important;
+        min-height: 0 !important;
+        padding: 3.5mm !important;
+        margin-bottom: 4mm !important;
+        overflow: visible !important;
+      }
+
+      .rec-row {
+        margin-bottom: 2.5mm !important;
+      }
+
+      .rec-ticker {
+        font-size: 16pt !important;
+      }
+
+      .rec-name,
+      .rec-note,
+      .rec-fit,
+      .rec-stat-sub {
+        font-size: 8.5pt !important;
+        line-height: 1.3 !important;
+      }
+
+      .rec-stats {
+        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+        gap: 2mm !important;
+        margin-bottom: 2.5mm !important;
+      }
+
+      .rec-stat {
+        padding: 2mm !important;
+      }
+
+      .rec-stat-label {
+        font-size: 7.5pt !important;
+      }
+
+      .rec-stat-value {
+        font-size: 11pt !important;
+      }
+
+      .rec-top-flag {
+        display: none !important;
+      }
+
+      .rec-card::before,
+      .rec-card::after,
+      .rec-panel::after {
+        display: none !important;
+      }
+
+      body.pdf-export #distChart {
+        display: none !important;
+      }
+
+      body.pdf-export #distChartPrint {
+        display: block !important;
+        width: 100% !important;
+        max-height: 70mm !important;
+      }
+
+      canvas {
+        max-height: 70mm !important;
+      }
+    }
+  </style>
+  <!-- Google tag (gtag.js) - Conditional on consent -->
+  <script>
+    // Only load GA if user has consented to analytics
+    if (localStorage.getItem('cookie-consent-preferences')) {
+      const prefs = JSON.parse(localStorage.getItem('cookie-consent-preferences'));
+      if (prefs.analytics) {
+        const script = document.createElement('script');
+        script.async = true;
+        script.src = 'https://www.googletagmanager.com/gtag/js?id=G-DTL9TKB503';
+        document.head.appendChild(script);
+      }
+    } else {
+      // If no consent yet, disable GA
+      window['ga-disable-G-DTL9TKB503'] = true;
+    }
+  </script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-DTL9TKB503');
+  </script>
+  <!-- Cookie Consent -->
+  <link rel="stylesheet" href="css/cookie-consent.css">
+</head>
+
+<body>
+  <header class="header">
+    <div class="header-top">
+      <a href="index.html" class="logo">DCSimulator</a>
+      <nav class="nav-main">
+        <a href="index.html" class="active">Home</a>
+        <a href="blog.html">Blog</a>
+        <a href="about.html">About</a>
+      </nav>
+    </div>
+  </header>
+  <div class="container">
+    <header class="hero-header">
+      <p class="eyebrow">Monte Carlo · Dividend Simulator <span class="pro-badge">PRO</span></p>
+      <h1>How much capital<br>do you need to <span>live off dividends?</span></h1>
+      <div class="divider"></div>
+      <p class="subtitle">Enter your desired monthly income — the simulator calculates the capital you need</p>
+      <div class="hero-highlights" aria-label="Core simulator features">
+        <span>Inflation-aware projections</span>
+        <span>Tax and fee adjusted</span>
+        <span>Monte Carlo risk bands</span>
+      </div>
+      <a class="seo-link" href="blog.html">Read the dividend blog and the ultimate guide on how to live on
+        dividends.</a>
+    </header>
+
+    <!-- ═══ SETTINGS ═══ -->
+    <div class="card settings-card" id="cardTarget">
+      <div class="settings-section">
+        <p class="card-title">Income target</p>
+        <div class="grid-2">
+          <div class="input-group">
+            <label>
+              Desired monthly income
+              <span class="tip-wrap"><span class="tip-icon">?</span><span class="tip-text">The monthly after-tax income
+                  you want to receive from your dividend portfolio.</span></span>
+            </label>
+            <div class="input-wrapper">
+              <span class="input-prefix" id="currencySymbol">€</span>
+              <input type="number" id="targetIncome" value="1000" min="100" step="100">
+            </div>
+          </div>
+          <div class="input-group">
+            <label>
+              Time horizon (years)
+              <span class="tip-wrap"><span class="tip-icon">?</span><span class="tip-text">Number of years to simulate.
+                  Longer horizons compound uncertainty, widening the gap between pessimistic and optimistic
+                  outcomes.</span></span>
+            </label>
+            <div class="input-wrapper">
+              <span class="input-prefix">#</span>
+              <input type="number" id="years" value="5" min="1" max="50">
+            </div>
+          </div>
+        </div>
+        <div class="grid-2" style="margin-top:20px">
+          <div class="input-group">
+            <label>Currency</label>
+            <select id="currency">
+              <option value="EUR" selected>EUR (€)</option>
+              <option value="USD">USD ($)</option>
+              <option value="GBP">GBP (£)</option>
+              <option value="CHF">CHF (Fr.)</option>
+              <option value="CAD">CAD (C$)</option>
+            </select>
+          </div>
+          <div class="input-group">
+            <label>
+              Monthly savings (optional)
+              <span class="tip-wrap"><span class="tip-icon">?</span><span class="tip-text">If you are still accumulating
+                  capital, enter your monthly savings. The simulator will estimate how much your savings will grow and
+                  subtract it from the capital needed.</span></span>
+            </label>
+            <div class="input-wrapper">
+              <span class="input-prefix" id="currencySymbol2">€</span>
+              <input type="number" id="monthlySavings" value="0" min="0" step="50">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="settings-section" id="cardParams">
+        <p class="card-title">Market parameters</p>
+        <div class="grid-3" style="margin-bottom:24px">
+        <div class="slider-group">
+          <div class="slider-row">
+            <label>
+              Dividend Yield
+              <span class="tip-wrap"><span class="tip-icon">?</span><span class="tip-text">Annual dividend income as a %
+                  of portfolio value. Example: 2.5% on €100k = €2,500/year gross.</span></span>
+            </label>
+            <span class="slider-value" id="yieldVal">2.5%</span>
+          </div>
+          <input type="range" id="divYield" min="1" max="25" step="0.5" value="2.5">
+        </div>
+        <div class="slider-group">
+          <div class="slider-row">
+            <label>
+              Annual growth
+              <span class="tip-wrap"><span class="tip-icon">?</span><span class="tip-text">Expected yearly increase in
+                  dividends. Quality companies historically grow dividends 3–9% per year.</span></span>
+            </label>
+            <span class="slider-value" id="growthVal">5.0%</span>
+          </div>
+          <input type="range" id="divGrowth" min="0" max="20" step="0.5" value="5">
+        </div>
+        <div class="slider-group">
+          <div class="slider-row">
+            <label>
+              Tax rate
+              <span class="tip-wrap"><span class="tip-icon">?</span><span class="tip-text">Tax applied to dividends.
+                  Varies by country: Italy 26%, USA 15%, UK 8.75%, France 30%.</span></span>
+            </label>
+            <span class="slider-value" id="taxVal">15.0%</span>
+          </div>
+          <input type="range" id="taxRate" min="0" max="45" step="1" value="15">
+        </div>
+      </div>
+        <div class="grid-3" style="margin-bottom:24px">
+        <div class="slider-group">
+          <div class="slider-row">
+            <label>
+              Growth volatility
+              <span class="tip-wrap"><span class="tip-icon">?</span><span class="tip-text">Year-to-year unpredictability
+                  of dividend growth. Higher = more uncertainty and wider outcome ranges.</span></span>
+            </label>
+            <span class="slider-value" id="volVal">3.0%</span>
+          </div>
+          <input type="range" id="volatility" min="0" max="30" step="0.5" value="3">
+        </div>
+        <div class="slider-group">
+          <div class="slider-row">
+            <label>
+              Inflation rate
+              <span class="tip-wrap"><span class="tip-icon">?</span><span class="tip-text">Annual inflation adjusts your
+                  income target upward each year to maintain purchasing power.</span></span>
+            </label>
+            <span class="slider-value" id="inflVal">1.5%</span>
+          </div>
+          <input type="range" id="inflation" min="0" max="10" step="0.5" value="1.5">
+        </div>
+        <div class="slider-group">
+          <div class="slider-row">
+            <label>
+              Expense ratio
+              <span class="tip-wrap"><span class="tip-icon">?</span><span class="tip-text">Annual management fees
+                  charged by ETFs/funds. Deducted from gross yield. Typical: 0.1–0.7%.</span></span>
+            </label>
+            <span class="slider-value" id="feeVal">0.20%</span>
+          </div>
+          <input type="range" id="expenseRatio" min="0" max="2" step="0.05" value="0.2">
+        </div>
+      </div>
+        <div class="slider-group">
+          <div class="slider-row">
+            <label>
+              Monte Carlo simulations
+              <span class="tip-wrap"><span class="tip-icon">?</span><span class="tip-text">Number of random scenarios
+                  generated. More simulations = more reliable statistics, but slightly slower.</span></span>
+            </label>
+            <span class="slider-value" id="simVal">10,000</span>
+          </div>
+          <input type="range" id="simulations" min="1000" max="25000" step="1000" value="10000">
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ BUTTON ═══ -->
+    <div class="card" style="padding:24px">
+      <div class="btn-row">
+        <button class="btn-simulate" id="btnSimulate" onclick="runSimulation()">
+          ▶ Run simulation
+        </button>
+      </div>
+    </div>
+
+    <!-- ═══ LOADING ═══ -->
+    <div class="loading" id="loading">
+      <div class="spinner" role="status" aria-label="Running Monte Carlo simulation"></div>
+      <p>Running Monte Carlo...</p>
+    </div>
+
+    <!-- ═══ RESULTS ═══ -->
+    <div id="results">
+
+      <!-- Print-only parameters summary -->
+      <div class="print-params" id="printParams"></div>
+
+      <!-- Hero -->
+      <div class="result-hero">
+        <p class="result-label">Estimated required capital (median)</p>
+        <div class="result-capital" id="capitalResult">—</div>
+        <p class="result-caption">to generate <span id="incomeRef">—</span> per month</p>
+      </div>
+
+      <!-- Savings projection (shown only if monthlySavings > 0) -->
+      <div class="savings-projection" id="savingsProjection">
+        <div class="savings-row">
+          <div class="savings-item">
+            <p class="savings-label">Projected savings</p>
+            <div class="savings-value green" id="projectedSavings">—</div>
+          </div>
+          <div class="savings-sep">→</div>
+          <div class="savings-item">
+            <p class="savings-label">Additional capital needed</p>
+            <div class="savings-value gold" id="additionalCapital">—</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stats -->
+      <div class="stats-row">
+        <div class="stat-box">
+          <p class="stat-label">Gross yield</p>
+          <div class="stat-value" id="statYieldGross">—</div>
+        </div>
+        <div class="stat-box">
+          <p class="stat-label">Net yield (after tax & fees)</p>
+          <div class="stat-value green" id="statYieldNet">—</div>
+        </div>
+        <div class="stat-box">
+          <p class="stat-label">Real return (after inflation)</p>
+          <div class="stat-value gold" id="statRealReturn">—</div>
+        </div>
+        <div class="stat-box">
+          <p class="stat-label">Estimated annual taxes</p>
+          <div class="stat-value red" id="statTax">—</div>
+        </div>
+        <div class="stat-box">
+          <p class="stat-label">Annual net income</p>
+          <div class="stat-value" id="statAnnInc">—</div>
+        </div>
+        <div class="stat-box">
+          <p class="stat-label">Monthly net income</p>
+          <div class="stat-value" id="statMonInc">—</div>
+        </div>
+      </div>
+
+      <!-- Scenarios (5 percentiles) -->
+      <div class="scenarios-grid">
+        <div class="scenario-card sc-p10">
+          <p class="scenario-name">▲ Very favorable (P10)</p>
+          <div class="scenario-capital" id="scen10">—</div>
+          <p class="scenario-desc">top 10% most favorable outcomes</p>
+        </div>
+        <div class="scenario-card sc-p25">
+          <p class="scenario-name">◇ Favorable (P25)</p>
+          <div class="scenario-capital" id="scen25">—</div>
+          <p class="scenario-desc">favorable but realistic scenario</p>
+        </div>
+        <div class="scenario-card sc-base">
+          <p class="scenario-name">◆ Central (P50)</p>
+          <div class="scenario-capital" id="scen50">—</div>
+          <p class="scenario-desc">most likely baseline scenario</p>
+        </div>
+        <div class="scenario-card sc-p75">
+          <p class="scenario-name">◇ Prudent (P75)</p>
+          <div class="scenario-capital" id="scen75">—</div>
+          <p class="scenario-desc">prudence-focused planning scenario</p>
+        </div>
+        <div class="scenario-card sc-p90">
+          <p class="scenario-name">▼ Safety planning (P90)</p>
+          <div class="scenario-capital" id="scen90">—</div>
+          <p class="scenario-desc">use this for safer planning buffers</p>
+        </div>
+      </div>
+
+      <div class="scenario-guide" aria-label="How to use Monte Carlo scenarios">
+        <h3>How to read scenarios</h3>
+        <div class="guide-grid">
+          <div class="guide-card">
+            <strong>P50 Central</strong>
+            <p>Useful baseline, but not conservative enough as a sole retirement target.</p>
+          </div>
+          <div class="guide-card">
+            <strong>P75 Prudent</strong>
+            <p>Recommended planning anchor for most users who want stronger downside protection.</p>
+          </div>
+          <div class="guide-card">
+            <strong>P90 Safety</strong>
+            <p>Stress-test scenario to evaluate resilience in adverse market conditions.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Histogram -->
+      <div class="chart-container">
+        <p class="card-title">Simulation distribution — required capital at horizon</p>
+        <canvas id="distChart" height="160" role="img"
+          aria-label="Histogram showing distribution of required capital from Monte Carlo simulations"></canvas>
+        <img id="distChartPrint" class="print-chart-img" alt="Simulation distribution histogram (print snapshot)">
+        <div class="chart-legend" aria-hidden="true">
+          <div class="chart-legend-item">
+            <span class="legend-swatch" style="background: rgba(61,186,122,0.78); border: 1px solid rgba(61,186,122,0.95);"></span>
+            Lower required capital (favorable)
+          </div>
+          <div class="chart-legend-item">
+            <span class="legend-swatch" style="background: rgba(201,168,76,0.78); border: 1px solid rgba(201,168,76,0.95);"></span>
+            Middle of the range
+          </div>
+          <div class="chart-legend-item">
+            <span class="legend-swatch" style="background: rgba(224,85,85,0.78); border: 1px solid rgba(224,85,85,0.95);"></span>
+            Higher required capital (needs buffer)
+          </div>
+        </div>
+      </div>
+
+      <!-- Dividend income growth (deterministic expectation) -->
+      <div class="chart-container">
+        <p class="card-title">Dividend income growth schedule — expected (using P50 capital: <span id="divGrowthPrincipal">—</span>)</p>
+
+        <div class="growth-table-wrap" role="region" aria-label="Dividend income growth schedule" tabindex="0">
+          <table class="growth-table">
+            <thead>
+              <tr>
+                <th>Year</th>
+                <th class="num">Gross / month</th>
+                <th class="num">Net / month</th>
+                <th class="num">Coverage</th>
+                <th class="num">Net yield</th>
+              </tr>
+            </thead>
+            <tbody id="divGrowthTableBody"></tbody>
+          </table>
+        </div>
+
+        <p class="chart-note">Uses your inputs (yield, growth, tax, fees, inflation, horizon). “Expected” path applies the mean dividend growth each year (no volatility).</p>
+      </div>
+
+      <div class="rec-panel" id="recommendationsPanel">
+        <div class="rec-head">
+          <div>
+            <p class="card-title">Real instruments aligned with your current simulation</p>
+            <p class="rec-subtitle">Recommendations adapt to growth, expected net yield, volatility, and required capital using a neutral and transparent ranking model.</p>
+            <div class="rec-profile" id="recProfile"></div>
+          </div>
+        </div>
+        <div class="rec-grid" id="recommendationsGrid"></div>
+      </div>
+      <!-- Export / Share -->
+      <div class="card export-card">
+        <div class="export-row">
+          <button class="btn-secondary" onclick="exportPDF()">🖨 Export as PDF</button>
+          <button class="btn-secondary" onclick="copyShareLink()">🔗 Copy share link</button>
+        </div>
+        <p class="share-feedback" id="shareFeedback"></p>
+      </div>
+
+      <!-- Disclaimer -->
+      <p class="disclaimer-note">
+        For illustrative purposes only. This does not constitute financial advice.<br>
+        Past performance does not guarantee future results.
+      </p>
+
+    </div><!-- /results -->
+
+  </div><!-- /container -->
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>Platform</h4>
+        <ul>
+          <li><a href="index.html">Simulator</a></li>
+          <li><a href="blog.html">Blog & Guides</a></li>
+          <li><a href="about.html">About Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="blog/Page.html">Roadmap</a></li>
+          <li><a href="blog/article-dividend-basics.html">Beginner Guide</a></li>
+          <li><a href="blog/article-100k-dividends.html">Advanced Topics</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="tecnical/privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="tecnical/cookie-policy.html">Cookie Policy</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="tecnical/README.md">Project Notes</a></li>
+          <li><a href="about.html#sezione-mail">Email</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2024-2026 Dividend Capital Simulator. All rights reserved.</p>
+      <p>Built with data. Designed for execution.</p>
+    </div>
+  </footer>
+
+  <!-- Chart.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+  <script src="js/recommendations-engine.js"></script>
+  <script>
+
+    // ====== ANALYTICS ======
+    function trackEvent(name, params = {}) {
+      if (typeof gtag === 'function') gtag('event', name, params);
+    }
+
+    // ====== CURRENCY CONFIGURATION ======
+    const CURRENCIES = {
+      EUR: { symbol: '€', code: 'EUR', locale: 'de-DE' },
+      USD: { symbol: '$', code: 'USD', locale: 'en-US' },
+      GBP: { symbol: '£', code: 'GBP', locale: 'en-GB' },
+      CHF: { symbol: 'Fr.', code: 'CHF', locale: 'de-CH' },
+      CAD: { symbol: 'C$', code: 'CAD', locale: 'en-CA' },
+    };
+
+    function getSelectedCurrency() {
+      return document.getElementById('currency').value || 'EUR';
+    }
+
+    function fmtCurrency(v) {
+      const cur = CURRENCIES[getSelectedCurrency()];
+      return new Intl.NumberFormat(cur.locale, {
+        style: 'currency',
+        currency: cur.code,
+        maximumFractionDigits: 0,
+      }).format(v);
+    }
+
+    function fmtCurrencyCompact(v) {
+      const cur = CURRENCIES[getSelectedCurrency()];
+      if (v >= 1e6) return cur.symbol + (v / 1e6).toFixed(1) + 'M';
+      if (v >= 1e3) return cur.symbol + (v / 1e3).toFixed(0) + 'K';
+      return fmtCurrency(v);
+    }
+
+    // Update currency symbols when selector changes
+    document.getElementById('currency').addEventListener('change', () => {
+      const sym = CURRENCIES[getSelectedCurrency()].symbol;
+      document.getElementById('currencySymbol').textContent = sym;
+      document.getElementById('currencySymbol2').textContent = sym;
+      trackEvent('currency_change', { currency: getSelectedCurrency() });
+    });
+
+    // ====== SLIDER MANAGEMENT ======
+    const sliders = {
+      divYield: { id: 'yieldVal', fmt: v => `${parseFloat(v).toFixed(1)}%` },
+      divGrowth: { id: 'growthVal', fmt: v => `${parseFloat(v).toFixed(1)}%` },
+      taxRate: { id: 'taxVal', fmt: v => `${parseFloat(v).toFixed(1)}%` },
+      volatility: { id: 'volVal', fmt: v => `${parseFloat(v).toFixed(1)}%` },
+      inflation: { id: 'inflVal', fmt: v => `${parseFloat(v).toFixed(1)}%` },
+      expenseRatio: { id: 'feeVal', fmt: v => `${parseFloat(v).toFixed(2)}%` },
+      simulations: { id: 'simVal', fmt: v => parseInt(v).toLocaleString('en-US') },
+    };
+
+    for (const [id, cfg] of Object.entries(sliders)) {
+      const el = document.getElementById(id);
+      el.addEventListener('input', () => {
+        document.getElementById(cfg.id).textContent = cfg.fmt(el.value);
+      });
+    }
+
+    // ====== UTILITY FUNCTIONS ======
+    function randomNormal(mu, sigma) {
+      const u1 = Math.random(), u2 = Math.random();
+      return mu + sigma * Math.sqrt(-2 * Math.log(u1)) * Math.cos(2 * Math.PI * u2);
+    }
+
+    function percentile(arr, p) {
+      const idx = Math.floor((p / 100) * arr.length);
+      return arr[Math.min(idx, arr.length - 1)];
+    }
+
+    function animateValue(el, endValue, duration) {
+      duration = duration || 1200;
+      const start = performance.now();
+      const update = (now) => {
+        const elapsed = now - start;
+        const progress = Math.min(elapsed / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        el.textContent = fmtCurrency(endValue * eased);
+        if (progress < 1) requestAnimationFrame(update);
+      };
+      requestAnimationFrame(update);
+    }
+
+    // ====== MONTE CARLO ENGINE ======
+    function monteCarlo(params) {
+      const { targetMonthly, divYield, growthMean, growthStd,
+        taxRate, inflation, expenseRatio, years, N } = params;
+
+      const finalCapitals = [];
+      const yearlyPaths = [];
+      const maxTrajPaths = 5000;
+      const trajInterval = Math.max(1, Math.floor(N / maxTrajPaths));
+
+      for (let i = 0; i < N; i++) {
+        let y = divYield;
+        const storePath = (i % trajInterval === 0);
+        const path = storePath ? [] : null;
+        let finalCapital = 0;
+
+        for (let t = 0; t <= years; t++) {
+          // Inflation-adjusted annual income target
+          const adjAnnual = targetMonthly * 12 * Math.pow(1 + inflation, t);
+
+          // Net yield = gross yield after tax, minus expense ratio
+          const netYield = Math.max(0.001, y * (1 - taxRate) - expenseRatio);
+
+          // Required capital at this point in time
+          const capital = adjAnnual / netYield;
+
+          if (storePath) path.push(capital);
+          if (t === years) finalCapital = capital;
+
+          // If not the last year, evolve the yield
+          if (t < years) {
+            const shock = randomNormal(0, growthStd);
+            const g = growthMean + shock;
+            y = Math.max(0.001, y * (1 + g));
+          }
+        }
+
+        finalCapitals.push(finalCapital);
+        if (storePath) yearlyPaths.push(path);
+      }
+
+      finalCapitals.sort((a, b) => a - b);
+      return { finalCapitals, yearlyPaths };
+    }
+
+    function computeTrajectoryBands(yearlyPaths, years) {
+      const bands = { p10: [], p25: [], p50: [], p75: [], p90: [] };
+
+      for (let t = 0; t <= years; t++) {
+        const vals = yearlyPaths.map(p => p[t]).sort((a, b) => a - b);
+        bands.p10.push(percentile(vals, 10));
+        bands.p25.push(percentile(vals, 25));
+        bands.p50.push(percentile(vals, 50));
+        bands.p75.push(percentile(vals, 75));
+        bands.p90.push(percentile(vals, 90));
+      }
+
+      return bands;
+    }
+
+    // ====== CHART BUILDERS ======
+    let trajChartInst = null;
+    let histChartInst = null;
+
+    function buildHistogram(capitals) {
+      if (histChartInst) histChartInst.destroy();
+
+      const min = capitals[0], max = capitals[capitals.length - 1];
+      const bins = 35;
+      const step = (max - min) / bins || 1;
+      const counts = Array(bins).fill(0);
+      const labels = [];
+
+      for (let i = 0; i < bins; i++) {
+        labels.push(fmtCurrencyCompact(min + i * step));
+      }
+
+      for (const v of capitals) {
+        const idx = Math.min(Math.floor((v - min) / step), bins - 1);
+        counts[idx]++;
+      }
+
+      // Color gradient: green → gold → red (low required capital = favorable → high required capital = needs buffer)
+      const green = [61, 186, 122];
+      const gold = [201, 168, 76];
+      const red = [224, 85, 85];
+
+      const lerp = (a, b, t) => Math.round(a + (b - a) * t);
+      const mix = (c1, c2, t) => [
+        lerp(c1[0], c2[0], t),
+        lerp(c1[1], c2[1], t),
+        lerp(c1[2], c2[2], t),
+      ];
+      const rgba = (c, a) => `rgba(${c[0]},${c[1]},${c[2]},${a})`;
+
+      const bgColors = counts.map((_, i) => {
+        const t = bins === 1 ? 0 : i / (bins - 1);
+        const c = t <= 0.5 ? mix(green, gold, t / 0.5) : mix(gold, red, (t - 0.5) / 0.5);
+        return rgba(c, 0.78);
+      });
+
+      const borderColors = counts.map((_, i) => {
+        const t = bins === 1 ? 0 : i / (bins - 1);
+        const c = t <= 0.5 ? mix(green, gold, t / 0.5) : mix(gold, red, (t - 0.5) / 0.5);
+        return rgba(c, 0.95);
+      });
+
+      const hoverColors = counts.map((_, i) => {
+        const t = bins === 1 ? 0 : i / (bins - 1);
+        const c = t <= 0.5 ? mix(green, gold, t / 0.5) : mix(gold, red, (t - 0.5) / 0.5);
+        return rgba(c, 0.92);
+      });
+
+      const rootStyle = getComputedStyle(document.documentElement);
+      const textMid = rootStyle.getPropertyValue('--text-mid').trim() || '#5e697a';
+      const gridColor = 'rgba(71, 83, 101, 0.12)';
+
+      const ctx = document.getElementById('distChart').getContext('2d');
+      histChartInst = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels,
+          datasets: [{
+            data: counts,
+            backgroundColor: bgColors,
+            borderColor: borderColors,
+            hoverBackgroundColor: hoverColors,
+            borderWidth: 1,
+            borderRadius: 8,
+            borderSkipped: false,
+            barPercentage: 0.98,
+            categoryPercentage: 1,
+          }]
+        },
+        options: {
+          responsive: true,
+          animation: { duration: 550 },
+          interaction: { mode: 'index', intersect: false },
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              displayColors: false,
+              backgroundColor: 'rgba(26, 26, 26, 0.92)',
+              titleColor: '#ffffff',
+              bodyColor: '#ffffff',
+              padding: 10,
+              cornerRadius: 10,
+              callbacks: {
+                title: ([item]) => {
+                  const start = min + item.dataIndex * step;
+                  const end = Math.min(max, start + step);
+                  return `${fmtCurrencyCompact(start)} – ${fmtCurrencyCompact(end)}`;
+                },
+                label: (item) => {
+                  const pct = (item.raw / capitals.length) * 100;
+                  return `${item.raw.toLocaleString()} simulations (${pct.toFixed(1)}%)`;
+                },
+              }
+            }
+          },
+          scales: {
+            x: {
+              grid: { color: gridColor, drawTicks: false },
+              border: { display: false },
+              ticks: {
+                color: textMid,
+                font: { family: 'DM Mono', size: 10 },
+                maxRotation: 0,
+                autoSkip: true,
+                maxTicksLimit: 7
+              },
+            },
+            y: {
+              beginAtZero: true,
+              grid: { color: gridColor, drawTicks: false },
+              border: { display: false },
+              ticks: {
+                color: textMid,
+                font: { family: 'DM Mono', size: 10 },
+                precision: 0,
+                callback: (v) => Number(v).toLocaleString(),
+              },
+            }
+          }
+        }
+      });
+    }
+
+    function renderDividendGrowthTable(params, principal) {
+      const principalSafe = Number.isFinite(principal) && principal > 0 ? principal : 0;
+      const principalEl = document.getElementById('divGrowthPrincipal');
+      if (principalEl) principalEl.textContent = fmtCurrency(principalSafe);
+
+      const tbody = document.getElementById('divGrowthTableBody');
+      if (!tbody) return;
+
+      tbody.textContent = '';
+
+      const years = params.years;
+      const infl = params.inflation || 0;
+      let y = Math.max(0.001, params.divYield);
+
+      for (let t = 0; t <= years; t++) {
+        const netYield = Math.max(0.001, y * (1 - params.taxRate) - params.expenseRatio);
+
+        const grossMo = (principalSafe * y) / 12;
+        const netMo = (principalSafe * netYield) / 12;
+
+        const targetMoInfl = params.targetMonthly * Math.pow(1 + infl, t);
+        const coverage = targetMoInfl > 0 ? (netMo / targetMoInfl) : 0;
+
+        const tr = document.createElement('tr');
+        if (t === years) tr.classList.add('is-final');
+
+        const tdYear = document.createElement('td');
+        const yearPill = document.createElement('span');
+        yearPill.className = 'year-pill';
+        yearPill.textContent = `Year ${t}`;
+        tdYear.appendChild(yearPill);
+
+        const tdGross = document.createElement('td');
+        tdGross.className = 'num';
+        tdGross.textContent = fmtCurrency(grossMo);
+
+        const tdNet = document.createElement('td');
+        tdNet.className = 'num';
+        const netSpan = document.createElement('span');
+        netSpan.className = 'net-ink';
+        netSpan.textContent = fmtCurrency(netMo);
+        tdNet.appendChild(netSpan);
+
+        const tdCoverage = document.createElement('td');
+        tdCoverage.className = 'num';
+        const covPill = document.createElement('span');
+        covPill.className = 'coverage-pill';
+        if (coverage >= 1) covPill.classList.add('coverage-ok');
+        else if (coverage >= 0.85) covPill.classList.add('coverage-mid');
+        else covPill.classList.add('coverage-low');
+        covPill.textContent = (coverage * 100).toFixed(0) + '%';
+        tdCoverage.appendChild(covPill);
+
+        const tdYield = document.createElement('td');
+        tdYield.className = 'num';
+        tdYield.textContent = (netYield * 100).toFixed(2) + '%';
+
+        tr.appendChild(tdYear);
+        tr.appendChild(tdGross);
+        tr.appendChild(tdNet);
+        tr.appendChild(tdCoverage);
+        tr.appendChild(tdYield);
+
+        tbody.appendChild(tr);
+
+        y = Math.max(0.001, y * (1 + params.growthMean));
+      }
+    }
+
+    // ====== URL SHARING ======
+    function getShareUrl() {
+      const params = new URLSearchParams({
+        income: document.getElementById('targetIncome').value,
+        years: document.getElementById('years').value,
+        yield: document.getElementById('divYield').value,
+        growth: document.getElementById('divGrowth').value,
+        tax: document.getElementById('taxRate').value,
+        vol: document.getElementById('volatility').value,
+        infl: document.getElementById('inflation').value,
+        fees: document.getElementById('expenseRatio').value,
+        sims: document.getElementById('simulations').value,
+        cur: document.getElementById('currency').value,
+        save: document.getElementById('monthlySavings').value,
+      });
+      return window.location.origin + window.location.pathname + '?' + params.toString();
+    }
+
+    function loadFromUrl() {
+      const params = new URLSearchParams(window.location.search);
+      if (!params.has('income')) return;
+
+      const map = {
+        income: 'targetIncome',
+        years: 'years',
+        yield: 'divYield',
+        growth: 'divGrowth',
+        tax: 'taxRate',
+        vol: 'volatility',
+        infl: 'inflation',
+        fees: 'expenseRatio',
+        sims: 'simulations',
+        save: 'monthlySavings',
+      };
+
+      for (const [param, elId] of Object.entries(map)) {
+        if (params.has(param)) {
+          document.getElementById(elId).value = params.get(param);
+        }
+      }
+
+      if (params.has('cur')) {
+        document.getElementById('currency').value = params.get('cur');
+        const sym = CURRENCIES[params.get('cur')]?.symbol || '€';
+        document.getElementById('currencySymbol').textContent = sym;
+        document.getElementById('currencySymbol2').textContent = sym;
+      }
+
+      // Update all slider labels
+      for (const [id, cfg] of Object.entries(sliders)) {
+        const el = document.getElementById(id);
+        document.getElementById(cfg.id).textContent = cfg.fmt(el.value);
+      }
+
+      // Auto-run simulation
+      setTimeout(() => runSimulation(), 200);
+    }
+
+    async function copyShareLink() {
+      const url = getShareUrl();
+      try {
+        await navigator.clipboard.writeText(url);
+        const el = document.getElementById('shareFeedback');
+        el.textContent = '✓ Link copied to clipboard';
+        el.style.opacity = '1';
+        setTimeout(() => { el.style.opacity = '0'; }, 2500);
+      } catch (e) {
+        // Fallback for older browsers
+        prompt('Copy this link:', url);
+      }
+      trackEvent('copy_share_link');
+    }
+
+    // ====== PRINT / EXPORT ======
+    function exportPDF() {
+      trackEvent('export_pdf');
+
+      const isReady = document.getElementById('results')?.style?.display !== 'none' &&
+        (document.getElementById('capitalResult')?.textContent || '').trim() !== '—';
+
+      if (!isReady) {
+        alert('Run the simulation first, then export the report.');
+        return;
+      }
+
+      const stamp = new Date().toLocaleString();
+      const stampEl = document.getElementById('printGeneratedAt');
+      if (stampEl) stampEl.textContent = stamp;
+
+      // Toggle print-only export behavior (avoid impacting normal Ctrl+P printing).
+      document.body.classList.add('pdf-export');
+      const cleanup = () => {
+        document.body.classList.remove('pdf-export');
+        window.removeEventListener('afterprint', cleanup);
+      };
+      window.addEventListener('afterprint', cleanup);
+
+      // Canvas → image snapshot so the histogram reliably appears in PDFs.
+      const canvas = document.getElementById('distChart');
+      const img = document.getElementById('distChartPrint');
+      if (canvas && img) {
+        try {
+          img.src = canvas.toDataURL('image/png', 1.0);
+        } catch (_) {
+          img.removeAttribute('src');
+        }
+      }
+
+      // Let the browser apply the image src before printing.
+      setTimeout(() => window.print(), 60);
+    }
+
+    // ====== MAIN SIMULATION ======
+    function runSimulation() {
+      const target = parseFloat(document.getElementById('targetIncome').value);
+      const years = parseInt(document.getElementById('years').value);
+      const yld = parseFloat(document.getElementById('divYield').value) / 100;
+      const growth = parseFloat(document.getElementById('divGrowth').value) / 100;
+      const tax = parseFloat(document.getElementById('taxRate').value) / 100;
+      const vol = parseFloat(document.getElementById('volatility').value) / 100;
+      const infl = parseFloat(document.getElementById('inflation').value) / 100;
+      const fees = parseFloat(document.getElementById('expenseRatio').value) / 100;
+      const N = parseInt(document.getElementById('simulations').value);
+      const savings = parseFloat(document.getElementById('monthlySavings').value) || 0;
+
+      if (!target || target <= 0 || isNaN(target) || years <= 0 || yld <= 0) return;
+
+      trackEvent('run_simulation', { target_income: target, years, yield: yld, currency: getSelectedCurrency() });
+
+      // Show loading
+      document.getElementById('loading').style.display = 'block';
+      document.getElementById('results').style.display = 'none';
+      document.getElementById('btnSimulate').disabled = true;
+
+      // Defer simulation to allow loading indicator to render
+      setTimeout(() => {
+        const params = {
+          targetMonthly: target,
+          divYield: yld,
+          growthMean: growth,
+          growthStd: vol,
+          taxRate: tax,
+          inflation: infl,
+          expenseRatio: fees,
+          years: years,
+          N: N,
+        };
+
+        const { finalCapitals, yearlyPaths } = monteCarlo(params);
+
+        const p10 = percentile(finalCapitals, 10);
+        const p25 = percentile(finalCapitals, 25);
+        const p50 = percentile(finalCapitals, 50);
+        const p75 = percentile(finalCapitals, 75);
+        const p90 = percentile(finalCapitals, 90);
+
+        // Hero — animate the median value
+        animateValue(document.getElementById('capitalResult'), p50, 1200);
+        document.getElementById('incomeRef').textContent = fmtCurrency(target);
+
+        // Stats
+        const netYieldBase = yld * (1 - tax) - fees;
+        const realReturn = netYieldBase - infl;
+        const grossAnn = p50 * yld;
+        const taxAnn = grossAnn * tax;
+        const netAnn = grossAnn - taxAnn - (p50 * fees);
+
+        document.getElementById('statYieldGross').textContent = (yld * 100).toFixed(1) + '%';
+        document.getElementById('statYieldNet').textContent = (netYieldBase * 100).toFixed(2) + '%';
+        document.getElementById('statRealReturn').textContent = (realReturn * 100).toFixed(2) + '%';
+        document.getElementById('statTax').textContent = fmtCurrency(taxAnn);
+        document.getElementById('statAnnInc').textContent = fmtCurrency(netAnn);
+        document.getElementById('statMonInc').textContent = fmtCurrency(netAnn / 12);
+
+        // Scenarios
+        document.getElementById('scen10').textContent = fmtCurrency(p10);
+        document.getElementById('scen25').textContent = fmtCurrency(p25);
+        document.getElementById('scen50').textContent = fmtCurrency(p50);
+        document.getElementById('scen75').textContent = fmtCurrency(p75);
+        document.getElementById('scen90').textContent = fmtCurrency(p90);
+
+        // Savings projection
+        if (savings > 0) {
+          const monthlyReturn = Math.pow((1 + yld) * (1 + growth), 1 / 12) - 1;
+          const totalMonths = years * 12;
+          let fv;
+          if (monthlyReturn > 0) {
+            fv = savings * ((Math.pow(1 + monthlyReturn, totalMonths) - 1) / monthlyReturn);
+          } else {
+            fv = savings * totalMonths;
+          }
+          const additionalNeeded = Math.max(0, p50 - fv);
+
+          document.getElementById('projectedSavings').textContent = fmtCurrency(fv);
+          document.getElementById('additionalCapital').textContent = fmtCurrency(additionalNeeded);
+          document.getElementById('savingsProjection').style.display = 'block';
+        } else {
+          document.getElementById('savingsProjection').style.display = 'none';
+        }
+
+        // Real instruments recommendations
+        if (window.RecommendationEngine && typeof window.RecommendationEngine.renderRecommendations === 'function') {
+          window.RecommendationEngine.renderRecommendations(params, p50, {
+            fmtCurrency,
+            fmtCurrencyCompact,
+            trackEvent,
+          });
+        }
+
+        // Distribution histogram
+        buildHistogram(finalCapitals);
+        renderDividendGrowthTable(params, p50);
+
+        // Print parameters summary (print/PDF)
+        const reportStamp = new Date().toLocaleString();
+        document.getElementById('printParams').innerHTML =
+          '<div class="print-report-head">' +
+          '  <div class="print-brand">' +
+          '    <div class="print-brand-name">DCSimulator</div>' +
+          '    <div class="print-brand-sub">Report — Monte Carlo dividend results: key metrics, percentiles, distribution, growth schedule, and instrument recommendations based on your inputs.</div>' +
+          '  </div>' +
+          '  <div class="print-meta">' +
+          '    <div><strong>Generated:</strong> <span id="printGeneratedAt">' + reportStamp + '</span></div>' +
+          '  </div>' +
+          '</div>' +
+          '<h3>Simulation Parameters</h3>' +
+          '<div class="print-params-grid">' +
+          '<div><strong>Monthly income:</strong> ' + fmtCurrency(target) + '</div>' +
+          '<div><strong>Horizon:</strong> ' + years + ' years</div>' +
+          '<div><strong>Currency:</strong> ' + getSelectedCurrency() + '</div>' +
+          '<div><strong>Dividend yield:</strong> ' + (yld * 100).toFixed(1) + '%</div>' +
+          '<div><strong>Annual growth:</strong> ' + (growth * 100).toFixed(1) + '%</div>' +
+          '<div><strong>Tax rate:</strong> ' + (tax * 100).toFixed(0) + '%</div>' +
+          '<div><strong>Volatility:</strong> ' + (vol * 100).toFixed(1) + '%</div>' +
+          '<div><strong>Inflation:</strong> ' + (infl * 100).toFixed(1) + '%</div>' +
+          '<div><strong>Expense ratio:</strong> ' + (fees * 100).toFixed(2) + '%</div>' +
+          '<div><strong>Simulations:</strong> ' + N.toLocaleString() + '</div>' +
+          (savings > 0 ? '<div><strong>Monthly savings:</strong> ' + fmtCurrency(savings) + '</div>' : '') +
+          '</div>' +
+          '<div class="print-disclaimer">For illustrative purposes only — not financial advice. Outputs depend on your assumptions and randomized Monte Carlo paths.</div>';
+
+        // Show results, hide loading
+        document.getElementById('loading').style.display = 'none';
+        document.getElementById('results').style.display = 'block';
+        document.getElementById('btnSimulate').disabled = false;
+
+        // Scroll to results
+        document.getElementById('results').scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+      }, 60);
+    }
+
+    // ====== INITIALIZATION ======
+    loadFromUrl();
+
+  </script>
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Dividend Capital Simulator PRO",
+  "description": "Professional Monte Carlo simulator to calculate required capital for living off dividends. Model inflation, fees, taxes, and growth volatility across multiple currencies.",
+  "url": "https://dcsimulator.me/",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "All",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "EUR"
+  }
+}
+</script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the safest scenario to plan with?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For most users, P75 is a prudent baseline and P90 is a stress-test safety scenario."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does the calculator include inflation, taxes, and fees?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The simulator models inflation, taxes, expense ratio, growth volatility, and scenario percentiles from Monte Carlo runs."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should I use gross yield or net yield for planning?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Plan using net yield after taxes and fees. Gross yield can materially underestimate required capital."
+      }
+    }
+  ]
+}
+</script>
+
+  <!-- Cookie Consent Manager -->
+  <script src="js/cookie-consent.js"></script>
+</body>
+
+</html>

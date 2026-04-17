@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="../graph.png">
+  <title>Dividend Yield vs Growth Investing: Which Strategy Wins?</title>
+  <meta name="description" content="Compare dividend yield vs dividend growth for income planning, and use DCSimulator to see how horizon, inflation, taxes, fees, and Monte Carlo percentiles change required capital.">
+
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://dcsimulator.me/blog/article-yield-vs-growth.html">
+  <meta property="og:site_name" content="Dividend Capital Simulator PRO">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Dividend Yield vs Growth Investing: Which Strategy Wins?">
+  <meta property="og:description" content="Compare dividend yield vs dividend growth for income planning, and use DCSimulator to see how horizon, inflation, taxes, fees, and Monte Carlo percentiles change required capital.">
+  <meta property="og:url" content="https://dcsimulator.me/blog/article-yield-vs-growth.html">
+  <meta property="og:image" content="https://dcsimulator.me/graph.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Dividend Yield vs Growth Investing: Which Strategy Wins?">
+  <meta name="twitter:description" content="Compare dividend yield vs dividend growth for income planning, and use DCSimulator to see how horizon, inflation, taxes, fees, and Monte Carlo percentiles change required capital.">
+  <meta name="twitter:image" content="https://dcsimulator.me/graph.png">
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Dividend Yield vs Growth Investing: Which Strategy Wins?",
+      "description": "Compare dividend yield vs dividend growth for income planning, and use DCSimulator to see how horizon, inflation, taxes, fees, and Monte Carlo percentiles change required capital.",
+      "datePublished": "2026-04-17",
+      "dateModified": "2026-04-17",
+      "inLanguage": "en",
+      "url": "https://dcsimulator.me/blog/article-yield-vs-growth.html",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://dcsimulator.me/blog/article-yield-vs-growth.html"
+      },
+      "image": [
+        "https://dcsimulator.me/graph.png"
+      ],
+      "author": {
+        "@type": "Organization",
+        "name": "DCSimulator"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "DCSimulator"
+      },
+      "isPartOf": {
+        "@type": "Blog",
+        "name": "DCSimulator Blog",
+        "url": "https://dcsimulator.me/blog.html"
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: "Inter", sans-serif; color: #1a1a1a; background: #fafafa; line-height: 1.6; }
+    .header { background: #fff; border-bottom: 1px solid #f0f0f0; position: sticky; top: 0; z-index: 100; }
+    .header-top { display: flex; justify-content: space-between; align-items: center; max-width: 1400px; margin: 0 auto; padding: 20px 40px; }
+    .logo { font-family: "Playfair Display", serif; font-size: 28px; font-weight: 700; color: #1a1a1a; text-decoration: none; }
+    .nav-main { display: flex; gap: 40px; }
+    .nav-main a { text-decoration: none; font-size: 13px; font-weight: 600; color: #666; }
+    .article-hero { background: linear-gradient(135deg, #f5f5f5 0%, #fff 100%); padding: 100px 100px; }
+    .breadcrumb { font-size: 12px; color: #999; margin-bottom: 28px; }
+    .breadcrumb a { color: #c9a84c; text-decoration: none; font-weight: 600; }
+    .article-eyebrow { font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: #c9a84c; font-weight: 700; margin-bottom: 14px; }
+    h1 { font-family: "Playfair Display", serif; font-size: clamp(28px, 5vw, 44px); font-weight: 700; line-height: 1.3; margin-bottom: 24px; }
+    .article-meta { display: flex; gap: 24px; margin-top: 20px; flex-wrap: wrap; font-size: 13px; color: #999; }
+    .article-tags { display: flex; gap: 10px; margin-top: 20px; flex-wrap: wrap; }
+    .tag { display: inline-block; padding: 6px 14px; background: rgba(201, 168, 76, 0.1); color: #c9a84c; font-size: 12px; font-weight: 700; border: 1px solid rgba(201, 168, 76, 0.2); border-radius: 20px; }
+    .article-wrapper { max-width: 900px; margin: 0 auto; padding: 100px 100px; }
+    article h2 { font-family: "Playfair Display", serif; font-size: clamp(24px, 3vw, 32px); font-weight: 700; margin: 40px 0 16px 0; }
+    article h3 { font-size: 18px; font-weight: 700; margin: 28px 0 12px 0; }
+    article p { font-size: 16px; color: #666; line-height: 1.9; margin-bottom: 16px; }
+    article ul { margin: 16px 0 16px 20px; }
+    article li { font-size: 15px; color: #666; line-height: 1.7; margin-bottom: 8px; }
+    article table { width: 100%; margin: 20px 0; border-collapse: collapse; }
+    article th, article td { padding: 10px; text-align: left; border-bottom: 1px solid #e0e0e0; font-size: 14px; }
+    article th { background: #f5f5f5; font-weight: 700; }
+    .box { background: linear-gradient(135deg, #f9f7f4 0%, #fff 100%); padding: 24px; border-radius: 6px; border: 1px solid #f0f0f0; margin: 20px 0; }
+    .cta { padding: 12px 28px; font-size: 13px; font-weight: 700; text-transform: uppercase; text-decoration: none; display: inline-block; border-radius: 4px; background: linear-gradient(135deg, #c9a84c 0%, #b89436 100%); color: #fff; margin-top: 24px; }
+    .footer { background: #fff; border-top: 1px solid #f0f0f0; padding: 60px 40px; margin-top: 80px; }
+    .footer-content { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 40px; }
+    .footer-section h4 { font-size: 13px; text-transform: uppercase; font-weight: 700; margin-bottom: 16px; }
+    .footer-section ul { list-style: none; }
+    .footer-section li { margin-bottom: 8px; }
+    .footer-section a { text-decoration: none; color: #666; font-size: 13px; }
+    .footer-bottom { border-top: 1px solid #f0f0f0; padding-top: 32px; font-size: 12px; color: #999; }
+  </style>
+  <link rel="stylesheet" href="../css/cookie-consent.css">
+  <link rel="stylesheet" href="../css/article-ui.css">
+</head>
+<body>
+  <header class="header">
+    <div class="header-top">
+      <a href="../index.html" class="logo">DCSimulator</a>
+      <nav class="nav-main">
+        <a href="../index.html">Home</a>
+        <a href="../blog.html">Blog</a>
+        <a href="../about.html">About</a>
+      </nav>
+    </div>
+  </header>
+  <section class="article-hero">
+    <p class="breadcrumb"><a href="../index.html">Home</a> › <a href="../blog.html">Blog</a></p>
+    <p class="article-eyebrow">Strategy Comparison</p>
+    <h1>Dividend Yield vs Growth Investing: Which Strategy Wins?</h1>
+    <div class="article-meta">
+      <span>📅 April 17, 2026</span>
+      <span>⏱️ 5 min</span>
+      <span>👤 DCS team</span>
+    </div>
+    <div class="article-tags"><span class="tag">Asset Allocation</span><span class="tag">Comparison</span></div>
+  </section>
+  <div class="article-wrapper">
+    <article>
+      <p>It's the oldest debate in the dividend community: "Should I buy high-yield stocks for income today, or low-yield stocks that grow their payouts massively for tomorrow?" We hear this question constantly from our users.</p>
+
+      <blockquote style="border-left: 4px solid #c9a84c; margin: 24px 0; padding-left: 20px; font-style: italic; color: #555; font-size: 16px; line-height: 1.6;">
+        “If you’re investing in slow growers, you should be investing for the dividends.”<br>
+        <span style="font-size: 14px; color: #999; font-weight: 600; font-style: normal;">— Peter Lynch, One Up on Wall Street</span>
+      </blockquote>
+
+      <p>But framing it as "Yield vs. Growth" misses the point. The real question you need to ask yourself is: Do I need cash-flow <em>right now</em> to pay my bills, or am I building a golden goose for the future? High yield gives you cash today. Dividend growth acts as a powerful shield against inflation that reduces the mountain of capital you'll eventually need.</p>
+
+      <div class="box"><strong>How we tackle this in DCSimulator:</strong><br>The <em>Dividend Yield</em> slider dictates your lifestyle today.<br>The <em>Annual growth</em> slider acts as your compounding engine over time.<br>The <em>Growth volatility</em> slider helps you build a bulletproof safety margin just in case those company boards get stingy.</div>
+
+      <h2>What “growth” actually means to us</h2>
+
+      <p>Let's clarify something crucial: DCSimulator is a laser-focused income planner. When you move our "Annual growth" slider, you are modeling <strong>dividend growth</strong> (how fast the company hikes its cash payout to you), not stock-price speculation. We use it to plan hard, cold cash flow targets, not to guess what the stock market will do next year.</p>
+
+      <h2>Short horizons: Yield is King (but brutally honest)</h2>
+
+      <p>If you're retiring in 3 years and need income fast, you don't have time to wait for a 2% yield to compound. In this scenario, your required capital is almost entirely dictated by one thing: <strong>net yield</strong>.</p>
+      
+      <p>Remember: <strong>net yield = gross yield × (1 − your tax rate) − the fund's expense ratio</strong>. The higher your true net yield, the less capital you have to desperately scrape together before your deadline.</p>
+
+      <h2>Long horizons: The Compounding Miracle (or Nightmare)</h2>
+
+      <p>If you have 10, 15, or 20 years to wait, everything flips. Over long stretches, DCSimulator rigorously adjusts your target income for inflation. But it also lets your yield evolve based on the growth rate you choose.</p>
+      
+      <p>If you pick companies that hike their dividends much faster than the inflation rate, the total amount of capital you actually need to retire can be terrifyingly <em>lower</em> than most generic financial calculators predict. But if inflation wins out, your capital requirement explodes.</p>
+
+      <h2>Run your own "Yield vs. Growth" Battle</h2>
+
+      <p>We built the simulator so you don't have to guess. Keep your income target and your tax settings locked in, then test these two completely different philosophies against each other:</p>
+
+      <table>
+        <tr>
+          <th>The Strategy</th>
+          <th>Starting Yield</th>
+          <th>Annual Growth</th>
+          <th>The Team's Honest Trade-off</th>
+        </tr>
+        <tr>
+          <td>The Income Hunter</td>
+          <td>High (e.g., 4%+)</td>
+          <td>Low (e.g., 2%)</td>
+          <td>Massive cash today. But inflation might drown you in a decade, and high yields often signal higher risk of cuts.</td>
+        </tr>
+        <tr>
+          <td>The Future Builder</td>
+          <td>Low (e.g., 2%)</td>
+          <td>High (e.g., 6%+)</td>
+          <td>Patience required. You get very little cash today, but the compounding effect in 15 years will blow your mind.</td>
+        </tr>
+      </table>
+
+      <div class="box">
+        <strong>Try this exact test in DCSimulator right now:</strong><br>
+        Set up the "Future Builder" scenario above.<br>
+        Run it twice: once with a 5-year horizon, and once with a 20-year horizon.<br>
+        Watch what happens to the P75 capital requirement. You will vividly see the exact moment when the compounding engine overtakes the initial low yield!
+      </div>
+
+      <h2>The ultimate tiebreaker: Taxes & Fees</h2>
+
+      <p>A strategy might look brilliant on a whiteboard until you realize it's highly inefficient. A high-turnover strategy or ordinary-income taxation can completely torch your gross yield. That's why we obsess over net yield in the simulator—always build your life around the cash you get to keep.</p>
+
+      <h2>Our practical conclusion</h2>
+
+      <p>You don't need to choose an extreme. In our own portfolios, we prefer a "core and satellite" approach. Anchor your strategy with a broadly diversified, moderate-yield ETF, and mix in a sleeve of dedicated dividend-growth to fight inflation. Run the mix through DCSimulator, lock onto the <strong>P75</strong> baseline, peek at the <strong>P90</strong> stress test, and sleep easy knowing your plan is practically bulletproof.</p>
+
+      <p><a href="../index.html" class="cta">Simulate Your Yield vs Growth Mix</a></p>
+    </article>
+  </div>
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section"><h4>Platform</h4><ul><li><a href="../index.html">Simulator</a></li><li><a href="../blog.html">Blog</a></li></ul></div>
+      <div class="footer-section"><h4>Learn</h4><ul><li><a href="article-dividend-basics.html">Basics</a></li><li><a href="Page.html">Roadmap</a></li></ul></div>
+      <div class="footer-section"><h4>Legal</h4><ul><li><a href="../tecnical/privacy-policy.html">Privacy</a></li><li><a href="../tecnical/cookie-policy.html">Cookies</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><p>&copy; 2026 DCSimulator.</p></div>
+  </footer>
+  <script src="../js/cookie-consent.js"></script>
+</body>
+</html>

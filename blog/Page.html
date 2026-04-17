@@ -1,0 +1,194 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="../graph.png">
+  <title>Dividend Investing Roadmap: From $0 to $1,000/Month</title>
+  <meta name="description" content="A step-by-step dividend income roadmap that uses DCSimulator to turn goals into required-capital targets, stress-test assumptions, and plan with P75/P90 safety buffers.">
+
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://dcsimulator.me/blog/Page.html">
+  <meta property="og:site_name" content="Dividend Capital Simulator PRO">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Dividend Investing Roadmap: From $0 to $1,000/Month">
+  <meta property="og:description" content="A step-by-step dividend income roadmap that uses DCSimulator to turn goals into required-capital targets, stress-test assumptions, and plan with P75/P90 safety buffers.">
+  <meta property="og:url" content="https://dcsimulator.me/blog/Page.html">
+  <meta property="og:image" content="https://dcsimulator.me/graph.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Dividend Investing Roadmap: From $0 to $1,000/Month">
+  <meta name="twitter:description" content="A step-by-step dividend income roadmap that uses DCSimulator to turn goals into required-capital targets, stress-test assumptions, and plan with P75/P90 safety buffers.">
+  <meta name="twitter:image" content="https://dcsimulator.me/graph.png">
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Dividend Investing Roadmap: From $0 to $1,000/Month",
+      "description": "A step-by-step dividend income roadmap that uses DCSimulator to turn goals into required-capital targets, stress-test assumptions, and plan with P75/P90 safety buffers.",
+      "datePublished": "2026-04-17",
+      "dateModified": "2026-04-17",
+      "inLanguage": "en",
+      "url": "https://dcsimulator.me/blog/Page.html",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://dcsimulator.me/blog/Page.html"
+      },
+      "image": [
+        "https://dcsimulator.me/graph.png"
+      ],
+      "author": {
+        "@type": "Organization",
+        "name": "DCSimulator"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "DCSimulator"
+      },
+      "isPartOf": {
+        "@type": "Blog",
+        "name": "DCSimulator Blog",
+        "url": "https://dcsimulator.me/blog.html"
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: "Inter", sans-serif; color: #1a1a1a; background: #fafafa; line-height: 1.6; }
+    .header { background: #fff; border-bottom: 1px solid #f0f0f0; position: sticky; top: 0; z-index: 100; }
+    .header-top { display: flex; justify-content: space-between; align-items: center; max-width: 1400px; margin: 0 auto; padding: 20px 40px; }
+    .logo { font-family: "Playfair Display", serif; font-size: 28px; font-weight: 700; color: #1a1a1a; text-decoration: none; }
+    .nav-main { display: flex; gap: 40px; }
+    .nav-main a { text-decoration: none; font-size: 13px; font-weight: 600; color: #666; }
+    .article-hero { background: linear-gradient(135deg, #f5f5f5 0%, #fff 100%); padding: 100px 100px; }
+    .breadcrumb { font-size: 12px; color: #999; margin-bottom: 28px; }
+    .breadcrumb a { color: #c9a84c; text-decoration: none; font-weight: 600; }
+    .article-eyebrow { font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: #c9a84c; font-weight: 700; margin-bottom: 14px; }
+    h1 { font-family: "Playfair Display", serif; font-size: clamp(28px, 5vw, 44px); font-weight: 700; line-height: 1.3; margin-bottom: 24px; }
+    .article-meta { display: flex; gap: 24px; margin-top: 20px; flex-wrap: wrap; font-size: 13px; color: #999; }
+    .article-tags { display: flex; gap: 10px; margin-top: 20px; flex-wrap: wrap; }
+    .tag { display: inline-block; padding: 6px 14px; background: rgba(201, 168, 76, 0.1); color: #c9a84c; font-size: 12px; font-weight: 700; border: 1px solid rgba(201, 168, 76, 0.2); border-radius: 20px; }
+    .article-wrapper { max-width: 900px; margin: 0 auto; padding: 60px 40px; }
+    article h2 { font-family: "Playfair Display", serif; font-size: clamp(24px, 3vw, 32px); font-weight: 700; margin: 40px 0 16px 0; }
+    article h3 { font-size: 18px; font-weight: 700; margin: 28px 0 12px 0; }
+    article p { font-size: 16px; color: #666; line-height: 1.9; margin-bottom: 16px; }
+    article ul { margin: 16px 0 16px 20px; }
+    article li { font-size: 15px; color: #666; line-height: 1.7; margin-bottom: 8px; }
+    .box { background: linear-gradient(135deg, #f9f7f4 0%, #fff 100%); padding: 24px; border-radius: 6px; border: 1px solid #f0f0f0; margin: 20px 0; }
+    .cta { padding: 12px 28px; font-size: 13px; font-weight: 700; text-transform: uppercase; text-decoration: none; display: inline-block; border-radius: 4px; background: linear-gradient(135deg, #c9a84c 0%, #b89436 100%); color: #fff; margin-top: 24px; }
+    .footer { background: #fff; border-top: 1px solid #f0f0f0; padding: 60px 40px; margin-top: 80px; }
+    .footer-content { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 40px; }
+    .footer-section h4 { font-size: 13px; text-transform: uppercase; font-weight: 700; margin-bottom: 16px; }
+    .footer-section ul { list-style: none; }
+    .footer-section a { text-decoration: none; color: #666; font-size: 13px; }
+    .footer-bottom { border-top: 1px solid #f0f0f0; padding-top: 32px; font-size: 12px; color: #999; }
+  </style>
+  <link rel="stylesheet" href="../css/cookie-consent.css">
+  <link rel="stylesheet" href="../css/article-ui.css">
+</head>
+<body>
+  <header class="header">
+    <div class="header-top">
+      <a href="../index.html" class="logo">DCSimulator</a>
+      <nav class="nav-main">
+        <a href="../index.html">Home</a>
+        <a href="../blog.html">Blog</a>
+        <a href="../about.html">About</a>
+      </nav>
+    </div>
+  </header>
+  <section class="article-hero">
+    <p class="breadcrumb"><a href="../index.html">Home</a> › <a href="../blog.html">Blog</a></p>
+    <p class="article-eyebrow">Complete Guide</p>
+    <h1>Dividend Investing Roadmap: From $0 to $1,000/Month</h1>
+    <div class="article-meta">
+      <span>📅 April 17, 2026</span>
+      <span>⏱️ 8 min</span>
+      <span>👤 DCS team</span>
+    </div>
+    <div class="article-tags"><span class="tag">Complete Guide</span><span class="tag">Roadmap</span><span class="tag">Planning</span></div>
+  </section>
+  <div class="article-wrapper">
+    <article>
+      <p>Building dividend income is not a mystery. It is a process: save consistently, buy quality assets, reinvest distributions, and keep the portfolio simple enough that you can hold it through volatile markets.</p>
+
+      <p>The difference between “hoping” and “executing” is turning your goal into a capital number and stress-testing it. Use <strong>DCSimulator</strong> as the planning spine of this roadmap.</p>
+
+      <div class="box"><strong>Roadmap rule:</strong> plan with net yield and a conservative percentile (P75). Re-run your assumptions at least once per year.</div>
+
+      <h2>Step 0: define the target you actually want</h2>
+
+      <p>Before you optimize ETFs or sectors, decide:</p>
+
+      <ul>
+        <li><strong>How much after-tax monthly income</strong> you want.</li>
+        <li><strong>When</strong> you want it (your horizon).</li>
+        <li>Your best estimates for <strong>yield</strong>, <strong>dividend growth</strong>, <strong>tax rate</strong>, <strong>fees</strong>, and <strong>inflation</strong>.</li>
+      </ul>
+
+      <p>Run DCSimulator and record your <strong>P75</strong> and <strong>P90</strong> capital requirements. Those two numbers become your “plan” and your “stress test”.</p>
+
+      <h2>Phase 1: Start the habit</h2>
+
+      <p><strong>Target:</strong> first $1,000 to $10,000 invested</p>
+
+      <p>Open the account, pick a low-cost ETF, and automate contributions. At this stage the portfolio is too small for income to matter much. What matters is consistency and avoiding inaction.</p>
+
+      <p><strong>Simulator use:</strong> enter your monthly savings and a horizon to see the gap between where you’re heading and where you want to be.</p>
+
+      <h2>Phase 2: Reach the first meaningful income</h2>
+
+      <p><strong>Target:</strong> $25,000 to $50,000 invested</p>
+
+      <p>Now dividends become visible. Reinvest everything unless you have a real cash-flow need, and prioritize diversification over yield hunting.</p>
+
+      <h2>Phase 3: Build a real income base</h2>
+
+      <p><strong>Target:</strong> $100,000 to $150,000 invested</p>
+
+      <p>At this stage, tax drag and fees start to matter. Keep costs low, avoid concentration, and only add individual stocks if you can monitor payout safety.</p>
+
+      <h2>Phase 4: Approach meaningful monthly income ($500–$1,000/month)</h2>
+
+      <p>As your target income rises, small assumption errors become expensive. Use the simulator to stress-test:</p>
+
+      <ul>
+        <li>Lower yield (or higher taxes/fees → lower net yield)</li>
+        <li>Higher inflation</li>
+        <li>Lower dividend growth and higher growth volatility</li>
+      </ul>
+
+      <p>Anchor on <strong>P75</strong> and verify <strong>P90</strong> so the plan survives a less friendly decade.</p>
+
+      <h2>Phase 5: Protect the income</h2>
+
+      <p>Once the portfolio is large, the job changes from accumulation to defense. Rebalance once or twice per year, keep sector exposure broad, and maintain a cash buffer if you plan to spend the income.</p>
+
+      <h2>Annual review checklist</h2>
+
+      <ul>
+        <li>Update your tax rate and fee assumptions (they directly impact net yield).</li>
+        <li>Re-check dividend yield and dividend growth assumptions (be conservative).</li>
+        <li>Re-run the simulator and compare your new P75/P90 targets to last year.</li>
+        <li>Adjust monthly savings if the gap is widening.</li>
+      </ul>
+
+      <h2>Common mistakes to avoid</h2>
+
+      <p>Do not chase yield at the expense of sustainability. Do not stop contributing during drawdowns. And do not confuse a good recent distribution with a durable long-term income plan.</p>
+
+      <p><a href="../index.html" class="cta">Start Building</a></p>
+    </article>
+  </div>
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section"><h4>Platform</h4><ul><li><a href="../index.html">Simulator</a></li><li><a href="../blog.html">Blog</a></li></ul></div>
+      <div class="footer-section"><h4>Learn</h4><ul><li><a href="article-dividend-basics.html">Basics</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><p>&copy; 2026 DCSimulator.</p></div>
+  </footer>
+  <script src="../js/cookie-consent.js"></script>
+</body>
+</html>

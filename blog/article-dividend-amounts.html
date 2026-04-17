@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="../graph.png">
+  <title>How Much Capital for $500–$2,000/Month in Dividends?</title>
+  <meta name="description" content="Compare the capital required for $500–$2,000/month in dividends, then model taxes, fees, inflation, and Monte Carlo safety buffers with DCSimulator.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+
+  <link rel="canonical" href="https://dcsimulator.me/blog/article-dividend-amounts.html">
+  <meta property="og:site_name" content="Dividend Capital Simulator PRO">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="How Much Capital for $500–$2,000/Month in Dividends?">
+  <meta property="og:description" content="Compare the capital required for $500–$2,000/month in dividends, then model taxes, fees, inflation, and Monte Carlo safety buffers with DCSimulator.">
+  <meta property="og:url" content="https://dcsimulator.me/blog/article-dividend-amounts.html">
+  <meta property="og:image" content="https://dcsimulator.me/graph.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="How Much Capital for $500–$2,000/Month in Dividends?">
+  <meta name="twitter:description" content="Compare the capital required for $500–$2,000/month in dividends, then model taxes, fees, inflation, and Monte Carlo safety buffers with DCSimulator.">
+  <meta name="twitter:image" content="https://dcsimulator.me/graph.png">
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "How Much Capital for $500–$2,000/Month in Dividends?",
+      "description": "Compare the capital required for $500–$2,000/month in dividends, then model taxes, fees, inflation, and Monte Carlo safety buffers with DCSimulator.",
+      "datePublished": "2026-04-17",
+      "dateModified": "2026-04-17",
+      "inLanguage": "en",
+      "url": "https://dcsimulator.me/blog/article-dividend-amounts.html",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://dcsimulator.me/blog/article-dividend-amounts.html"
+      },
+      "image": [
+        "https://dcsimulator.me/graph.png"
+      ],
+      "author": {
+        "@type": "Organization",
+        "name": "DCSimulator"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "DCSimulator"
+      },
+      "isPartOf": {
+        "@type": "Blog",
+        "name": "DCSimulator Blog",
+        "url": "https://dcsimulator.me/blog.html"
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: "Inter", sans-serif; color: #1a1a1a; background-color: #fafafa; line-height: 1.6; }
+    .header { background: #ffffff; border-bottom: 1px solid #f0f0f0; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+    .header-top { display: flex; justify-content: space-between; align-items: center; max-width: 1400px; margin: 0 auto; padding: 20px 40px; }
+    .logo { font-family: "Playfair Display", serif; font-size: 28px; font-weight: 700; letter-spacing: -1px; color: #1a1a1a; text-decoration: none; }
+    .nav-main { display: flex; gap: 40px; align-items: center; }
+    .nav-main a { text-decoration: none; font-size: 13px; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; color: #666; transition: color 0.3s ease; }
+    .nav-main a:hover, .nav-main a.active { color: #1a1a1a; }
+    .article-hero { background: linear-gradient(135deg, #f5f5f5 0%, #ffffff 100%); padding: 100px 100px; }
+    .breadcrumb { font-size: 12px; color: #999; margin-bottom: 28px; }
+    .breadcrumb a { color: #c9a84c; text-decoration: none; font-weight: 600; }
+    .article-eyebrow { font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: #c9a84c; font-weight: 700; margin-bottom: 14px; }
+    .article-hero h1 { font-family: "Playfair Display", serif; font-size: clamp(28px, 5vw, 44px); font-weight: 700; line-height: 1.3; margin-bottom: 24px; color: #1a1a1a; }
+    .article-meta { display: flex; gap: 24px; margin-top: 20px; flex-wrap: wrap; font-size: 13px; color: #999; }
+    .article-tags { display: flex; gap: 10px; margin-top: 20px; flex-wrap: wrap; }
+    .tag { display: inline-block; padding: 6px 14px; background: rgba(201, 168, 76, 0.1); color: #c9a84c; font-size: 12px; font-weight: 700; border: 1px solid rgba(201, 168, 76, 0.2); border-radius: 20px; }
+    .article-wrapper { max-width: 900px; margin: 0 auto; padding: 100px 100px; }
+    article h2 { font-family: "Playfair Display", serif; font-size: clamp(24px, 3vw, 32px); font-weight: 700; line-height: 1.35; margin: 48px 0 20px 0; color: #1a1a1a; }
+    article h3 { font-family: "Playfair Display", serif; font-size: clamp(18px, 2vw, 22px); font-weight: 700; margin: 36px 0 16px 0; color: #1a1a1a; }
+    article p { font-size: 16px; color: #666; line-height: 1.9; margin-bottom: 20px; }
+    article ul { margin: 20px 0 20px 20px; }
+    article li { font-size: 15px; color: #666; line-height: 1.8; margin-bottom: 10px; }
+    article table { width: 100%; margin: 24px 0; border-collapse: collapse; }
+    article th, article td { padding: 12px 16px; text-align: left; border-bottom: 1px solid #e0e0e0; font-size: 14px; }
+    article th { background: #f5f5f5; font-weight: 700; }
+    .box { background: linear-gradient(135deg, #f9f7f4 0%, #ffffff 100%); padding: 28px 24px; border-radius: 6px; border: 1px solid #f0f0f0; margin: 28px 0; font-size: 15px; color: #666; line-height: 1.8; }
+    .cta { padding: 14px 32px; font-size: 13px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; text-decoration: none; display: inline-block; border-radius: 4px; background: linear-gradient(135deg, #c9a84c 0%, #b89436 100%); color: #fff; box-shadow: 0 4px 12px rgba(201, 168, 76, 0.3); transition: all 0.4s; margin-top: 30px; }
+    .cta:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(201, 168, 76, 0.4); }
+    .footer { background: #fff; border-top: 1px solid #f0f0f0; padding: 60px 40px; margin-top: 80px; }
+    .footer-content { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 40px; }
+    .footer-section h4 { font-size: 13px; text-transform: uppercase; letter-spacing: 2px; font-weight: 700; margin-bottom: 20px; }
+    .footer-section ul { list-style: none; margin: 0; }
+    .footer-section li { margin-bottom: 12px; }
+    .footer-section a { text-decoration: none; color: #666; font-size: 13px; transition: color 0.3s; }
+    .footer-section a:hover { color: #1a1a1a; }
+    .footer-bottom { border-top: 1px solid #f0f0f0; padding-top: 40px; font-size: 12px; color: #999; }
+    @media (max-width: 768px) { .header-top { padding: 16px 20px; } .article-hero { padding: 40px 20px; } .article-wrapper { padding: 40px 20px; } }
+  </style>
+  <link rel="stylesheet" href="../css/cookie-consent.css">
+  <link rel="stylesheet" href="../css/article-ui.css">
+</head>
+<body>
+  <header class="header">
+    <div class="header-top">
+      <a href="../index.html" class="logo">DCSimulator</a>
+      <nav class="nav-main">
+        <a href="../index.html">Home</a>
+        <a href="../blog.html">Blog</a>
+        <a href="../about.html">About</a>
+      </nav>
+    </div>
+  </header>
+  <section class="article-hero">
+    <p class="breadcrumb"><a href="../index.html">Home</a> › <a href="../blog.html">Blog</a></p>
+    <p class="article-eyebrow">Income Targets</p>
+    <h1>How Much Capital for $500–$2,000/Month in Dividends?</h1>
+    <div class="article-meta">
+      <span>📅 April 17, 2026</span>
+      <span>⏱️ 6 min</span>
+      <span>👤 DCS team</span>
+    </div>
+    <div class="article-tags"><span class="tag">Capital Planning</span><span class="tag">Income Math</span><span class="tag">Goals</span></div>
+  </section>
+  <div class="article-wrapper">
+    <article>
+      <p>Targeting $500 or $2,000 a month in dividends sounds incredibly simple. But as our team has seen time and time again, these plans fracture the moment reality hits. Why? Because most people ignore <strong>net yield</strong> (what's left after taxes and fees), the silent thief of inflation, and the absolute necessity of building a safety buffer.</p>
+
+      <blockquote style="border-left: 4px solid #c9a84c; margin: 24px 0; padding-left: 20px; font-style: italic; color: #555; font-size: 16px; line-height: 1.6;">
+        “Inflation is taxation without legislation.”<br>
+        <span style="font-size: 14px; color: #999; font-weight: 600; font-style: normal;">— Milton Friedman</span>
+      </blockquote>
+
+      <p>This guide gives you the fast, back-of-the-napkin benchmarks for $500 to $2,000 a month, and then shows you how we use DCSimulator to strip away the fantasy and model exact, realistic scenarios.</p>
+
+      <div class="box"><strong>Our Core Formula:</strong> Capital you actually need ≈ (Your target monthly income × 12) ÷ net yield.<br><br><em>Remember: Net yield is what you keep after the taxman and the fund managers take their cut!</em></div>
+
+      <h2>The "Back-of-the-Napkin" Capital Table</h2>
+
+      <p>The table below is a rough yardstick. It uses <strong>gross yield</strong> (before taxes and fees) just to give you an idea of the mountains you need to climb. Do not build your final retirement plan on this table—use the simulator to convert this into the brutal, honest numbers.</p>
+
+      <table>
+        <tr>
+          <th>Monthly Target</th>
+          <th>2.5% Yield</th>
+          <th>3.0% Yield</th>
+          <th>3.5% Yield</th>
+          <th>4.0% Yield</th>
+        </tr>
+        <tr>
+          <td>$500/mo ($6,000/yr)</td>
+          <td>$240,000</td>
+          <td>$200,000</td>
+          <td>$171,429</td>
+          <td>$150,000</td>
+        </tr>
+        <tr>
+          <td>$1,000/mo ($12,000/yr)</td>
+          <td>$480,000</td>
+          <td>$400,000</td>
+          <td>$342,857</td>
+          <td>$300,000</td>
+        </tr>
+        <tr>
+          <td>$1,500/mo ($18,000/yr)</td>
+          <td>$720,000</td>
+          <td>$600,000</td>
+          <td>$514,286</td>
+          <td>$450,000</td>
+        </tr>
+        <tr>
+          <td>$2,000/mo ($24,000/yr)</td>
+          <td>$960,000</td>
+          <td>$800,000</td>
+          <td>$685,714</td>
+          <td>$600,000</td>
+        </tr>
+      </table>
+
+      <h2>Why Net Yield is the Only Number We Trust</h2>
+
+      <p>A 4% gross yield looks amazing on a spreadsheet, but it doesn't pay your electricity bill. Only the cash that lands in your checking account does. That's why Samuele built DCSimulator to focus ruthlessly on net yield.</p>
+
+      <div class="box"><strong>The Net Yield Math:</strong><br>Net yield ≈ gross yield × (1 − your tax rate) − the fund's expense ratio</div>
+
+      <p>Let's look at an example: Say you find a fund paying a 3.5% gross yield. If you pay a 15% dividend tax and the fund charges a 0.20% fee, your real yield is roughly <strong>3.5% × 0.85 − 0.20% ≈ 2.78%</strong>. If you try to plan your life around that 3.5% fantasy, you're going to fall terrifyingly short of the capital you actually need.</p>
+
+      <h2>How to Model Your Own Path</h2>
+
+      <p>Benchmarks are a fun starting point, but your financial plan shouldn't look like anyone else's. Here is how we plug these numbers into DCSimulator to get reality checks:</p>
+
+      <ul>
+        <li><strong>Desired monthly income:</strong> Be honest with yourself. Enter the after-tax amount you actually need to live on.</li>
+        <li><strong>Time horizon:</strong> Are you quitting your job in 5 years, or building generational wealth for 20+ years?</li>
+        <li><strong>Yield & Growth estimates:</strong> Play with the sliders. Test your most optimistic dreams against your most pessimistic nightmares.</li>
+        <li><strong>Taxes & Fees:</strong> Don't lie to the simulator. These directly bleed your net yield.</li>
+        <li><strong>Inflation:</strong> The simulator will automatically hike your income target over time so your purchasing power isn't destroyed.</li>
+      </ul>
+
+      <h2>Choosing Your Safety Fortress</h2>
+
+      <p>Once you hit "Simulate", you won't get a single magic number. Instead, you'll see a range of percentiles representing the capital you might need. Lower numbers look great, but they are incredibly fragile. For our own portfolios, we look at:</p>
+
+      <ul>
+        <li><strong>P50 (The Coin Flip):</strong> This is the median. It's fascinating context, but it's not a reliable safety net.</li>
+        <li><strong>P75 (The Prudent Anchor):</strong> This is our team's recommended baseline. It’s a solid, heavy anchor for most financial plans.</li>
+        <li><strong>P90 (The Fortress):</strong> If you are incredibly risk-averse, this is your safety-first stress test.</li>
+      </ul>
+
+      <h2>For the Builders: The Savings Gap</h2>
+
+      <p>If you're still in the trenches aggressively saving (like most of us!), enter your current monthly savings into the simulator. It will automatically project where your current savings rate will take you by your deadline, and brilliantly display the <strong>additional capital you still need to hustle for</strong>.</p>
+
+      <h2>The Bottom Line</h2>
+
+      <p>Look at the table above to get a feel for the scope of the mountain. Then, switch to DCSimulator to build your plan using real net yields, brutal inflation numbers, and a conservative safety percentile (P75 or P90). That is the difference between a plan that looks pretty on a blog, and a plan that survives the real world.</p>
+
+      <p><a href="../index.html" class="cta">Model Your Scenario</a></p>
+    </article>
+  </div>
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section"><h4>Platform</h4><ul><li><a href="../index.html">Simulator</a></li><li><a href="../blog.html">Blog</a></li><li><a href="../about.html">About</a></li></ul></div>
+      <div class="footer-section"><h4>Learn</h4><ul><li><a href="Page.html">Roadmap</a></li><li><a href="article-dividend-basics.html">Basics</a></li><li><a href="article-100k-dividends.html">Advanced</a></li></ul></div>
+      <div class="footer-section"><h4>Tools</h4><ul><li><a href="article-best-dividend-etfs.html">ETF Guide</a></li><li><a href="article-1000-dividends.html">Case Study</a></li><li><a href="Page2.html">Simulation</a></li></ul></div>
+      <div class="footer-section"><h4>Legal</h4><ul><li><a href="../tecnical/privacy-policy.html">Privacy</a></li><li><a href="../tecnical/cookie-policy.html">Cookies</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Dividend Capital Simulator.</p>
+    </div>
+  </footer>
+  <script src="../js/cookie-consent.js"></script>
+</body>
+</html>
