@@ -7,7 +7,6 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
     gtag('config', 'G-DTL9TKB503');
   </script>
   <meta charset="UTF-8">
@@ -16,52 +15,37 @@
   <link rel="icon" href="/favicon.png" sizes="48x48" type="image/png">
   <link rel="icon" href="/favicon-96x96.png" sizes="96x96" type="image/png">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
-  <title>How Much Capital for $100,000/Year in Dividends? (Taxes, Inflation, Risk)</title>
-  <meta name="description" content="See the capital required for $100,000/year dividend income and stress-test yield, taxes, fees, inflation, and Monte Carlo safety buffers with DCSimulator.">
-
+  <title>$100,000/Year in Dividends: Capital Required, Tax Impact, and Risk Analysis</title>
+  <meta name="description" content="Plan for $100,000/year in after-tax dividend income. See capital requirements from $2.5M to $5M across yield scenarios, plus Monte Carlo stress tests and fee optimization strategies.">
   <meta name="robots" content="index, follow, max-image-preview:large">
+
   <link rel="canonical" href="https://dcsimulator.me/blog/article-100k-dividends.html">
   <meta property="og:site_name" content="Dividend Capital Simulator PRO">
   <meta property="og:type" content="article">
-  <meta property="og:title" content="How Much Capital for $100,000/Year in Dividends? (Taxes, Inflation, Risk)">
-  <meta property="og:description" content="See the capital required for $100,000/year dividend income and stress-test yield, taxes, fees, inflation, and Monte Carlo safety buffers with DCSimulator.">
+  <meta property="og:title" content="$100,000/Year in Dividends: Capital Required, Tax Impact, and Risk Analysis">
+  <meta property="og:description" content="Plan for $100,000/year in after-tax dividend income. See capital requirements from $2.5M to $5M across yield scenarios, plus Monte Carlo stress tests and fee optimization strategies.">
   <meta property="og:url" content="https://dcsimulator.me/blog/article-100k-dividends.html">
   <meta property="og:image" content="https://dcsimulator.me/favicon.png">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="How Much Capital for $100,000/Year in Dividends? (Taxes, Inflation, Risk)">
-  <meta name="twitter:description" content="See the capital required for $100,000/year dividend income and stress-test yield, taxes, fees, inflation, and Monte Carlo safety buffers with DCSimulator.">
+  <meta name="twitter:title" content="$100,000/Year in Dividends: Capital Required, Tax Impact, and Risk Analysis">
+  <meta name="twitter:description" content="Plan for $100,000/year in after-tax dividend income. See capital requirements from $2.5M to $5M across yield scenarios, plus Monte Carlo stress tests and fee optimization strategies.">
   <meta name="twitter:image" content="https://dcsimulator.me/favicon.png">
 
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Article",
-      "headline": "How Much Capital for $100,000/Year in Dividends? (Taxes, Inflation, Risk)",
-      "description": "See the capital required for $100,000/year dividend income and stress-test yield, taxes, fees, inflation, and Monte Carlo safety buffers with DCSimulator.",
+      "headline": "$100,000/Year in Dividends: Capital Required, Tax Impact, and Risk Analysis",
+      "description": "Plan for $100,000/year in after-tax dividend income. See capital requirements from $2.5M to $5M across yield scenarios, plus Monte Carlo stress tests and fee optimization strategies.",
       "datePublished": "2026-04-17",
-      "dateModified": "2026-04-17",
+      "dateModified": "2026-04-18",
       "inLanguage": "en",
       "url": "https://dcsimulator.me/blog/article-100k-dividends.html",
-      "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "https://dcsimulator.me/blog/article-100k-dividends.html"
-      },
-      "image": [
-        "https://dcsimulator.me/favicon.png"
-      ],
-      "author": {
-        "@type": "Organization",
-        "name": "DCSimulator"
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "DCSimulator"
-      },
-      "isPartOf": {
-        "@type": "Blog",
-        "name": "DCSimulator Blog",
-        "url": "https://dcsimulator.me/blog.html"
-      }
+      "mainEntityOfPage": {"@type": "WebPage","@id": "https://dcsimulator.me/blog/article-100k-dividends.html"},
+      "image": ["https://dcsimulator.me/favicon.png"],
+      "author": {"@type": "Organization","name": "DCSimulator"},
+      "publisher": {"@type": "Organization","name": "DCSimulator"},
+      "isPartOf": {"@type": "Blog","name": "DCSimulator Blog","url": "https://dcsimulator.me/blog.html"}
     }
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -84,19 +68,21 @@
     .tag { display: inline-block; padding: 6px 14px; background: rgba(201, 168, 76, 0.1); color: #c9a84c; font-size: 12px; font-weight: 700; border: 1px solid rgba(201, 168, 76, 0.2); border-radius: 20px; }
     .article-wrapper { max-width: 900px; margin: 0 auto; padding: 60px 40px; }
     article h2 { font-family: "Playfair Display", serif; font-size: clamp(24px, 3vw, 32px); font-weight: 700; margin: 48px 0 20px 0; }
-    article h3 { font-size: 18px; font-weight: 700; margin: 36px 0 16px 0; }
+    article h3 { font-family: "Playfair Display", serif; font-size: clamp(18px, 2vw, 22px); font-weight: 700; margin: 36px 0 16px 0; }
     article p { font-size: 16px; color: #666; line-height: 1.9; margin-bottom: 20px; }
     article ul { margin: 20px 0 20px 20px; }
     article li { font-size: 15px; color: #666; line-height: 1.8; margin-bottom: 10px; }
     article table { width: 100%; margin: 24px 0; border-collapse: collapse; }
-    article th, article td { padding: 12px; text-align: left; border-bottom: 1px solid #e0e0e0; }
+    article th, article td { padding: 12px; text-align: left; border-bottom: 1px solid #e0e0e0; font-size: 14px; }
     article th { background: #f5f5f5; font-weight: 700; }
-    .box { background: linear-gradient(135deg, #f9f7f4 0%, #fff 100%); padding: 28px 24px; border-radius: 6px; border: 1px solid #f0f0f0; margin: 28px 0; }
-    .cta { padding: 14px 32px; font-size: 13px; font-weight: 700; text-transform: uppercase; text-decoration: none; display: inline-block; border-radius: 4px; background: linear-gradient(135deg, #c9a84c 0%, #b89436 100%); color: #fff; margin-top: 30px; }
+    .box { background: linear-gradient(135deg, #f9f7f4 0%, #fff 100%); padding: 28px 24px; border-radius: 6px; border: 1px solid #f0f0f0; margin: 28px 0; font-size: 15px; color: #666; line-height: 1.8; }
+    .cta { padding: 14px 32px; font-size: 13px; font-weight: 700; text-transform: uppercase; text-decoration: none; display: inline-block; border-radius: 4px; background: linear-gradient(135deg, #c9a84c 0%, #b89436 100%); color: #fff; box-shadow: 0 4px 12px rgba(201, 168, 76, 0.3); transition: all 0.4s; margin-top: 30px; }
+    .cta:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(201, 168, 76, 0.4); }
     .footer { background: #fff; border-top: 1px solid #f0f0f0; padding: 60px 40px; margin-top: 80px; }
     .footer-content { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 40px; }
     .footer-section h4 { font-size: 13px; text-transform: uppercase; font-weight: 700; margin-bottom: 20px; }
     .footer-section ul { list-style: none; }
+    .footer-section li { margin-bottom: 8px; }
     .footer-section a { text-decoration: none; color: #666; font-size: 13px; }
     .footer-bottom { border-top: 1px solid #f0f0f0; padding-top: 40px; font-size: 12px; color: #999; }
     @media (max-width: 768px) { .header-top { padding: 16px 20px; } .article-hero { padding: 40px 20px; } .article-wrapper { padding: 40px 20px; } }
@@ -117,126 +103,254 @@
   </header>
   <section class="article-hero">
     <p class="breadcrumb"><a href="../index.html">Home</a> › <a href="../blog.html">Blog</a></p>
-    <p class="article-eyebrow">Income Targets</p>
-    <h1>How Much Capital for $100,000/Year in Dividends?</h1>
+    <p class="article-eyebrow">Advanced Strategy</p>
+    <h1>$100,000/Year in Dividends: Capital Required, Tax Impact, and Risk Analysis</h1>
     <div class="article-meta">
-      <span>📅 April 17, 2026</span>
-      <span>⏱️ 5 min</span>
+      <span>📅 April 18, 2026</span>
+      <span>⏱️ 9 min</span>
       <span>👤 DCS team</span>
     </div>
     <div class="article-tags"><span class="tag">Advanced Strategy</span><span class="tag">Portfolio Management</span><span class="tag">Risk Control</span></div>
   </section>
   <div class="article-wrapper">
     <article>
-      <p>Generating $100,000 a year purely from dividends is the holy grail for a lot of investors. It's a six-figure cash-flow engine that can completely replace a highly-paid salary. But reaching it? That's not a "pick a few hot, high-yield stocks" problem. It's a serious, multi-million-dollar capital planning challenge where taxes, fees, and inflation will fight you every step of the way.</p>
+      <p>$100,000 a year from dividends alone—$8,333 per month deposited into your account without trading a single share. It's the ultimate passive income milestone: a six-figure cash-flow engine that can replace a well-paying career. But getting there isn't about picking a few high-yield stocks and hoping for the best. It's a multi-million-dollar capital planning exercise where <strong>every fraction of a percent in yield, tax rate, and fees</strong> moves the goalposts by hundreds of thousands of dollars.</p>
 
-      <div class="box">
-        <strong>The sobering math:</strong><br>
-        Capital needed ≈ $100,000 ÷ net yield.<br><br>
-        <strong>Net yield</strong> ≈ gross yield × (1 − your tax rate) − the fund's expense ratio.<br>
-        <em>Warning: At this level of income, a tiny tax or fee difference changes the capital target by hundreds of thousands of dollars!</em>
+      <div class="stat-row">
+        <div class="stat-card">
+          <span class="stat-number">$8,333</span>
+          <span class="stat-label">Monthly income target</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">$3.3M–$5M</span>
+          <span class="stat-label">Capital range needed</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">0.5%</span>
+          <span class="stat-label">Yield shift = $500K+</span>
+        </div>
       </div>
 
-      <h2>Step 1: Translate the dream into DCSimulator</h2>
+      <div class="box">
+        <strong>The Sobering Math:</strong><br>
+        Capital needed = $100,000 ÷ net yield<br><br>
+        <strong>Net yield</strong> = gross yield × (1 − tax rate) − expense ratio<br><br>
+        <em>At this income level, a 0.5% shift in net yield changes the capital target by <strong>$500,000 to $1,000,000</strong>. Precision matters enormously.</em>
+      </div>
 
-      <p>When you use DCSimulator, the "Desired monthly income" field is strictly for <strong>after-tax</strong> income (because gross numbers are just vanity metrics). $100,000 a year works out to roughly <strong>$8,333 a month</strong>.</p>
-      
-      <p>Enter that massive target into the tool, be brutally honest with your dividend tax rate and fee assumptions, and let the tool calculate the massive capital block you'll need.</p>
+      <h2>Step 1: Translate the Dream Into Real Numbers</h2>
 
-      <p>And don't worry: the simulator immediately begins inflation-adjusting your target. It forces you to plan in <strong>true purchasing power</strong>, meaning your $100k dream won't feel like a $50k reality two decades from now.</p>
+      <p>In DCSimulator, the "Desired monthly income" field represents <strong>after-tax income</strong> — the cash that actually lands in your account. $100,000 per year means entering <strong>$8,333/month</strong>.</p>
 
-      <h2>The harsh reality of net yield</h2>
+      <p>Be brutally honest with your tax rate and fee assumptions. At this scale, a 2% difference in net yield is a <strong>$1.67 million</strong> difference in required capital. There's no room for optimistic rounding.</p>
 
-      <p>Before you run the complex Monte Carlo simulation, we highly recommend anchoring your expectations with this simple table:</p>
+      <h2>The Capital Requirement Table</h2>
+
+      <p>This table shows required capital at various net yields. Remember: these are <strong>net yields</strong> — what you keep after taxes and fund fees, not the headline number on a stock screener.</p>
 
       <table>
         <tr>
-          <th>Net Yield (After Taxes & Fees)</th>
-          <th>Capital Needed for $100k/yr</th>
-          <th>The Team's Verdict</th>
+          <th>Net Yield</th>
+          <th>Capital Needed</th>
+          <th>Assessment</th>
         </tr>
         <tr>
           <td>2.0%</td>
           <td>$5,000,000</td>
-          <td>Extremely conservative. You'll likely sleep very well at night.</td>
+          <td>Ultra-conservative. Rock-solid but requires significant wealth.</td>
         </tr>
         <tr>
           <td>2.5%</td>
           <td>$4,000,000</td>
-          <td>The most common target once you factor in realistic taxes.</td>
+          <td>Most common realistic target after factoring in typical taxes.</td>
         </tr>
-        <tr>
-          <td>3.0%</td>
-          <td>$3,333,333</td>
-          <td>A robust, efficient portfolio with highly disciplined costs.</td>
+        <tr class="highlight-row">
+          <td class="recommended">3.0%</td>
+          <td class="recommended">$3,333,333</td>
+          <td>Disciplined, efficient portfolio. Our recommended baseline.</td>
         </tr>
         <tr>
           <td>3.5%</td>
           <td>$2,857,143</td>
-          <td>You're pushing it! Requires either zero taxes or taking on higher risk.</td>
+          <td>Requires low taxes or higher-risk holdings. Stress-test carefully.</td>
         </tr>
         <tr>
           <td>4.0%</td>
           <td>$2,500,000</td>
-          <td>Danger zone. You need to stress-test this portfolio aggressively.</td>
+          <td>Aggressive territory. High yield often signals elevated risk.</td>
         </tr>
       </table>
 
-      <p>Look at that table again. A tiny 0.5% shift in your net yield moves the goalposts by hundreds of thousands of dollars. Focus on efficiency, not just chasing higher yields.</p>
+      <p>Look at that table again. A 0.5% shift in net yield — from 2.5% to 3.0% — saves <strong>$666,667</strong> in required capital. This is why fee optimization and tax strategy aren't nice-to-haves at this level; they're existential.</p>
 
-      <h2>Step 2: Run the Monte Carlo (P50 / P75 / P90)</h2>
+      <h2>From Gross to Net: Where the Money Disappears</h2>
 
-      <p>The table above is rigid; real life is anything but. DCSimulator takes those numbers and throws a thousand different lifelines at them, mutating yield, simulating dividend growth, adding volatility, and pumping up inflation.</p>
+      <p>Here's exactly how a seemingly generous gross yield gets reduced to your actual net yield:</p>
 
-      <p>As you run the simulation, we advise you to ignore the rosy outcomes and lock onto the conservative percentiles:</p>
+      <table>
+        <tr>
+          <th>Gross Yield</th>
+          <th>Net at 15% Tax<br><small>+ 0.06% fee</small></th>
+          <th>Net at 20% Tax<br><small>+ 0.06% fee</small></th>
+          <th>Net at 24% Tax<br><small>+ 0.20% fee</small></th>
+        </tr>
+        <tr>
+          <td>3.0%</td>
+          <td>2.49%</td>
+          <td>2.34%</td>
+          <td>2.08%</td>
+        </tr>
+        <tr>
+          <td>3.5%</td>
+          <td>2.92%</td>
+          <td>2.74%</td>
+          <td>2.46%</td>
+        </tr>
+        <tr>
+          <td>4.0%</td>
+          <td>3.34%</td>
+          <td>3.14%</td>
+          <td>2.84%</td>
+        </tr>
+        <tr>
+          <td>4.5%</td>
+          <td>3.77%</td>
+          <td>3.54%</td>
+          <td>3.22%</td>
+        </tr>
+      </table>
+
+      <p>An investor paying 24% tax on a 4.0% gross yield with 0.20% fund fees keeps only <strong>2.84% net</strong> — meaning they need <strong>$3,521,127</strong> to generate $100K/year. The same investor in a tax-advantaged account at 0% effective rate and 0.06% fee would need just <strong>$2,538,071</strong>. That's a <strong>$983,000 difference</strong> driven entirely by taxes and fees.</p>
+
+      <h2>Step 2: Run the Monte Carlo Stress Test</h2>
+
+      <p>The static table above gives you a baseline, but <a href="Page2.html">Monte Carlo simulation</a> reveals the range of possible outcomes by simulating thousands of different yield/growth/inflation scenarios:</p>
 
       <ul>
-        <li><strong>P50 (The Median):</strong> Good for context, but do you really want a coin-flip chance on a $100k income stream?</li>
-        <li><strong>P75 (The Prudent Anchor):</strong> This is where our team likes to live. It's realistic, safe, but achievable.</li>
-        <li><strong>P90 (The Vault):</strong> The ultimate stress test. If your plan holds up here, you can weather almost any storm.</li>
+        <li><strong>P50 (The Median):</strong> Good for context, but do you really want a 50/50 chance on a $100K income stream? For most people, that's an unacceptable gamble.</li>
+        <li><strong>P75 (The Prudent Anchor):</strong> Our recommended baseline. Builds in protection against below-average growth and above-average inflation.</li>
+        <li><strong>P90 (The Vault):</strong> The ultimate stress test. If your plan survives this, you can weather a decade of poor markets without losing sleep.</li>
       </ul>
 
-      <p>If those terms still sound like gibberish, jump over to our guide on <a href="Page2.html">Monte Carlo Percentiles and Risk</a>.</p>
+      <h2>Step 3: Try to Break Your Own Plan</h2>
 
-      <h2>Step 3: Try to break your own plan</h2>
-
-      <p>The best way to build confidence in a plan this big is to try and tear it down:</p>
+      <p>The most valuable thing you can do with a plan this large is attempt to destroy it. Run these scenarios in DCSimulator:</p>
 
       <ul>
-        <li>What happens if you drag the yield down by 1%? Does the P75 capital target shoot through the roof?</li>
-        <li>Spike the inflation slider. Can your dividend growth keep up, or does your income slowly bleed out?</li>
-        <li>Drop the "annual dividend growth" while bumping up the "growth volatility". You'll see the P90 required capital swell, showing you exactly how much extra buffer you need for uncertain times.</li>
+        <li><strong>Yield compression:</strong> Drop your yield by 1%. Watch how the P75 capital target responds — it will likely jump by $800K+.</li>
+        <li><strong>Inflation surge:</strong> Set inflation to 4% instead of 2.5%. Your income target inflates faster, and P90 capital requirements can spike by $500K+.</li>
+        <li><strong>Growth drought:</strong> Cut annual dividend growth to 1% while keeping growth volatility at 2%. This simulates a stagnant decade — the kind of environment your plan <em>must</em> survive.</li>
       </ul>
 
-      <h2>The Team's Guardrails for Big Portfolios</h2>
+      <h2>Tax Optimization: The Biggest Lever at This Level</h2>
+
+      <p>At $100K/year in dividend income, your tax strategy is <em>at least</em> as important as your stock strategy. Here are the key considerations:</p>
 
       <ul>
-        <li><strong>Ruthlessly cut fees:</strong> On a $4,000,000 portfolio, a seemingly innocent 0.30% fee is costing you $12,000 every single year. Keep your expense ratios low.</li>
-        <li><strong>Diversify, diversify, diversify:</strong> Do not rely on one sector. If your primary sector cuts dividends, your six-figure income vanishes overnight.</li>
-        <li><strong>Quality over Yield:</strong> We can't stress this enough. An unsustainable 8% yield is infinitely worse than a rock-solid 3% yield that grows every year.</li>
-        <li><strong>Taxes dictate everything:</strong> Your tax strategy is just as important as your stock strategy at these levels.</li>
+        <li><strong>Qualified dividends:</strong> U.S. qualified dividends are taxed at preferential rates (0%, 15%, or 20%) versus ordinary income rates. Ensure most of your holdings qualify.</li>
+        <li><strong>Tax-advantaged accounts:</strong> Maximize Roth IRA and traditional IRA contributions. Dividends inside these accounts grow tax-free or tax-deferred.</li>
+        <li><strong>Asset location:</strong> Place higher-yield, tax-inefficient holdings (REITs, JEPI) in tax-advantaged accounts. Keep tax-efficient <a href="article-best-dividend-etfs.html">dividend ETFs</a> (SCHD, VYM) in taxable accounts.</li>
+        <li><strong>Net Investment Income Tax (NIIT):</strong> At higher income levels, a 3.8% surtax may apply. Factor this into your net yield calculations.</li>
       </ul>
 
-      <blockquote style="border-left: 4px solid #c9a84c; margin: 24px 0; padding-left: 20px; font-style: italic; color: #555; font-size: 16px; line-height: 1.6;">
-        “The avoidance of taxes is the only intellectual pursuit that still carries any reward.”<br>
-        <span style="font-size: 14px; color: #999; font-weight: 600; font-style: normal;">— John Maynard Keynes</span>
+      <blockquote style="border-left: 4px solid #c9a84c; margin: 24px 0; padding: 20px 24px; font-style: italic; color: #555; font-size: 16px; line-height: 1.7; background: linear-gradient(135deg, #fdfcfa 0%, #fff 100%); border-radius: 0 6px 6px 0;">
+        "The avoidance of taxes is the only intellectual pursuit that still carries any reward."
+        <span style="display: block; font-size: 13px; color: #999; font-weight: 600; font-style: normal; margin-top: 10px;">— John Maynard Keynes</span>
       </blockquote>
 
-      <h2>The Bottom Line</h2>
+      <h2>Portfolio Guardrails for Multi-Million Dollar Portfolios</h2>
 
-      <p>$100,000 a year in dividend income isn't fantasy, but it is a massive capital-building exercise. Use DCSimulator to strip away the vanity metrics, face the brutal reality of taxes and inflation, and anchor your expectations to the P75 target.</p>
+      <ul>
+        <li><strong>Ruthlessly minimize fees:</strong> On a $4M portfolio, a 0.30% expense ratio costs you <strong>$12,000 every year</strong> — money that could be generating additional dividends. Target 0.06%–0.10%.</li>
+        <li><strong>Diversify across 5+ sectors:</strong> If your primary sector cuts dividends, your six-figure income shouldn't vanish with it. No single sector should exceed 25% of your dividend income.</li>
+        <li><strong>Prioritize quality over yield:</strong> An unsustainable 7% yield that gets cut to 3% is infinitely worse than a rock-solid 3% yield that grows 5% annually. Check payout ratios and <a href="article-dividend-basics.html">free cash flow coverage</a> rigorously.</li>
+        <li><strong>Maintain a cash buffer:</strong> Keep 6–12 months of expenses in cash or short-term bonds. During recessions, this prevents you from selling holdings at depressed prices.</li>
+        <li><strong>Rebalance annually:</strong> Sector drift and position concentration can quietly make your portfolio more fragile. Review holdings at least once a year.</li>
+      </ul>
 
-      <p><a href="../index.html" class="cta">Model Your $100k Dream</a></p>
+      <h2>The Fee Impact: A Hidden Fortune</h2>
+
+      <p>At this portfolio size, fees compound into staggering sums. Here's what you lose over 20 years at different expense ratios on a $4M portfolio:</p>
+
+      <table>
+        <tr>
+          <th>Expense Ratio</th>
+          <th>Annual Cost</th>
+          <th>20-Year Cost<br><small>(compounded)</small></th>
+          <th>Income Lost</th>
+        </tr>
+        <tr>
+          <td>0.06%</td>
+          <td>$2,400</td>
+          <td>~$55,000</td>
+          <td>Minimal impact</td>
+        </tr>
+        <tr class="highlight-row">
+          <td>0.20%</td>
+          <td>$8,000</td>
+          <td>~$190,000</td>
+          <td>$8,000/yr = $667/mo less income</td>
+        </tr>
+        <tr>
+          <td>0.50%</td>
+          <td>$20,000</td>
+          <td>~$500,000</td>
+          <td>$20,000/yr = $1,667/mo less income</td>
+        </tr>
+        <tr>
+          <td>1.00%</td>
+          <td>$40,000</td>
+          <td>~$1,100,000</td>
+          <td>$40,000/yr = an entire salary lost to fees</td>
+        </tr>
+      </table>
+
+      <p>The difference between a 0.06% ETF and a 1.00% actively managed fund costs you over <strong>$1 million</strong> over 20 years on a $4M portfolio. Fee discipline is non-negotiable at this scale.</p>
+
+      <div class="risks-section">
+        <h3>⚠️ Risks & Limitations</h3>
+        <ul>
+          <li><strong>Concentration risk at scale:</strong> A $4M+ portfolio in dividends alone is heavily exposed to equity market risk. Consider whether other income sources (bonds, real estate, Social Security) should complement your dividend strategy.</li>
+          <li><strong>Legislative risk:</strong> The qualified dividend tax rate could increase in future tax reforms. Model a worst-case scenario at ordinary income tax rates.</li>
+          <li><strong>Yield compression:</strong> In prolonged bull markets, dividend yields compress. A portfolio yielding 3.5% today might yield 2.5% in five years at higher valuations — requiring additional capital.</li>
+          <li><strong>Single-country risk:</strong> A U.S.-only dividend portfolio is exposed to domestic economic cycles. Consider international dividend ETFs for geographic diversification.</li>
+          <li><strong>Healthcare and long-term care costs:</strong> At a $100K income level, unexpected healthcare expenses in retirement can consume 20–40% of your dividend income. Plan for this separately.</li>
+        </ul>
+      </div>
+
+      <div class="key-takeaways">
+        <h3>Key Takeaways</h3>
+        <ul>
+          <li>$100K/year requires $2.5M–$5M depending on net yield — and net yield is controlled by taxes and fees</li>
+          <li>A 0.5% net yield improvement saves $500K–$1M in capital requirements</li>
+          <li>Tax optimization (qualified dividends, asset location, Roth accounts) is as important as stock selection</li>
+          <li>Keep portfolio expense ratios below 0.10% — the compounded fee savings are enormous</li>
+          <li>Plan around P75 and stress-test at P90 with higher inflation and lower growth</li>
+        </ul>
+      </div>
+
+      <div class="related-reading">
+        <h3>Continue Reading</h3>
+        <div class="related-links">
+          <a href="article-dividend-basics.html" class="related-link">Dividend Basics: Understanding Net Yield</a>
+          <a href="article-1000-dividends.html" class="related-link">$1,000/Month Case Study: Full Math</a>
+          <a href="article-best-dividend-etfs.html" class="related-link">Best Dividend ETFs: SCHD, DGRO, VYM</a>
+          <a href="article-yield-vs-growth.html" class="related-link">Yield vs Growth: Which Strategy Wins?</a>
+        </div>
+      </div>
+
+      <p><a href="../index.html" class="cta">Model Your $100K Income Plan →</a></p>
     </article>
 
   </div>
   <footer class="footer">
     <div class="footer-content">
-      <div class="footer-section"><h4>Platform</h4><ul><li><a href="../index.html">Simulator</a></li><li><a href="../blog.html">Blog</a></li></ul></div>
-      <div class="footer-section"><h4>Learn</h4><ul><li><a href="article-dividend-basics.html">Basics</a></li></ul></div>
+      <div class="footer-section"><h4>Platform</h4><ul><li><a href="../index.html">Simulator</a></li><li><a href="../blog.html">Blog</a></li><li><a href="../about.html">About</a></li></ul></div>
+      <div class="footer-section"><h4>Learn</h4><ul><li><a href="Page.html">Roadmap</a></li><li><a href="article-dividend-basics.html">Basics</a></li><li><a href="article-dividend-amounts.html">Income Targets</a></li></ul></div>
+      <div class="footer-section"><h4>Tools</h4><ul><li><a href="article-best-dividend-etfs.html">ETF Guide</a></li><li><a href="article-1000-dividends.html">Case Study</a></li><li><a href="Page2.html">Simulation Guide</a></li></ul></div>
       <div class="footer-section"><h4>Legal</h4><ul><li><a href="../tecnical/privacy-policy.html">Privacy</a></li><li><a href="../tecnical/cookie-policy.html">Cookies</a></li></ul></div>
     </div>
-    <div class="footer-bottom"><p>&copy; 2026 DCSimulator.</p></div>
+    <div class="footer-bottom"><p>&copy; 2026 Dividend Capital Simulator.</p></div>
   </footer>
   <script src="../js/cookie-consent.js"></script>
 </body>

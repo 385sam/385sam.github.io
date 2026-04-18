@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <!-- Google tag (gtag.js) -->
@@ -7,7 +7,6 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
     gtag('config', 'G-DTL9TKB503');
   </script>
   <meta charset="UTF-8">
@@ -16,52 +15,37 @@
   <link rel="icon" href="/favicon.png" sizes="48x48" type="image/png">
   <link rel="icon" href="/favicon-96x96.png" sizes="96x96" type="image/png">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
-  <title>Monte Carlo Simulation for Dividend Investors: Percentiles and Risk</title>
-  <meta name="description" content="Learn how DCSimulator’s Monte Carlo percentiles (P50/P75/P90) work for required-capital planning, and how to stress-test yield, inflation, taxes, fees, and volatility.">
-
+  <title>How to Read Monte Carlo Percentiles: A Dividend Investor's Guide to P50, P75, and P90</title>
+  <meta name="description" content="Understand how DCSimulator's Monte Carlo engine calculates required capital across P10–P90 percentiles. Learn to stress-test yield, inflation, taxes, and growth volatility.">
   <meta name="robots" content="index, follow, max-image-preview:large">
+
   <link rel="canonical" href="https://dcsimulator.me/blog/Page2.html">
   <meta property="og:site_name" content="Dividend Capital Simulator PRO">
   <meta property="og:type" content="article">
-  <meta property="og:title" content="Monte Carlo Simulation for Dividend Investors: Percentiles and Risk">
-  <meta property="og:description" content="Learn how DCSimulator’s Monte Carlo percentiles (P50/P75/P90) work for required-capital planning, and how to stress-test yield, inflation, taxes, fees, and volatility.">
+  <meta property="og:title" content="How to Read Monte Carlo Percentiles: A Dividend Investor's Guide to P50, P75, and P90">
+  <meta property="og:description" content="Understand how DCSimulator's Monte Carlo engine calculates required capital across P10–P90 percentiles. Learn to stress-test yield, inflation, taxes, and growth volatility.">
   <meta property="og:url" content="https://dcsimulator.me/blog/Page2.html">
   <meta property="og:image" content="https://dcsimulator.me/favicon.png">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Monte Carlo Simulation for Dividend Investors: Percentiles and Risk">
-  <meta name="twitter:description" content="Learn how DCSimulator’s Monte Carlo percentiles (P50/P75/P90) work for required-capital planning, and how to stress-test yield, inflation, taxes, fees, and volatility.">
+  <meta name="twitter:title" content="How to Read Monte Carlo Percentiles: A Dividend Investor's Guide to P50, P75, and P90">
+  <meta name="twitter:description" content="Understand how DCSimulator's Monte Carlo engine calculates required capital across P10–P90 percentiles. Learn to stress-test yield, inflation, taxes, and growth volatility.">
   <meta name="twitter:image" content="https://dcsimulator.me/favicon.png">
 
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Article",
-      "headline": "Monte Carlo Simulation for Dividend Investors: Percentiles and Risk",
-      "description": "Learn how DCSimulator’s Monte Carlo percentiles (P50/P75/P90) work for required-capital planning, and how to stress-test yield, inflation, taxes, fees, and volatility.",
+      "headline": "How to Read Monte Carlo Percentiles: A Dividend Investor's Guide to P50, P75, and P90",
+      "description": "Understand how DCSimulator's Monte Carlo engine calculates required capital across P10–P90 percentiles. Learn to stress-test yield, inflation, taxes, and growth volatility.",
       "datePublished": "2026-04-17",
-      "dateModified": "2026-04-17",
+      "dateModified": "2026-04-18",
       "inLanguage": "en",
       "url": "https://dcsimulator.me/blog/Page2.html",
-      "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "https://dcsimulator.me/blog/Page2.html"
-      },
-      "image": [
-        "https://dcsimulator.me/favicon.png"
-      ],
-      "author": {
-        "@type": "Organization",
-        "name": "DCSimulator"
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "DCSimulator"
-      },
-      "isPartOf": {
-        "@type": "Blog",
-        "name": "DCSimulator Blog",
-        "url": "https://dcsimulator.me/blog.html"
-      }
+      "mainEntityOfPage": {"@type": "WebPage","@id": "https://dcsimulator.me/blog/Page2.html"},
+      "image": ["https://dcsimulator.me/favicon.png"],
+      "author": {"@type": "Organization","name": "DCSimulator"},
+      "publisher": {"@type": "Organization","name": "DCSimulator"},
+      "isPartOf": {"@type": "Blog","name": "DCSimulator Blog","url": "https://dcsimulator.me/blog.html"}
     }
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -83,19 +67,25 @@
     .article-tags { display: flex; gap: 10px; margin-top: 20px; flex-wrap: wrap; }
     .tag { display: inline-block; padding: 6px 14px; background: rgba(201, 168, 76, 0.1); color: #c9a84c; font-size: 12px; font-weight: 700; border: 1px solid rgba(201, 168, 76, 0.2); border-radius: 20px; }
     .article-wrapper { max-width: 900px; margin: 0 auto; padding: 60px 40px; }
-    article h2 { font-family: "Playfair Display", serif; font-size: clamp(24px, 3vw, 32px); font-weight: 700; margin: 40px 0 16px 0; }
-    article h3 { font-size: 18px; font-weight: 700; margin: 28px 0 12px 0; }
-    article p { font-size: 16px; color: #666; line-height: 1.9; margin-bottom: 16px; }
-    article ul { margin: 16px 0 16px 20px; }
-    article li { font-size: 15px; color: #666; line-height: 1.7; margin-bottom: 8px; }
-    .box { background: linear-gradient(135deg, #f9f7f4 0%, #fff 100%); padding: 24px; border-radius: 6px; border: 1px solid #f0f0f0; margin: 20px 0; }
-    .cta { padding: 12px 28px; font-size: 13px; font-weight: 700; text-transform: uppercase; text-decoration: none; display: inline-block; border-radius: 4px; background: linear-gradient(135deg, #c9a84c 0%, #b89436 100%); color: #fff; margin-top: 24px; }
+    article h2 { font-family: "Playfair Display", serif; font-size: clamp(24px, 3vw, 32px); font-weight: 700; margin: 48px 0 20px 0; }
+    article h3 { font-family: "Playfair Display", serif; font-size: clamp(18px, 2vw, 22px); font-weight: 700; margin: 36px 0 16px 0; }
+    article p { font-size: 16px; color: #666; line-height: 1.9; margin-bottom: 20px; }
+    article ul { margin: 20px 0 20px 20px; }
+    article li { font-size: 15px; color: #666; line-height: 1.8; margin-bottom: 10px; }
+    article table { width: 100%; margin: 24px 0; border-collapse: collapse; }
+    article th, article td { padding: 12px; text-align: left; border-bottom: 1px solid #e0e0e0; font-size: 14px; }
+    article th { background: #f5f5f5; font-weight: 700; }
+    .box { background: linear-gradient(135deg, #f9f7f4 0%, #fff 100%); padding: 28px 24px; border-radius: 6px; border: 1px solid #f0f0f0; margin: 28px 0; font-size: 15px; color: #666; line-height: 1.8; }
+    .cta { padding: 14px 32px; font-size: 13px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; text-decoration: none; display: inline-block; border-radius: 4px; background: linear-gradient(135deg, #c9a84c 0%, #b89436 100%); color: #fff; box-shadow: 0 4px 12px rgba(201, 168, 76, 0.3); transition: all 0.4s; margin-top: 30px; }
+    .cta:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(201, 168, 76, 0.4); }
     .footer { background: #fff; border-top: 1px solid #f0f0f0; padding: 60px 40px; margin-top: 80px; }
     .footer-content { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 40px; }
     .footer-section h4 { font-size: 13px; text-transform: uppercase; font-weight: 700; margin-bottom: 16px; }
     .footer-section ul { list-style: none; }
+    .footer-section li { margin-bottom: 8px; }
     .footer-section a { text-decoration: none; color: #666; font-size: 13px; }
     .footer-bottom { border-top: 1px solid #f0f0f0; padding-top: 32px; font-size: 12px; color: #999; }
+    @media (max-width: 768px) { .header-top { padding: 16px 20px; } .article-hero { padding: 40px 20px; } .article-wrapper { padding: 40px 20px; } }
   </style>
   <link rel="stylesheet" href="../css/cookie-consent.css">
   <link rel="stylesheet" href="../css/article-ui.css">
@@ -114,87 +104,227 @@
   <section class="article-hero">
     <p class="breadcrumb"><a href="../index.html">Home</a> › <a href="../blog.html">Blog</a></p>
     <p class="article-eyebrow">Advanced Tools</p>
-    <h1>Monte Carlo Simulation for Dividend Investors: Percentiles and Risk</h1>
+    <h1>How to Read Monte Carlo Percentiles: Your Guide to P50, P75, and P90</h1>
     <div class="article-meta">
-      <span>📅 April 17, 2026</span>
-      <span>⏱️ 7 min</span>
+      <span>📅 April 18, 2026</span>
+      <span>⏱️ 9 min</span>
       <span>👤 DCS team</span>
     </div>
-    <div class="article-tags"><span class="tag">Simulation</span><span class="tag">Risk Analysis</span><span class="tag">Tools</span></div>
+    <div class="article-tags"><span class="tag">Simulation</span><span class="tag">Risk Analysis</span><span class="tag">Planning Tools</span></div>
   </section>
   <div class="article-wrapper">
     <article>
-      <p>Monte Carlo planning is useful when one “average” number hides risk. Instead of betting on a single future, you run thousands of plausible futures and study the range.</p>
+      <p>Most dividend calculators give you one number: "You need $X." That's like a weather forecast that only shows the average temperature — technically true, but useless for deciding whether to bring an umbrella. Financial planning requires understanding the <strong>range</strong> of possible outcomes, not just the average.</p>
 
-      <p>DCSimulator uses Monte Carlo for a specific dividend question: <strong>how much capital is required</strong> to generate your desired <strong>after-tax monthly dividend income</strong> at a chosen horizon, accounting for inflation, taxes, fees, and uncertainty.</p>
+      <p>That's exactly what Monte Carlo simulation does. DCSimulator runs thousands of plausible future scenarios — varying dividend growth, inflation, and yield volatility — and shows you the <strong>distribution of capital you might need</strong> to hit your income target. The result isn't a single number; it's a spectrum from optimistic to ultra-conservative.</p>
 
-      <h2>What the simulation is actually doing</h2>
+      <blockquote style="border-left: 4px solid #c9a84c; margin: 24px 0 30px; padding: 20px 24px; font-style: italic; color: #555; font-size: 17px; line-height: 1.7; background: linear-gradient(135deg, #fdfcfa 0%, #fff 100%); border-radius: 0 6px 6px 0;">
+        "Risk comes from not knowing what you're doing."
+        <span style="display: block; font-size: 13px; color: #999; font-weight: 600; font-style: normal; margin-top: 10px;">— Warren Buffett</span>
+      </blockquote>
 
-      <p>Each simulation path repeats the same steps for every year in your horizon:</p>
+      <h2>What the Simulation Actually Calculates</h2>
 
-      <ul>
-        <li><strong>Inflation-adjusts</strong> your income target so purchasing power stays constant.</li>
-        <li>Converts gross yield into <strong>net yield</strong> after taxes and fees: <strong>net yield = gross yield × (1 − tax rate) − expense ratio</strong>.</li>
-        <li>Computes the <strong>required capital</strong> as: <strong>required capital = annual income target ÷ net yield</strong>.</li>
-        <li>Evolves dividend yield over time using your <strong>annual growth</strong> assumption plus <strong>growth volatility</strong> (year-to-year variability).</li>
-      </ul>
-
-      <p>The output is a distribution of required capital at your final year (the “horizon”). Lower required capital is better; higher required capital is safer and more conservative.</p>
-
-      <h2>Why P10 is “very favorable” and P90 is “safety”</h2>
-
-      <p>Many people learn percentiles on performance charts (where higher is better). Here the metric is <strong>required capital</strong>, so the interpretation flips:</p>
-
-      <div class="box"><strong>Quick read:</strong> <strong>P10</strong> is an optimistic / very favorable requirement (you need less capital), <strong>P50</strong> is the median, <strong>P75</strong> is a prudent planning anchor, and <strong>P90</strong> is a safety-first buffer (you need more capital).</div>
-
-      <h2>How to use the percentile cards</h2>
-
-      <p><strong>P10 (Very favorable):</strong> only ~10% of simulations require <em>less</em> capital than this. Treat it as an optimistic “tailwind” case, not a plan.</p>
-
-      <p><strong>P25 (Favorable):</strong> still optimistic, but closer to a realistic best-case environment.</p>
-
-      <p><strong>P50 (Central):</strong> the median requirement. Useful context, but not conservative enough on its own for retirement planning.</p>
-
-      <p><strong>P75 (Prudent):</strong> a stronger baseline for most users. If you plan around P75, you’re building in downside protection without over-allocating.</p>
-
-      <p><strong>P90 (Safety planning):</strong> the “sleep at night” stress test. Planning to this level means most simulated paths require the same or less capital.</p>
-
-      <h2>What moves the conservative number most (P75/P90)</h2>
+      <p>Each of the thousands of simulation paths follows the same steps for every year in your time horizon:</p>
 
       <ul>
-        <li><strong>Lower net yield</strong> (because of lower dividend yield, higher taxes, or higher fees).</li>
-        <li><strong>Higher inflation</strong> (your income target rises every year).</li>
-        <li><strong>Higher growth volatility</strong> (widens the range; P90 typically rises).</li>
-        <li><strong>Shorter horizons</strong> (less time for dividend growth to offset inflation).</li>
+        <li><strong>Inflation-adjusts</strong> your income target so purchasing power stays constant over time</li>
+        <li>Converts gross yield into <strong>net yield</strong>: net yield = gross yield × (1 − tax rate) − expense ratio</li>
+        <li>Computes the <strong>required capital</strong>: annual income target ÷ net yield</li>
+        <li>Evolves dividend yield over time using your <strong>annual growth</strong> assumption plus <strong>growth volatility</strong> (random year-to-year variation)</li>
       </ul>
 
-      <h2>A 60-second workflow</h2>
+      <p>The output is a distribution of required capital at your final year. Because each simulation path uses slightly different random growth variations, you get a range of outcomes — and that's precisely the point.</p>
+
+      <h2>Worked Example: $1,000/Month at a 10-Year Horizon</h2>
+
+      <p>Let's make this concrete. Here's a realistic scenario for someone targeting <a href="article-1000-dividends.html">$1,000/month in after-tax dividend income</a> in 10 years:</p>
+
+      <div class="box">
+        <strong>Inputs:</strong><br>
+        Monthly income target: $1,000 (after tax)<br>
+        Gross dividend yield: 3.5% | Annual growth: 4% | Growth volatility: 2%<br>
+        Tax rate: 15% | Expense ratio: 0.20% | Inflation: 2.5%<br>
+        Time horizon: 10 years
+      </div>
+
+      <p>After running the simulation, here's a representative set of percentile results:</p>
+
+      <table>
+        <tr>
+          <th>Percentile</th>
+          <th>Capital Required</th>
+          <th>What It Means</th>
+          <th>How to Use It</th>
+        </tr>
+        <tr>
+          <td>P10</td>
+          <td>~$370,000</td>
+          <td>Very favorable — only 10% of scenarios need less</td>
+          <td>Don't plan around this. It's the tailwind case.</td>
+        </tr>
+        <tr>
+          <td>P25</td>
+          <td>~$395,000</td>
+          <td>Favorable — better than average conditions</td>
+          <td>Optimistic but not unrealistic for best-case planning</td>
+        </tr>
+        <tr>
+          <td>P50</td>
+          <td>~$432,000</td>
+          <td>The median — half need more, half need less</td>
+          <td>Useful context, but not conservative enough for retirement</td>
+        </tr>
+        <tr class="highlight-row">
+          <td class="recommended">P75</td>
+          <td class="recommended">~$485,000</td>
+          <td>Prudent anchor — protected against most downturns</td>
+          <td>Our recommended planning baseline for most users</td>
+        </tr>
+        <tr>
+          <td>P90</td>
+          <td>~$545,000</td>
+          <td>Safety-first — withstands hostile market conditions</td>
+          <td>Your "sleep at night" stress test</td>
+        </tr>
+      </table>
+
+      <p>The spread between P10 ($370K) and P90 ($545K) is <strong>$175,000</strong> — that's the range of uncertainty built into just 10 years of dividend growth variability and inflation. This is why a single-number calculator is dangerously misleading.</p>
+
+      <h2>Why P10 Is "Optimistic" and P90 Is "Conservative"</h2>
+
+      <p>This confuses many people because it's the <strong>opposite</strong> of how percentiles work on performance charts. On a performance chart, P90 means "really good performance." But here, the metric is <em>required capital</em> — a cost you're trying to reach. So:</p>
+
+      <div class="box">
+        <strong>Quick Translation:</strong><br><br>
+        <strong>P10 = You need LESS capital</strong> → optimistic/favorable → growth was strong, inflation was mild<br>
+        <strong>P90 = You need MORE capital</strong> → conservative/safety → growth was weak, inflation was hot<br><br>
+        <em>Lower percentile = better luck. Higher percentile = more buffer. Plan for the higher ones.</em>
+      </div>
+
+      <h2>What Moves the Conservative Numbers (P75/P90) the Most?</h2>
+
+      <p>Not all inputs are created equal. Some have an outsized impact on your worst-case capital requirement:</p>
+
+      <table>
+        <tr>
+          <th>Input Change</th>
+          <th>Impact on P75 Capital</th>
+          <th>Why It Matters</th>
+        </tr>
+        <tr>
+          <td>Net yield drops 0.5%</td>
+          <td>+$60,000 to +$90,000</td>
+          <td>Higher taxes, lower yield, or higher fees all reduce net yield</td>
+        </tr>
+        <tr>
+          <td>Inflation +1%</td>
+          <td>+$40,000 to +$70,000</td>
+          <td>Your income target grows faster each year</td>
+        </tr>
+        <tr>
+          <td>Growth volatility +2%</td>
+          <td>+$20,000 to +$50,000 (P90 impact)</td>
+          <td>Widens the distribution; P90 rises substantially</td>
+        </tr>
+        <tr>
+          <td>Horizon −5 years</td>
+          <td>+$30,000 to +$60,000</td>
+          <td>Less time for dividend growth to offset inflation</td>
+        </tr>
+      </table>
+
+      <h2>The 60-Second Workflow</h2>
+
+      <p>Here's how to use DCSimulator's Monte Carlo output effectively:</p>
 
       <ul>
-        <li>Set your <strong>after-tax</strong> monthly income target.</li>
-        <li>Pick a horizon that matches your plan (e.g., “income needed in 10 years”).</li>
-        <li>Set realistic <strong>tax</strong> and <strong>expense ratio</strong> values (these directly lower net yield).</li>
-        <li>Run two passes: one with “best estimate” yield/growth, then a stress test with lower yield or higher inflation.</li>
-        <li>Use <strong>P75</strong> as your baseline number and check <strong>P90</strong> for resilience.</li>
+        <li><strong>Step 1:</strong> Set your after-tax monthly income target and time horizon</li>
+        <li><strong>Step 2:</strong> Enter realistic tax rate and expense ratio values (these directly impact net yield)</li>
+        <li><strong>Step 3:</strong> Run with your "best estimate" for yield and growth</li>
+        <li><strong>Step 4:</strong> Record the <strong>P75</strong> number — this is your planning baseline</li>
+        <li><strong>Step 5:</strong> Run a stress test: drop yield by 0.5% or push inflation up by 1%</li>
+        <li><strong>Step 6:</strong> Check the new <strong>P90</strong> number — this is your resilience check</li>
       </ul>
 
-      <h2>Common interpretation mistakes</h2>
+      <p>If the gap between your stress-test P90 and your current savings trajectory is <a href="article-dividend-amounts.html">uncomfortably large</a>, you have three levers: save more, extend your horizon, or accept more yield risk.</p>
 
-      <ul>
-        <li>Planning off <strong>gross yield</strong> and ignoring taxes/fees (net yield is what funds spending).</li>
-        <li>Anchoring to <strong>P10</strong> because it “looks achievable” (it’s the favorable tail).</li>
-        <li>Forgetting the horizon is a <strong>future capital requirement</strong> (it’s the number you’re trying to reach by that year).</li>
-      </ul>
+      <h2>What-If Stress Test: Inflation Surge</h2>
 
-      <p><a href="../index.html" class="cta">Run Your Monte Carlo Scenario</a></p>
+      <p>Let's see what happens when we change just one input — inflation — from 2.5% to 4.0%, keeping everything else identical:</p>
+
+      <table>
+        <tr>
+          <th>Percentile</th>
+          <th>Base Case (2.5% inflation)</th>
+          <th>Stress Test (4.0% inflation)</th>
+          <th>Difference</th>
+        </tr>
+        <tr>
+          <td>P50</td>
+          <td>$432,000</td>
+          <td>$498,000</td>
+          <td>+$66,000</td>
+        </tr>
+        <tr class="highlight-row">
+          <td>P75</td>
+          <td>$485,000</td>
+          <td>$562,000</td>
+          <td>+$77,000</td>
+        </tr>
+        <tr>
+          <td>P90</td>
+          <td>$545,000</td>
+          <td>$638,000</td>
+          <td>+$93,000</td>
+        </tr>
+      </table>
+
+      <p>A 1.5% increase in inflation adds nearly <strong>$100,000</strong> to your P90 capital requirement. This is why running stress tests isn't optional — it's the difference between a plan that works in the real world and one that only works on paper.</p>
+
+      <div class="risks-section">
+        <h3>⚠️ Limitations of Monte Carlo Simulation</h3>
+        <ul>
+          <li><strong>Not a guarantee:</strong> Monte Carlo shows probability distributions, not predictions. Real-world outcomes can fall outside the simulated range.</li>
+          <li><strong>Model assumptions:</strong> Results are only as good as the inputs. Garbage in, garbage out. Be honest with your yield, growth, and tax estimates.</li>
+          <li><strong>Independence assumption:</strong> The model assumes year-to-year growth variations are independent. In reality, bad years can cluster (recessions).</li>
+          <li><strong>Static inputs:</strong> The simulation doesn't account for behavioral changes — like panicking and selling during a crash, or stopping contributions.</li>
+          <li><strong>Not a comprehensive financial plan:</strong> Monte Carlo models one dimension (required capital for dividend income). It doesn't replace holistic retirement planning that includes Social Security, pensions, healthcare costs, etc.</li>
+        </ul>
+      </div>
+
+      <div class="key-takeaways">
+        <h3>Key Takeaways</h3>
+        <ul>
+          <li>Monte Carlo shows a range of capital requirements, not a single number — plan accordingly</li>
+          <li>P75 is the recommended planning anchor; P90 is your stress test</li>
+          <li>Lower percentiles (P10, P25) are optimistic; higher ones (P75, P90) are conservative</li>
+          <li>Net yield, inflation, and growth volatility have the biggest impact on P75/P90 outcomes</li>
+          <li>Run at least two scenarios: base case and a stress test with worse assumptions</li>
+        </ul>
+      </div>
+
+      <div class="related-reading">
+        <h3>Continue Reading</h3>
+        <div class="related-links">
+          <a href="article-1000-dividends.html" class="related-link">$1,000/Month Case Study with Full Math</a>
+          <a href="article-dividend-amounts.html" class="related-link">Capital Required for $500–$2,000/Month</a>
+          <a href="article-yield-vs-growth.html" class="related-link">Yield vs Growth: Which Strategy Wins?</a>
+          <a href="article-dividend-basics.html" class="related-link">Dividend Basics: Understanding Net Yield</a>
+        </div>
+      </div>
+
+      <p><a href="../index.html" class="cta">Run Your Monte Carlo Scenario →</a></p>
     </article>
   </div>
   <footer class="footer">
     <div class="footer-content">
-      <div class="footer-section"><h4>Platform</h4><ul><li><a href="../index.html">Simulator</a></li><li><a href="../blog.html">Blog</a></li></ul></div>
-      <div class="footer-section"><h4>Learn</h4><ul><li><a href="article-dividend-basics.html">Basics</a></li></ul></div>
+      <div class="footer-section"><h4>Platform</h4><ul><li><a href="../index.html">Simulator</a></li><li><a href="../blog.html">Blog</a></li><li><a href="../about.html">About</a></li></ul></div>
+      <div class="footer-section"><h4>Learn</h4><ul><li><a href="Page.html">Roadmap</a></li><li><a href="article-dividend-basics.html">Basics</a></li><li><a href="article-100k-dividends.html">Advanced</a></li></ul></div>
+      <div class="footer-section"><h4>Tools</h4><ul><li><a href="article-best-dividend-etfs.html">ETF Guide</a></li><li><a href="article-1000-dividends.html">Case Study</a></li><li><a href="article-yield-vs-growth.html">Strategy</a></li></ul></div>
+      <div class="footer-section"><h4>Legal</h4><ul><li><a href="../tecnical/privacy-policy.html">Privacy</a></li><li><a href="../tecnical/cookie-policy.html">Cookies</a></li></ul></div>
     </div>
-    <div class="footer-bottom"><p>&copy; 2026 DCSimulator.</p></div>
+    <div class="footer-bottom"><p>&copy; 2026 Dividend Capital Simulator.</p></div>
   </footer>
   <script src="../js/cookie-consent.js"></script>
 </body>

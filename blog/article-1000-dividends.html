@@ -7,7 +7,7 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
+    
     gtag('config', 'G-DTL9TKB503');
   </script>
   <meta charset="UTF-8">
@@ -16,52 +16,37 @@
   <link rel="icon" href="/favicon.png" sizes="48x48" type="image/png">
   <link rel="icon" href="/favicon-96x96.png" sizes="96x96" type="image/png">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
-  <title>$1,000/Month Dividend Income: Capital Needed and Timeline</title>
-  <meta name="description" content="Model $1,000/month after-tax dividend income with net-yield math, inflation, and Monte Carlo safety buffers (P75/P90) using the DCSimulator calculator.">
+  <title>$1,000/Month in Dividends: How Much Capital You Really Need</title>
+  <meta name="description" content="Calculate the real capital needed for $1,000/month in after-tax dividends. Includes net-yield math, P75/P90 safety buffers, portfolio construction, and a step-by-step action plan.">
   <meta name="robots" content="index, follow, max-image-preview:large">
 
   <link rel="canonical" href="https://dcsimulator.me/blog/article-1000-dividends.html">
   <meta property="og:site_name" content="Dividend Capital Simulator PRO">
   <meta property="og:type" content="article">
-  <meta property="og:title" content="$1,000/Month Dividend Income: Capital Needed and Timeline">
-  <meta property="og:description" content="Model $1,000/month after-tax dividend income with net-yield math, inflation, and Monte Carlo safety buffers (P75/P90) using the DCSimulator calculator.">
+  <meta property="og:title" content="$1,000/Month in Dividends: How Much Capital You Really Need">
+  <meta property="og:description" content="Calculate the real capital needed for $1,000/month in after-tax dividends. Includes net-yield math, P75/P90 safety buffers, portfolio construction, and a step-by-step action plan.">
   <meta property="og:url" content="https://dcsimulator.me/blog/article-1000-dividends.html">
   <meta property="og:image" content="https://dcsimulator.me/favicon.png">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="$1,000/Month Dividend Income: Capital Needed and Timeline">
-  <meta name="twitter:description" content="Model $1,000/month after-tax dividend income with net-yield math, inflation, and Monte Carlo safety buffers (P75/P90) using the DCSimulator calculator.">
+  <meta name="twitter:title" content="$1,000/Month in Dividends: How Much Capital You Really Need">
+  <meta name="twitter:description" content="Calculate the real capital needed for $1,000/month in after-tax dividends. Includes net-yield math, P75/P90 safety buffers, portfolio construction, and a step-by-step action plan.">
   <meta name="twitter:image" content="https://dcsimulator.me/favicon.png">
 
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Article",
-      "headline": "$1,000/Month Dividend Income: Capital Needed and Timeline",
-      "description": "Model $1,000/month after-tax dividend income with net-yield math, inflation, and Monte Carlo safety buffers (P75/P90) using the DCSimulator calculator.",
+      "headline": "$1,000/Month in Dividends: How Much Capital You Really Need",
+      "description": "Calculate the real capital needed for $1,000/month in after-tax dividends. Includes net-yield math, P75/P90 safety buffers, portfolio construction, and a step-by-step action plan.",
       "datePublished": "2026-04-17",
-      "dateModified": "2026-04-17",
+      "dateModified": "2026-04-18",
       "inLanguage": "en",
       "url": "https://dcsimulator.me/blog/article-1000-dividends.html",
-      "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "https://dcsimulator.me/blog/article-1000-dividends.html"
-      },
-      "image": [
-        "https://dcsimulator.me/favicon.png"
-      ],
-      "author": {
-        "@type": "Organization",
-        "name": "DCSimulator"
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "DCSimulator"
-      },
-      "isPartOf": {
-        "@type": "Blog",
-        "name": "DCSimulator Blog",
-        "url": "https://dcsimulator.me/blog.html"
-      }
+      "mainEntityOfPage": {"@type": "WebPage","@id": "https://dcsimulator.me/blog/article-1000-dividends.html"},
+      "image": ["https://dcsimulator.me/favicon.png"],
+      "author": {"@type": "Organization","name": "DCSimulator"},
+      "publisher": {"@type": "Organization","name": "DCSimulator"},
+      "isPartOf": {"@type": "Blog","name": "DCSimulator Blog","url": "https://dcsimulator.me/blog.html"}
     }
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -91,15 +76,16 @@
     article ul { margin: 20px 0 20px 20px; }
     article li { font-size: 15px; color: #666; line-height: 1.8; margin-bottom: 10px; }
     article table { width: 100%; margin: 24px 0; border-collapse: collapse; }
-    article th, article td { padding: 12px; text-align: left; border-bottom: 1px solid #e0e0e0; }
+    article th, article td { padding: 12px; text-align: left; border-bottom: 1px solid #e0e0e0; font-size: 14px; }
     article th { background: #f5f5f5; font-weight: 700; }
-    .box { background: linear-gradient(135deg, #f9f7f4 0%, #fff 100%); padding: 28px 24px; border-radius: 6px; border: 1px solid #f0f0f0; margin: 28px 0; }
-    .cta { padding: 14px 32px; font-size: 13px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; text-decoration: none; display: inline-block; border-radius: 4px; background: linear-gradient(135deg, #c9a84c 0%, #b89436 100%); color: #fff; box-shadow: 0 4px 12px rgba(201, 168, 76, 0.3); margin-top: 30px; }
+    .box { background: linear-gradient(135deg, #f9f7f4 0%, #fff 100%); padding: 28px 24px; border-radius: 6px; border: 1px solid #f0f0f0; margin: 28px 0; font-size: 15px; color: #666; line-height: 1.8; }
+    .cta { padding: 14px 32px; font-size: 13px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; text-decoration: none; display: inline-block; border-radius: 4px; background: linear-gradient(135deg, #c9a84c 0%, #b89436 100%); color: #fff; box-shadow: 0 4px 12px rgba(201, 168, 76, 0.3); transition: all 0.4s; margin-top: 30px; }
     .cta:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(201, 168, 76, 0.4); }
     .footer { background: #fff; border-top: 1px solid #f0f0f0; padding: 60px 40px; margin-top: 80px; }
     .footer-content { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 40px; }
     .footer-section h4 { font-size: 13px; text-transform: uppercase; font-weight: 700; margin-bottom: 20px; }
     .footer-section ul { list-style: none; }
+    .footer-section li { margin-bottom: 8px; }
     .footer-section a { text-decoration: none; color: #666; font-size: 13px; }
     .footer-bottom { border-top: 1px solid #f0f0f0; padding-top: 40px; font-size: 12px; color: #999; }
     @media (max-width: 768px) { .header-top { padding: 16px 20px; } .article-hero { padding: 40px 20px; } .article-wrapper { padding: 40px 20px; } }
@@ -121,86 +107,206 @@
   <section class="article-hero">
     <p class="breadcrumb"><a href="../index.html">Home</a> › <a href="../blog.html">Blog</a></p>
     <p class="article-eyebrow">Case Study</p>
-    <h1>$1,000/Month Dividend Income: Capital Needed and Timeline</h1>
+    <h1>$1,000/Month in Dividends: How Much Capital You Really Need</h1>
     <div class="article-meta">
-      <span>📅 April 17, 2026</span>
-      <span>⏱️ 6 min</span>
+      <span>📅 April 18, 2026</span>
+      <span>⏱️ 8 min</span>
       <span>👤 DCS team</span>
     </div>
-    <div class="article-tags"><span class="tag">Case Study</span><span class="tag">Real Numbers</span><span class="tag">Strategy</span></div>
+    <div class="article-tags"><span class="tag">Case Study</span><span class="tag">Real Numbers</span><span class="tag">Passive Income</span></div>
   </section>
   <div class="article-wrapper">
     <article>
-      <blockquote style="border-left: 4px solid #c9a84c; margin: 24px 0 30px; padding-left: 20px; font-style: italic; color: #555; font-size: 18px; line-height: 1.6;">
-        “Dividends are the calm voice of an investment working even when the markets make noise.”
+      <blockquote style="border-left: 4px solid #c9a84c; margin: 24px 0 30px; padding: 20px 24px; font-style: italic; color: #555; font-size: 17px; line-height: 1.7; background: linear-gradient(135deg, #fdfcfa 0%, #fff 100%); border-radius: 0 6px 6px 0;">
+        "Dividends are the calm voice of an investment working even when the markets make noise."
       </blockquote>
 
-      <p>Here at DCSimulator, we've found that $1,000/month is one of the most popular dividend goals. It feels like a real, tangible milestone—enough to cover a mortgage payment, rent, or a huge chunk of monthly bills. But whether reaching it is realistic depends on three things that a lot of people overlook: <strong>net yield</strong> (what you keep after taxes & fees), inflation, and the safety buffer you choose to build in.</p>
+      <p>$1,000 a month in after-tax dividend income is the single most popular goal among our users — and for good reason. It's enough to cover a mortgage payment, a car lease, or a meaningful chunk of monthly expenses. But here's what the clickbait articles won't tell you: the real capital needed is 15–30% higher than the "gross yield math" suggests.</p>
 
-      <div class="box">
-        <strong>The Quick Math (No Calculator Needed):</strong><br>
-        Capital you actually need ≈ ($1,000 × 12) ÷ net yield.<br><br>
-        <em>Net yield is the cash you keep after the taxman and fund managers take their cut:</em><br>
-        Net yield ≈ gross yield × (1 − your tax rate) − fund expense ratio.
+      <p>This case study walks through the <strong>complete, honest math</strong> — from gross yield to net yield, through Monte Carlo safety buffers, all the way to a concrete savings plan that gets you there.</p>
+
+      <div class="stat-row">
+        <div class="stat-card">
+          <span class="stat-number">$12,000</span>
+          <span class="stat-label">Annual target (after tax)</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">2.78%</span>
+          <span class="stat-label">Typical net yield</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">$432K</span>
+          <span class="stat-label">Capital needed</span>
+        </div>
       </div>
 
-      <h2>Step 1: Start with a baseline (But don't stop there)</h2>
+      <h2>Step 1: The Gross Yield Illusion</h2>
 
-      <p>You've probably seen headlines like "How to make $1,000 a month with $342,857 at a 3.5% yield." While catchy, it's a dangerous shortcut because it relies on <em>gross yield</em>. We strongly believe your plan should be built on net yield.</p>
+      <p>You've probably seen headlines like "How to earn $1,000/month with $342,857 at 3.5% yield." That math is technically correct — but it uses <strong>gross yield</strong>, ignoring taxes and fees entirely. Here's what the real numbers look like:</p>
 
-      <p><strong>Here's how we look at it:</strong> If you assume a 3.5% gross yield, face a 15% dividend tax, and pay 0.20% in fund fees, your net yield looks more like: <strong>3.5% × 0.85 − 0.20% ≈ 2.78%</strong>. To actually put $12,000 a year in your pocket, you'd need roughly <strong>$432,000</strong> of capital. If your tax bracket is higher, that target goes up.</p>
+      <div class="box">
+        <strong>The Net Yield Calculation:</strong><br>
+        Gross yield: 3.5% | Tax rate: 15% | Fund expense ratio: 0.20%<br><br>
+        Net yield = 3.5% × (1 − 0.15) − 0.20% = 2.975% − 0.20% = <strong>2.78%</strong><br><br>
+        Capital needed = $12,000 ÷ 0.0278 = <strong>$431,655</strong><br><br>
+        <em>That's $89,000 more than the gross yield headline suggests.</em>
+      </div>
 
-      <h2>Step 2: Model it down to reality (What we do)</h2>
+      <h2>Step 2: Capital Required Across Yield Scenarios</h2>
 
-      <p>Samuele designed the DCSimulator specifically to take these flat numbers and turn them into a <strong>dynamic range</strong> of outcomes, giving you a much clearer picture of what you actually need to do:</p>
+      <p>Your actual capital requirement depends heavily on your <a href="article-dividend-basics.html">net yield after taxes and fees</a>. This table shows the full range:</p>
+
+      <table>
+        <tr>
+          <th>Net Yield</th>
+          <th>Capital for $1,000/mo</th>
+          <th>Scenario Description</th>
+        </tr>
+        <tr>
+          <td>2.0%</td>
+          <td>$600,000</td>
+          <td>Low-yield growth portfolio, higher tax bracket</td>
+        </tr>
+        <tr>
+          <td>2.5%</td>
+          <td>$480,000</td>
+          <td>Conservative balanced approach</td>
+        </tr>
+        <tr class="highlight-row">
+          <td class="recommended">2.78%</td>
+          <td class="recommended">$431,655</td>
+          <td>Our baseline: 3.5% gross, 15% tax, 0.20% fee</td>
+        </tr>
+        <tr>
+          <td>3.0%</td>
+          <td>$400,000</td>
+          <td>Tax-advantaged account (IRA/Roth) with moderate yield</td>
+        </tr>
+        <tr>
+          <td>3.5%</td>
+          <td>$342,857</td>
+          <td>Higher-yield holdings, minimal tax drag</td>
+        </tr>
+        <tr>
+          <td>4.0%</td>
+          <td>$300,000</td>
+          <td>Aggressive yield — higher risk of dividend cuts</td>
+        </tr>
+      </table>
+
+      <p>Notice how a 1% improvement in net yield (from 2.5% to 3.5%) saves you <strong>$137,000</strong> in required capital. This is why optimizing taxes, choosing low-fee funds, and using tax-advantaged accounts matter enormously.</p>
+
+      <h2>Step 3: Choose Your Confidence Level</h2>
+
+      <p>The tables above give you static numbers. But real life involves uncertainty — dividend growth varies, markets fluctuate, inflation surprises. That's where <a href="Page2.html">Monte Carlo simulation</a> provides a range of outcomes instead of a single point estimate:</p>
 
       <ul>
-        <li><strong>Desired monthly income:</strong> $1,000 (We calculate this completely after tax in the tool).</li>
-        <li><strong>Time horizon:</strong> Tell the simulator when you need the cash (e.g., 5, 10, or 20 years).</li>
-        <li><strong>Dividend Yield:</strong> Put in your most educated guess for a widely diversified portfolio.</li>
-        <li><strong>Annual growth:</strong> How much you expect payouts to grow (we usually err on the conservative side here).</li>
-        <li><strong>Tax rate & expense ratio:</strong> Match these to your own personal account setup.</li>
-        <li><strong>Inflation & growth volatility:</strong> Adjusting these will widen or narrow your safety bands, showing you the "what ifs" life might throw your way.</li>
+        <li><strong>P50 (The Median):</strong> The middle-of-the-road outcome. Good for context, but a coin-flip isn't a retirement plan.</li>
+        <li><strong>P75 (The Prudent Baseline):</strong> Our recommended anchor. You're protected against most adverse scenarios without requiring unrealistic capital.</li>
+        <li><strong>P90 (The Fortress):</strong> The ultimate stress test. If your plan holds here, you can sleep through stock market crashes.</li>
       </ul>
 
-      <h2>Step 3: Choose your confidence level (P50 vs. P75 vs. P90)</h2>
+      <p>Run the simulation in DCSimulator with your specific tax rate, yield estimate, and time horizon. Record both the P75 and P90 numbers — they become your planning goalposts.</p>
 
-      <p>The simulator won't just spit out one magical number. It shows you percentiles for the capital required. Lower targets are "optimistic", while higher ones are built like a fortress.</p>
+      <h2>Step 4: Build Your Monthly Savings Plan</h2>
+
+      <p>Once you know your capital target, the next question is: <strong>how do I get there?</strong> Enter your monthly savings into DCSimulator. The tool projects where those savings take you by your deadline and highlights the gap you need to close.</p>
+
+      <table>
+        <tr>
+          <th>Monthly Savings</th>
+          <th>Years to $432K<br><small>(at 7% annual return)</small></th>
+          <th>Years to $480K<br><small>(conservative P75)</small></th>
+        </tr>
+        <tr>
+          <td>$500</td>
+          <td>~27 years</td>
+          <td>~28 years</td>
+        </tr>
+        <tr>
+          <td>$1,000</td>
+          <td>~19 years</td>
+          <td>~20 years</td>
+        </tr>
+        <tr class="highlight-row">
+          <td>$1,500</td>
+          <td>~15 years</td>
+          <td>~16 years</td>
+        </tr>
+        <tr>
+          <td>$2,000</td>
+          <td>~13 years</td>
+          <td>~13.5 years</td>
+        </tr>
+        <tr>
+          <td>$2,500</td>
+          <td>~11 years</td>
+          <td>~11.5 years</td>
+        </tr>
+      </table>
+
+      <p>Increasing your monthly savings by just $500 (from $1,000 to $1,500) shaves roughly <strong>4 years</strong> off the timeline. That's the power of compounding at work.</p>
+
+      <h2>Step 5: Structure the Portfolio</h2>
+
+      <p>You don't need an exotic, complex portfolio to reach $1,000/month. In fact, boring usually wins. Here's a structure that balances yield, growth, and risk:</p>
 
       <ul>
-        <li><strong>P50 (The Median):</strong> This is the middle-of-the-road outcome. It's great for context, but we personally wouldn't bet our retirement on it.</li>
-        <li><strong>P75 (The Prudent Baseline):</strong> This is our sweet spot. A strong, realistic foundation for most plans.</li>
-        <li><strong>P90 (The Fortress):</strong> Your maximum safety buffer. If you want absolute peace of mind against market crashes, plan around this number.</li>
+        <li><strong>Core (60–80%): </strong> Broadly diversified <a href="article-best-dividend-etfs.html">dividend ETFs</a> like SCHD or VYM. These do the heavy lifting with low fees and instant diversification across 100–400+ companies.</li>
+        <li><strong>Satellite (10–30%): </strong> Hand-picked dividend growth stocks — only if you enjoy the research and can monitor payout safety metrics like free cash flow coverage.</li>
+        <li><strong>Income sleeve (0–15%): </strong> Higher-yield instruments (covered call ETFs, REITs) used strictly as supplements. Understand the <a href="article-yield-vs-growth.html">trade-offs between yield and growth</a> before allocating here.</li>
       </ul>
 
-      <h2>Step 4: Turn that big number into a monthly action plan</h2>
+      <div class="box">
+        <strong>Example Portfolio for $1,000/month:</strong><br><br>
+        70% SCHD (~3.5% yield, 0.06% fee) = ~$302,000<br>
+        20% DGRO (~2.5% yield, 0.08% fee) = ~$86,000<br>
+        10% Individual quality stocks (~3% yield, no fee) = ~$43,000<br><br>
+        <strong>Total: ~$431,000</strong> | Blended gross yield: ~3.25% | Blended fee: ~0.05%<br>
+        Net yield at 15% tax: 3.25% × 0.85 − 0.05% = <strong>2.71%</strong>
+      </div>
 
-      <p>If you're still in the building phase (like many of us!), enter your monthly savings into the simulator. DCSimulator will project where those savings will take you by your deadline, and brilliantly highlight the <strong>gap</strong> you still need to fill.</p>
+      <div class="risks-section">
+        <h3>⚠️ Risks & Limitations</h3>
+        <ul>
+          <li><strong>Dividend cuts during recessions:</strong> Even blue-chip Dividend Aristocrats can cut payouts. The 2020 downturn saw cuts from companies with 25+ year track records. Diversification is essential.</li>
+          <li><strong>Sector concentration:</strong> Loading up on high-yield sectors (energy, REITs, utilities) creates fragility. If one sector faces an earnings collapse, your income drops disproportionately.</li>
+          <li><strong>Inflation erosion:</strong> $1,000/month in 2026 buys $1,000 of goods. In 2041, at 2.5% inflation, it buys only $677 of goods unless your dividends grow accordingly.</li>
+          <li><strong>Sequence of returns risk:</strong> If your portfolio takes a large drawdown early in the accumulation phase, recovery takes much longer. Consistent contributions during downturns help offset this.</li>
+          <li><strong>Tax bracket changes:</strong> A promotion, inheritance, or tax law change can shift your net yield by 0.5% or more — translating to $20,000+ in additional capital needed.</li>
+        </ul>
+      </div>
 
-      <p>This is where the magic happens: increase your monthly savings by just a little bit and watch how dramatically it shrinks the gap over time. It's incredibly motivating!</p>
+      <div class="key-takeaways">
+        <h3>Key Takeaways</h3>
+        <ul>
+          <li>$1,000/month requires $300K–$600K depending on your net yield after taxes and fees</li>
+          <li>The most common scenario (3.5% gross, 15% tax, 0.20% fee) requires ~$432,000</li>
+          <li>Plan around DCSimulator's P75 percentile — prudent yet achievable</li>
+          <li>Increasing monthly savings by $500 can shave 4+ years off your timeline</li>
+          <li>Keep the portfolio simple: core ETFs + optional satellite positions</li>
+        </ul>
+      </div>
 
-      <h2>How we structure the portfolio (Keep it boring but durable)</h2>
+      <div class="related-reading">
+        <h3>Continue Reading</h3>
+        <div class="related-links">
+          <a href="article-dividend-basics.html" class="related-link">Dividend Basics: Net Yield Explained</a>
+          <a href="article-dividend-amounts.html" class="related-link">Capital for $500–$2,000/Month in Dividends</a>
+          <a href="article-best-dividend-etfs.html" class="related-link">Best Dividend ETFs: SCHD, DGRO, VYM, JEPI</a>
+          <a href="Page2.html" class="related-link">Monte Carlo Guide: Reading P50, P75, P90</a>
+        </div>
+      </div>
 
-      <p>You absolutely do not need an exotic, hyper-complex portfolio to reach $1,000 a month. In fact, boring is usually better. Here is a structure we favor:</p>
-
-      <ul>
-        <li><strong>The Core (60%–80%):</strong> Broadly diversified dividend ETFs. Let them do the heavy lifting.</li>
-        <li><strong>The Satellite (10%–30%):</strong> Hand-picked, high-quality dividend growth stocks—but only if you enjoy doing the research.</li>
-        <li><strong>The Income Sleeve (0%–15%):</strong> Higher-yield plays (like covered call ETFs or REITs), strictly used if you deeply understand the trade-offs and risks involved.</li>
-      </ul>
-
-      <h2>The Bottom Line</h2>
-
-      <p>Hitting $1,000 a month is genuinely achievable for most dedicated investors. But the secret isn't chasing yield—it's planning with cold, hard net figures. Model inflation, build in a rock-solid buffer like our P75 or P90 percentiles, and create a plan that survives long after the current market cycle ends.</p>
-
-      <p><a href="../index.html" class="cta">Run the $1,000/Month Simulation</a></p>
+      <p><a href="../index.html" class="cta">Run the $1,000/Month Simulation →</a></p>
     </article>
 
   </div>
   <footer class="footer">
     <div class="footer-content">
       <div class="footer-section"><h4>Platform</h4><ul><li><a href="../index.html">Simulator</a></li><li><a href="../blog.html">Blog</a></li><li><a href="../about.html">About</a></li></ul></div>
-      <div class="footer-section"><h4>Learn</h4><ul><li><a href="Page.html">Roadmap</a></li><li><a href="article-dividend-basics.html">Basics</a></li></ul></div>
+      <div class="footer-section"><h4>Learn</h4><ul><li><a href="Page.html">Roadmap</a></li><li><a href="article-dividend-basics.html">Basics</a></li><li><a href="article-100k-dividends.html">Advanced</a></li></ul></div>
+      <div class="footer-section"><h4>Tools</h4><ul><li><a href="article-best-dividend-etfs.html">ETF Guide</a></li><li><a href="Page2.html">Simulation Guide</a></li><li><a href="article-yield-vs-growth.html">Strategy</a></li></ul></div>
       <div class="footer-section"><h4>Legal</h4><ul><li><a href="../tecnical/privacy-policy.html">Privacy</a></li><li><a href="../tecnical/cookie-policy.html">Cookies</a></li></ul></div>
     </div>
     <div class="footer-bottom"><p>&copy; 2026 Dividend Capital Simulator.</p></div>
