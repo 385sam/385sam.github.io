@@ -821,7 +821,7 @@ header,
   margin-bottom: 26px;
   padding: var(--space-section);
   border-radius: var(--radius-lg);
-  background: linear-gradient(145deg, rgba(7, 12, 18, 0.95), rgba(34, 47, 66, 0.84));
+  background: linear-gradient(145deg, rgba(4, 8, 12, 0.98), rgba(18, 28, 40, 0.95));
   border: 1px solid var(--border);
   box-shadow: var(--shadow-lg);
 }
@@ -834,6 +834,18 @@ header h1,
   font-weight: 700;
   margin-bottom: 14px;
   letter-spacing: 0.01em;
+}
+
+header,
+.header {
+  color: var(--text);
+}
+
+header p,
+.header p,
+header .lead,
+.header .lead {
+  color: var(--text-soft);
 }
 
 h2,
