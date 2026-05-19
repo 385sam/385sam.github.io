@@ -8,7 +8,7 @@
   </url>
   <url>
     <loc>https://dcsimulator.me/blog.html</loc>
-    <lastmod>2026-05-12</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -22,6 +22,18 @@
   <url>
     <loc>https://dcsimulator.me/blog/article-dividend-basics.html</loc>
     <lastmod>2026-05-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://dcsimulator.me/blog/article-dividend-safety-payout-ratio.html</loc>
+    <lastmod>2026-05-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://dcsimulator.me/blog/article-drip-dividend-snowball.html</loc>
+    <lastmod>2026-05-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -58,6 +70,12 @@
   <url>
     <loc>https://dcsimulator.me/blog/article-vivere-rendita-500-euro.html</loc>
     <lastmod>2026-05-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://dcsimulator.me/blog/article-etf-accumulo-vs-distribuzione.html</loc>
+    <lastmod>2026-05-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>

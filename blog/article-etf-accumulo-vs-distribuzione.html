@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-DTL9TKB503"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-DTL9TKB503');
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="/favicon.ico" sizes="any" type="image/x-icon">
+  <link rel="icon" href="/favicon.png" sizes="48x48" type="image/png">
+  <link rel="icon" href="/favicon-96x96.png" sizes="96x96" type="image/png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
+
+  <title>ETF ad Accumulazione o a Distribuzione? Guida Italia (Tasse, Rendita, FIRE) [Data Updated]</title>
+  <meta name="description" content="ETF accumulazione vs distribuzione: differenze, impatto fiscale in Italia, compounding e quando scegliere l'una o l'altra. Esempi pratici + strategia 2 fasi per FIRE e rendita.">
+  <meta name="author" content="DCSimulator">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+
+  <link rel="canonical" href="https://dcsimulator.me/blog/article-etf-accumulo-vs-distribuzione.html">
+  <link rel="alternate" hreflang="it" href="https://dcsimulator.me/blog/article-etf-accumulo-vs-distribuzione.html">
+  <link rel="alternate" hreflang="x-default" href="https://dcsimulator.me/blog/article-etf-accumulo-vs-distribuzione.html">
+
+  <meta property="og:site_name" content="Dividend Capital Simulator PRO">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="it_IT">
+  <meta property="og:title" content="ETF ad Accumulazione o a Distribuzione? Guida Italia (Tasse, Rendita, FIRE)">
+  <meta property="og:description" content="ETF accumulazione vs distribuzione: differenze, tasse in Italia, compounding e strategia pratica per rendita e FIRE.">
+  <meta property="og:url" content="https://dcsimulator.me/blog/article-etf-accumulo-vs-distribuzione.html">
+  <meta property="og:image" content="https://dcsimulator.me/favicon.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="ETF ad Accumulazione o a Distribuzione? Guida Italia (Tasse, Rendita, FIRE)">
+  <meta name="twitter:description" content="Differenze, impatto fiscale e quando scegliere accumulo o distribuzione. Con esempi e piano 2 fasi.">
+  <meta name="twitter:image" content="https://dcsimulator.me/favicon.png">
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "ETF ad Accumulazione o a Distribuzione? Guida Italia (Tasse, Rendita, FIRE)",
+      "description": "ETF accumulazione vs distribuzione: differenze, impatto fiscale in Italia, compounding e quando scegliere l'una o l'altra. Esempi pratici + strategia 2 fasi per FIRE e rendita.",
+      "datePublished": "2026-05-19",
+      "dateModified": "2026-05-19",
+      "inLanguage": "it",
+      "url": "https://dcsimulator.me/blog/article-etf-accumulo-vs-distribuzione.html",
+      "mainEntityOfPage": {"@type": "WebPage", "@id": "https://dcsimulator.me/blog/article-etf-accumulo-vs-distribuzione.html"},
+      "image": ["https://dcsimulator.me/favicon.png"],
+      "author": {"@type": "Organization", "name": "DCSimulator"},
+      "publisher": {"@type": "Organization", "name": "DCSimulator"},
+      "isPartOf": {"@type": "Blog", "name": "DCSimulator Blog", "url": "https://dcsimulator.me/blog.html"}
+    }
+  </script>
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://dcsimulator.me/"},
+        {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://dcsimulator.me/blog.html"},
+        {"@type": "ListItem", "position": 3, "name": "ETF accumulo vs distribuzione", "item": "https://dcsimulator.me/blog/article-etf-accumulo-vs-distribuzione.html"}
+      ]
+    }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: "Inter", sans-serif; color: #1a1a1a; background: #fafafa; line-height: 1.6; }
+    .header { background: #fff; border-bottom: 1px solid #f0f0f0; position: sticky; top: 0; z-index: 100; }
+    .header-top { display: flex; justify-content: space-between; align-items: center; max-width: 1400px; margin: 0 auto; padding: 20px 40px; }
+    .logo { font-family: "Playfair Display", serif; font-size: 28px; font-weight: 700; color: #1a1a1a; text-decoration: none; }
+    .nav-main { display: flex; gap: 40px; }
+    .nav-main a { text-decoration: none; font-size: 13px; font-weight: 600; color: #666; }
+    .article-hero { background: linear-gradient(135deg, #f5f5f5 0%, #fff 100%); padding: 100px 100px; }
+    .breadcrumb { font-size: 12px; color: #999; margin-bottom: 28px; }
+    .breadcrumb a { color: #c9a84c; text-decoration: none; font-weight: 600; }
+    .article-eyebrow { font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: #c9a84c; font-weight: 700; margin-bottom: 14px; }
+    h1 { font-family: "Playfair Display", serif; font-size: clamp(28px, 5vw, 44px); font-weight: 700; line-height: 1.3; margin-bottom: 24px; }
+    .article-meta { display: flex; gap: 24px; margin-top: 20px; flex-wrap: wrap; font-size: 13px; color: #999; }
+    .article-tags { display: flex; gap: 10px; margin-top: 20px; flex-wrap: wrap; }
+    .tag { display: inline-block; padding: 6px 14px; background: rgba(201, 168, 76, 0.1); color: #c9a84c; font-size: 12px; font-weight: 700; border: 1px solid rgba(201, 168, 76, 0.2); border-radius: 20px; }
+    .article-wrapper { max-width: 900px; margin: 0 auto; padding: 60px 40px; }
+    article h2 { font-family: "Playfair Display", serif; font-size: clamp(24px, 3vw, 32px); font-weight: 700; margin: 48px 0 20px 0; }
+    article h3 { font-family: "Playfair Display", serif; font-size: clamp(18px, 2vw, 22px); font-weight: 700; margin: 36px 0 16px 0; }
+    article p { font-size: 16px; color: #666; line-height: 1.9; margin-bottom: 20px; }
+    article ul { margin: 20px 0 20px 20px; }
+    article li { font-size: 15px; color: #666; line-height: 1.8; margin-bottom: 10px; }
+    article table { width: 100%; margin: 24px 0; border-collapse: collapse; }
+    article th, article td { padding: 12px; text-align: left; border-bottom: 1px solid #e0e0e0; font-size: 14px; }
+    article th { background: #f5f5f5; font-weight: 700; }
+    .box { background: linear-gradient(135deg, #f9f7f4 0%, #fff 100%); padding: 28px 24px; border-radius: 6px; border: 1px solid #f0f0f0; margin: 28px 0; font-size: 15px; color: #666; line-height: 1.8; }
+    .cta { padding: 14px 32px; font-size: 13px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; text-decoration: none; display: inline-block; border-radius: 4px; background: linear-gradient(135deg, #c9a84c 0%, #b89436 100%); color: #fff; box-shadow: 0 4px 12px rgba(201, 168, 76, 0.3); transition: all 0.4s; margin-top: 30px; }
+    .cta:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(201, 168, 76, 0.4); }
+    .footer { background: #fff; border-top: 1px solid #f0f0f0; padding: 60px 40px; margin-top: 80px; }
+    .footer-content { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 40px; }
+    .footer-section h4 { font-size: 13px; text-transform: uppercase; font-weight: 700; margin-bottom: 16px; }
+    .footer-section ul { list-style: none; }
+    .footer-section li { margin-bottom: 8px; }
+    .footer-section a { text-decoration: none; color: #666; font-size: 13px; }
+    .footer-bottom { border-top: 1px solid #f0f0f0; padding-top: 32px; font-size: 12px; color: #999; }
+    @media (max-width: 768px) { .header-top { padding: 16px 20px; } .article-hero { padding: 40px 20px; } .article-wrapper { padding: 40px 20px; } }
+  </style>
+
+  <link rel="stylesheet" href="../css/cookie-consent.css">
+  <link rel="stylesheet" href="../css/article-ui.css">
+</head>
+
+<body>
+  <header class="header">
+    <div class="header-top">
+      <a href="../index.html" class="logo">DCSimulator</a>
+      <nav class="nav-main">
+        <a href="../index.html">Home</a>
+        <a href="../blog.html">Blog</a>
+        <a href="../about.html">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="article-hero">
+    <p class="breadcrumb"><a href="../index.html">Home</a> › <a href="../blog.html">Blog</a></p>
+    <p class="article-eyebrow">Guida Italia</p>
+    <h1>ETF ad Accumulazione o a Distribuzione? Differenze, Tasse e Scelta Strategica (Italia)</h1>
+    <div class="article-meta">
+      <span>📅 19 maggio 2026</span>
+      <span>⏱️ 8 min</span>
+      <span>👤 DCS team</span>
+    </div>
+    <div class="article-tags">
+      <span class="tag">ETF</span>
+      <span class="tag">Tassazione</span>
+      <span class="tag">FIRE</span>
+    </div>
+  </section>
+
+  <div class="article-wrapper">
+    <article>
+      <p>“ETF ad accumulazione o ETF a distribuzione?” è una delle ricerche più frequenti tra chi investe in Italia. Ed è normale: la scelta non riguarda solo <strong>comodità</strong>, ma cambia tre cose decisive: <strong>flusso di cassa</strong>, <strong>effetto compounding</strong> e <strong>impatto fiscale nel tempo</strong>.</p>
+
+      <div class="key-takeaways">
+        <strong>In sintesi (risposta rapida):</strong>
+        <ul>
+          <li><strong>Accumulazione</strong>: reinveste automaticamente i proventi → massimizza la crescita e tende a essere più efficiente fiscalmente nel lungo periodo (tasse spesso rimandate alla vendita).</li>
+          <li><strong>Distribuzione</strong>: paga cedole/dividendi → ottimo se vuoi <em>rendita oggi</em>, ma crea <em>tax drag</em> (tassazione ricorrente).</li>
+          <li>Molti investitori usano una <strong>strategia in 2 fasi</strong>: accumulo durante l'accumulo, distribuzione quando serve cashflow.</li>
+          <li>Se il tuo obiettivo è “X € al mese”, ragiona sul <strong>netto dopo tasse</strong>: puoi stimarlo in pochi minuti con <a href="../index.html"><strong>il simulatore</strong></a>.</li>
+        </ul>
+      </div>
+
+      <div class="toc-box">
+        <h3>Indice</h3>
+        <ul class="toc-list">
+          <li><a href="#definizioni">ETF accumulo vs distribuzione: definizioni</a></li>
+          <li><a href="#differenze">Differenze chiave (tabella)</a></li>
+          <li><a href="#tasse">Tassazione in Italia: cosa cambia davvero</a></li>
+          <li><a href="#quando">Quando scegliere accumulo e quando distribuzione</a></li>
+          <li><a href="#strategia-2-fasi">Strategia 2 fasi (accumulo → rendita)</a></li>
+          <li><a href="#capitale">Se vuoi una rendita mensile: il calcolo del capitale</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+
+      <h2 id="definizioni">ETF ad accumulazione vs ETF a distribuzione: definizioni semplici</h2>
+      <p><strong>ETF a distribuzione</strong> (distributing) stacca periodicamente un provento (cedola/dividendo) sul tuo conto. <strong>ETF ad accumulazione</strong> (accumulating) <em>non</em> lo paga: reinveste internamente i proventi e tu vedi il valore quota crescere (a parità di mercato).</p>
+
+      <div class="box">
+        <strong>Regola pratica:</strong><br>
+        Se ti serve <em>cashflow</em> oggi → distribuzione.<br>
+        Se stai costruendo capitale e vuoi far lavorare il compounding → accumulazione.
+      </div>
+
+      <h2 id="differenze">Differenze chiave (tabella comparativa)</h2>
+      <table>
+        <tr>
+          <th>Voce</th>
+          <th>Accumulazione</th>
+          <th>Distribuzione</th>
+        </tr>
+        <tr>
+          <td>Flusso di cassa</td>
+          <td>Nessun pagamento periodico</td>
+          <td>Pagamenti periodici (cedole/dividendi)</td>
+        </tr>
+        <tr>
+          <td>Compounding</td>
+          <td>Automatico (reinvestimento interno)</td>
+          <td>Richiede reinvestimento manuale se non spendi</td>
+        </tr>
+        <tr>
+          <td>Efficienza fiscale (tendenza)</td>
+          <td>Spesso migliore nel lungo periodo (tassazione più “differita”)</td>
+          <td>Tax drag: tasse ricorrenti sui proventi incassati</td>
+        </tr>
+        <tr>
+          <td>Uso ideale</td>
+          <td>Fase di accumulo, orizzonte lungo</td>
+          <td>Fase di rendita / integrazione reddito</td>
+        </tr>
+      </table>
+
+      <h2 id="tasse">Tassazione in Italia: cosa cambia davvero (senza farsi illusioni)</h2>
+      <p>In Italia, in modo molto semplificato, l'idea è questa: con la <strong>distribuzione</strong> paghi imposte quando incassi i proventi; con l'<strong>accumulazione</strong> spesso paghi l'imposta principalmente quando realizzi (vendita) perché non stai incassando proventi periodici.</p>
+
+      <div class="risks-section">
+        <h3>Nota importante (precisione fiscale)</h3>
+        <ul>
+          <li>La fiscalità dipende da strumento, intermediario, regime (amministrato/dichiarativo) e normativa vigente.</li>
+          <li>Le regole possono cambiare: usa questa guida per <strong>capire il meccanismo</strong>, non come consulenza fiscale.</li>
+        </ul>
+      </div>
+
+      <p>Perché è rilevante? Perché quando paghi tasse ogni anno, riduci il capitale che potrebbe continuare a comporre. È il famoso <strong>tax drag</strong>. Anche una differenza piccola, su 10–20 anni, diventa grande.</p>
+
+      <div class="box">
+        <strong>Il punto “SEO ma vero”:</strong><br>
+        Non esiste “meglio in assoluto”. Esiste “migliore per il tuo obiettivo”.
+        Se il tuo obiettivo è una rendita mensile (es. 500€), la distribuzione è più lineare. Se l'obiettivo è arrivare a una rendita tra 10 anni, l'accumulazione tende a essere più efficiente.
+      </div>
+
+      <h2 id="quando">Quando scegliere accumulo e quando distribuzione (decision tree rapido)</h2>
+
+      <h3>✅ Scegli ETF ad accumulazione se…</h3>
+      <ul>
+        <li>Sei nella fase di <strong>accumulo</strong> e hai un orizzonte di 10+ anni.</li>
+        <li>Non ti serve cashflow: reinvestire è la priorità.</li>
+        <li>Vuoi ridurre la “tentazione” di spendere le cedole e rendere il piano più automatico.</li>
+      </ul>
+
+      <h3>✅ Scegli ETF a distribuzione se…</h3>
+      <ul>
+        <li>Stai entrando nella fase di <strong>rendita</strong> o vuoi integrare reddito mensile.</li>
+        <li>Preferisci ricevere proventi senza vendere quote (psicologicamente e operativamente più semplice).</li>
+        <li>Stai costruendo un “portafoglio-income” e vuoi misurare il risultato in termini di <strong>€ netti/mese</strong>.</li>
+      </ul>
+
+      <h2 id="strategia-2-fasi">La strategia più solida per FIRE: 2 fasi (accumulo → rendita)</h2>
+      <p>Una strategia molto usata (e spesso più efficiente) è:</p>
+      <ul>
+        <li><strong>Fase 1 — Accumulo:</strong> ETF ad accumulazione per massimizzare crescita e semplicità.</li>
+        <li><strong>Fase 2 — Rendita:</strong> progressivo spostamento su strumenti a distribuzione quando vuoi cashflow (oppure mantenimento accumulo + vendita programmata, a seconda del tuo piano).</li>
+      </ul>
+
+      <div class="box">
+        <strong>Perché funziona:</strong><br>
+        durante l'accumulo eviti di tassare flussi che non ti servono; quando la rendita serve davvero, la rendi esplicita e misurabile.
+      </div>
+
+      <h2 id="capitale">Se vuoi una rendita mensile: il calcolo del capitale (netto → lordo → capitale)</h2>
+      <p>Se il tuo obiettivo finale è vivere (anche parzialmente) di rendita, la domanda non è “quanto rende l'ETF”, ma: <strong>quanti € netti al mese vuoi incassare?</strong></p>
+
+      <div class="box">
+        <strong>Formula pratica:</strong><br>
+        Target netto annuo = (target mensile × 12)<br>
+        Lordo necessario ≈ netto ÷ (1 − aliquota)<br>
+        Capitale ≈ lordo necessario ÷ dividend yield
+        <br><br>
+        Vuoi un esempio completo sul caso più ricercato in Italia? Leggi: <a href="article-vivere-rendita-500-euro.html"><strong>500€ netti/mese di dividendi in Italia</strong></a>.
+      </div>
+
+      <p>Se vuoi evitare stime “a spanne”, puoi usare <a href="../index.html"><strong>DCSimulator</strong></a> per stimare il tuo obiettivo con tassazione e ipotesi prudenziali (yield, inflazione e crescita dei proventi).</p>
+
+      <a href="../index.html" class="cta">Apri il simulatore →</a>
+
+      <div class="related-reading">
+        <h3>Approfondisci (link interni consigliati)</h3>
+        <div class="related-links">
+          <a class="related-link" href="article-dividend-basics.html">Dividendi: guida base (yield, sicurezza, crescita)</a>
+          <a class="related-link" href="article-yield-vs-growth.html">Yield vs crescita capitale: cosa conviene?</a>
+          <a class="related-link" href="article-best-dividend-etfs.html">Dividend ETF: confronto (2026)</a>
+        </div>
+      </div>
+
+      <h2 id="faq">FAQ (domande frequenti)</h2>
+
+      <p><strong>Meglio ETF ad accumulazione o a distribuzione in Italia?</strong><br>
+        Dipende dall'obiettivo: accumulazione per costruire capitale e massimizzare il compounding; distribuzione se vuoi rendita/cashflow oggi. Molti adottano una strategia 2 fasi (accumulo → rendita).</p>
+
+      <p><strong>Gli ETF ad accumulazione pagano tasse ogni anno?</strong><br>
+        In genere non ricevi proventi periodici sul conto, quindi la tassazione ricorrente sui flussi è spesso minore rispetto a un ETF a distribuzione. La fiscalità concreta dipende da strumento e regime: per prudenza, considera che le imposte esistono, ma cambia il <em>timing</em>.</p>
+
+      <p><strong>Con un ETF a distribuzione posso “vivere di dividendi” senza vendere quote?</strong><br>
+        È l'idea: ricevere proventi periodici. Ma serve un capitale sufficiente e devi ragionare sul netto dopo imposte. Per un esempio pratico: <a href="article-vivere-rendita-500-euro.html"><strong>500€ netti/mese</strong></a>.</p>
+
+      <p><strong>Perché la distribuzione può essere meno efficiente nel lungo periodo?</strong><br>
+        Perché incassi flussi tassati e, se non li reinvesti subito, riduci l'effetto compounding. È il classico <em>tax drag</em>.</p>
+
+      <p><strong>Come scelgo in modo “da CEO” e non emotivo?</strong><br>
+        Definisci un obiettivo (es. 500€ netti/mese), scrivi ipotesi prudenziali (yield, tasse, inflazione) e usa <a href="../index.html"><strong>una simulazione</strong></a>. Poi scegli lo strumento coerente con la fase (accumulo o rendita).</p>
+
+      <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Meglio ETF ad accumulazione o a distribuzione in Italia?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Dipende dall'obiettivo: accumulazione per costruire capitale e massimizzare il compounding; distribuzione se vuoi rendita/cashflow oggi. Molti investitori adottano una strategia in 2 fasi (accumulo → rendita)."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Gli ETF ad accumulazione pagano tasse ogni anno?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "In genere non ricevi proventi periodici sul conto, quindi la tassazione ricorrente sui flussi è spesso minore rispetto a un ETF a distribuzione. La fiscalità concreta dipende da strumento e regime: cambia soprattutto il timing delle imposte."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Con un ETF a distribuzione posso vivere di dividendi senza vendere quote?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Un ETF a distribuzione paga proventi periodici, quindi può supportare una strategia di rendita. Serve però capitale adeguato e pianificazione sul netto dopo imposte."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Perché la distribuzione può essere meno efficiente nel lungo periodo?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Perché i proventi incassati vengono tassati e, se non reinvestiti, riducono il compounding. Questo effetto è spesso chiamato tax drag."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Come scelgo in modo razionale tra accumulo e distribuzione?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Definisci un obiettivo (es. € netti/mese), imposta ipotesi prudenziali su yield, tasse e inflazione e valida con una simulazione. Poi scegli lo strumento coerente con la tua fase (accumulo o rendita)."
+              }
+            }
+          ]
+        }
+      </script>
+    </article>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>Platform</h4>
+        <ul>
+          <li><a href="../index.html">Simulator</a></li>
+          <li><a href="../blog.html">Blog & Guides</a></li>
+          <li><a href="../about.html">About Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="Page.html">Roadmap</a></li>
+          <li><a href="article-dividend-basics.html">Beginner Guide</a></li>
+          <li><a href="article-100k-dividends.html">Advanced Topics</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="../tecnical/privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="../tecnical/cookie-policy.html">Cookie Policy</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="../blog.html">GitHub</a></li>
+          <li><a href="../about.html#sezione-mail">Email</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2024-2026 Dividend Capital Simulator. All rights reserved.</p>
+      <p>Built with data. Designed for execution.</p>
+    </div>
+  </footer>
+
+  <script src="../js/cookie-consent.js"></script>
+</body>
+
+</html>
