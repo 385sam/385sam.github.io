@@ -32,14 +32,17 @@
     content="Free dividend income calculator: enter your desired monthly income and see the capital required. Models taxes, fees, inflation, and growth with Monte Carlo simulation.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://dcsimulator.me/">
-  <meta property="og:image" content="https://dcsimulator.me/favicon.png">
+  <meta property="og:image" content="https://dcsimulator.me/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:type" content="image/png">
   <meta property="og:image:alt" content="Dividend Income Target Calculator for FIRE">
   <meta property="og:locale" content="en_US">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Dividend Income Goal Calculator — How Much Capital to Live Off Dividends?">
   <meta name="twitter:description"
     content="Free dividend income calculator: enter your desired monthly income and see the capital required. Models taxes, fees, inflation, and growth with Monte Carlo simulation.">
-  <meta name="twitter:image" content="https://dcsimulator.me/favicon.png">
+  <meta name="twitter:image" content="https://dcsimulator.me/og-image.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -55,12 +58,26 @@
       "operatingSystem": "Web",
       "url": "https://dcsimulator.me/",
       "description": "Free dividend income calculator: enter your desired monthly income and see the capital you need to live off dividends. Monte Carlo simulation models taxes, fees, inflation, and dividend growth.",
-      "image": "https://dcsimulator.me/favicon.png",
+      "image": "https://dcsimulator.me/og-image.png",
       "offers": {
         "@type": "Offer",
         "price": "0",
         "priceCurrency": "USD"
       }
+    }
+  </script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://dcsimulator.me/"
+        }
+      ]
     }
   </script>
   <script type="application/ld+json">
@@ -488,6 +505,7 @@
 
     .card-title {
       font-size: 14px;
+      font-weight: 600;
       letter-spacing: 2.2px;
       text-transform: uppercase;
       color: var(--gold);
@@ -564,7 +582,7 @@
       box-shadow: 0 16px 30px rgba(201, 168, 76, 0.14);
     }
 
-    .use-case-card h3 {
+    .use-case-card h2 {
       font-family: 'Playfair Display', serif;
       font-size: clamp(18px, 2.1vw, 22px);
       font-weight: 700;
@@ -2141,8 +2159,8 @@
 
       .site-nav,
       header,
-      #cardTarget,
-      #cardParams,
+      #targetSection,
+      #parametersSection,
       #loading,
       .btn-row,
       .seo-link,
@@ -2347,7 +2365,7 @@
     <!-- ═══ SEO CONTENT: QUICK EXAMPLES ═══ -->
     <section class="use-cases-section" id="quickExamples">
       <div class="use-case-card">
-        <h3>$500/Month Example</h3>
+        <h2>$500/Month Example</h2>
         <p>Want $500/month in after-tax dividends? At a <strong>3.5% gross yield</strong>, 15% tax rate, and 0.20% ETF expense ratio, your net yield is <strong>2.78%</strong>. That means you need:</p>
         <div class="use-case-amount">
           <span class="use-case-amount-value">$215,827</span>
@@ -2356,7 +2374,7 @@
         <p class="use-case-footnote">Saving $1,000/month at a 7% annual return, you could reach this target in approximately <strong>12 years</strong>. <a href="blog/article-dividend-amounts.html">See the full capital table →</a></p>
       </div>
       <div class="use-case-card">
-        <h3>$1,000/Month Example</h3>
+        <h2>$1,000/Month Example</h2>
         <p>The most popular goal among our users. Same assumptions (3.5% gross, 15% tax, 0.20% fee), your net yield is <strong>2.78%</strong>. Required capital:</p>
         <div class="use-case-amount">
           <span class="use-case-amount-value">$431,655</span>
@@ -2365,7 +2383,7 @@
         <p class="use-case-footnote">At $1,500/month savings and 7% return, you'd reach this in roughly <strong>15 years</strong>. Run the exact simulation above with your own tax rate and yield. <a href="blog/article-1000-dividends.html">Read the full $1,000/month case study →</a></p>
       </div>
       <div class="use-case-card">
-        <h3>Why Net Yield Matters</h3>
+        <h2>Why Net Yield Matters</h2>
         <p>Stock screeners show <strong>gross yield</strong> — but that's not what you keep. Taxes and fund fees reduce your actual income by 15–30%. Planning with gross yield can understate your capital requirement by <strong>$50,000 to $150,000</strong>.</p>
         <div class="use-case-amount">
           <span class="formula-pill">Net Yield = Gross × (1 − Tax) − Fees</span>
@@ -2375,63 +2393,62 @@
     </section>
 
     <!-- ═══ SETTINGS ═══ -->
-    <div class="card settings-card" id="cardTarget">
-      <div class="settings-section">
-        <p class="card-title">Income target</p>
-        <div class="grid-2">
-          <div class="input-group">
-            <label>
-              Desired monthly income
-              <span class="tip-wrap"><span class="tip-icon">?</span><span class="tip-text">The monthly after-tax income
-                  you want to receive from your dividend portfolio.</span></span>
-            </label>
-            <div class="input-wrapper">
-              <span class="input-prefix" id="currencySymbol">€</span>
-              <input type="number" id="targetIncome" value="1000" min="100" step="100">
-            </div>
-          </div>
-          <div class="input-group">
-            <label>
-              Time horizon (years)
-              <span class="tip-wrap"><span class="tip-icon">?</span><span class="tip-text">Number of years to simulate.
-                  Longer horizons compound uncertainty, widening the gap between pessimistic and optimistic
-                  outcomes.</span></span>
-            </label>
-            <div class="input-wrapper">
-              <span class="input-prefix">#</span>
-              <input type="number" id="years" value="5" min="1" max="50">
-            </div>
+    <div class="card settings-card" id="targetSection">
+      <h2 class="card-title">Income target</h2>
+      <div class="grid-2">
+        <div class="input-group">
+          <label>
+            Desired monthly income
+            <span class="tip-wrap"><span class="tip-icon">?</span><span class="tip-text">The monthly after-tax income
+                you want to receive from your dividend portfolio.</span></span>
+          </label>
+          <div class="input-wrapper">
+            <span class="input-prefix" id="currencySymbol">€</span>
+            <input type="number" id="targetIncome" value="1000" min="100" step="100">
           </div>
         </div>
-        <div class="grid-2" style="margin-top:20px">
-          <div class="input-group">
-            <label>Currency</label>
-            <select id="currency">
-              <option value="EUR" selected>EUR (€)</option>
-              <option value="USD">USD ($)</option>
-              <option value="GBP">GBP (£)</option>
-              <option value="CHF">CHF (Fr.)</option>
-              <option value="CAD">CAD (C$)</option>
-            </select>
-          </div>
-          <div class="input-group">
-            <label>
-              Monthly savings (optional)
-              <span class="tip-wrap"><span class="tip-icon">?</span><span class="tip-text">If you are still accumulating
-                  capital, enter your monthly savings. The simulator will estimate how much your savings will grow and
-                  subtract it from the capital needed.</span></span>
-            </label>
-            <div class="input-wrapper">
-              <span class="input-prefix" id="currencySymbol2">€</span>
-              <input type="number" id="monthlySavings" value="0" min="0" step="50">
-            </div>
+        <div class="input-group">
+          <label>
+            Time horizon (years)
+            <span class="tip-wrap"><span class="tip-icon">?</span><span class="tip-text">Number of years to simulate.
+                Longer horizons compound uncertainty, widening the gap between pessimistic and optimistic
+                outcomes.</span></span>
+          </label>
+          <div class="input-wrapper">
+            <span class="input-prefix">#</span>
+            <input type="number" id="years" value="5" min="1" max="50">
           </div>
         </div>
       </div>
+      <div class="grid-2" style="margin-top:20px">
+        <div class="input-group">
+          <label>Currency</label>
+          <select id="currency">
+            <option value="EUR" selected>EUR (€)</option>
+            <option value="USD">USD ($)</option>
+            <option value="GBP">GBP (£)</option>
+            <option value="CHF">CHF (Fr.)</option>
+            <option value="CAD">CAD (C$)</option>
+          </select>
+        </div>
+        <div class="input-group">
+          <label>
+            Monthly savings (optional)
+            <span class="tip-wrap"><span class="tip-icon">?</span><span class="tip-text">If you are still accumulating
+                capital, enter your monthly savings. The simulator will estimate how much your savings will grow and
+                subtract it from the capital needed.</span></span>
+          </label>
+          <div class="input-wrapper">
+            <span class="input-prefix" id="currencySymbol2">€</span>
+            <input type="number" id="monthlySavings" value="0" min="0" step="50">
+          </div>
+        </div>
+      </div>
+    </div>
 
-      <div class="settings-section" id="cardParams">
-        <p class="card-title">Market parameters</p>
-        <div class="grid-3" style="margin-bottom:24px">
+    <div class="card settings-card" id="parametersSection">
+      <h2 class="card-title">Market parameters</h2>
+      <div class="grid-3" style="margin-bottom:24px">
         <div class="slider-group">
           <div class="slider-row">
             <label>
@@ -2466,7 +2483,7 @@
           <input type="range" id="taxRate" min="0" max="45" step="1" value="15">
         </div>
       </div>
-        <div class="grid-3" style="margin-bottom:24px">
+      <div class="grid-3" style="margin-bottom:24px">
         <div class="slider-group">
           <div class="slider-row">
             <label>
@@ -2501,17 +2518,16 @@
           <input type="range" id="expenseRatio" min="0" max="2" step="0.05" value="0.2">
         </div>
       </div>
-        <div class="slider-group">
-          <div class="slider-row">
-            <label>
-              Monte Carlo simulations
-              <span class="tip-wrap"><span class="tip-icon">?</span><span class="tip-text">Number of random scenarios
-                  generated. More simulations = more reliable statistics, but slightly slower.</span></span>
-            </label>
-            <span class="slider-value" id="simVal">10,000</span>
-          </div>
-          <input type="range" id="simulations" min="1000" max="25000" step="1000" value="10000">
+      <div class="slider-group">
+        <div class="slider-row">
+          <label>
+            Monte Carlo simulations
+            <span class="tip-wrap"><span class="tip-icon">?</span><span class="tip-text">Number of random scenarios
+                generated. More simulations = more reliable statistics, but slightly slower.</span></span>
+          </label>
+          <span class="slider-value" id="simVal">10,000</span>
         </div>
+        <input type="range" id="simulations" min="1000" max="25000" step="1000" value="10000">
       </div>
     </div>
 
@@ -2634,8 +2650,8 @@
       </div>
 
       <!-- Histogram -->
-      <div class="chart-container">
-        <p class="card-title">Simulation distribution — required capital at horizon</p>
+      <div class="card chart-card">
+        <h2 class="card-title">Simulation distribution — required capital at horizon</h2>
         <canvas id="distChart" height="160" role="img"
           aria-label="Histogram showing distribution of required capital from Monte Carlo simulations"></canvas>
         <img id="distChartPrint" class="print-chart-img" alt="Simulation distribution histogram (print snapshot)">
@@ -2656,8 +2672,8 @@
       </div>
 
       <!-- Dividend income growth (deterministic expectation) -->
-      <div class="chart-container">
-        <p class="card-title">Dividend income growth schedule — expected (using P50 capital: <span id="divGrowthPrincipal">—</span>)</p>
+      <div class="card chart-card">
+        <h2 class="card-title">Dividend income growth schedule — expected (using P50 capital: <span id="divGrowthPrincipal">—</span>)</h2>
 
         <div class="growth-table-wrap" role="region" aria-label="Dividend income growth schedule" tabindex="0">
           <table class="growth-table">
@@ -2678,12 +2694,10 @@
       </div>
 
       <div class="rec-panel" id="recommendationsPanel">
-        <div class="rec-head">
-          <div>
-            <p class="card-title">Real instruments aligned with your current simulation</p>
+        <div class="card instruments-card">
+            <h2 class="card-title">Real instruments aligned with your current simulation</h2>
             <p class="rec-subtitle">Recommendations adapt to growth, expected net yield, volatility, and required capital using a neutral and transparent ranking model.</p>
             <div class="rec-profile" id="recProfile"></div>
-          </div>
         </div>
         <div class="rec-grid" id="recommendationsGrid"></div>
       </div>
@@ -2706,7 +2720,7 @@
 
     <!-- ═══ FAQ SECTION ═══ -->
     <section class="card seo-card" id="faq">
-      <p class="card-title">Frequently Asked Questions</p>
+      <h2 class="card-title">Frequently Asked Questions</h2>
       <div class="seo-inner">
         <details class="faq-item">
           <summary>How much capital do I need to earn $1,000/month in dividends?</summary>
@@ -2742,7 +2756,7 @@
 
     <!-- ═══ SEO CONTENT: HOW IT WORKS (MOVED DOWN) ═══ -->
     <section class="card seo-card" id="howItWorks">
-      <p class="card-title">How the Dividend Income Calculator Works</p>
+      <h2 class="card-title">How the Dividend Income Calculator Works</h2>
       <div class="seo-inner">
         <p>Most dividend calculators tell you what your portfolio will earn. <strong>DCSimulator does the opposite</strong> — it's an <em>inverse</em> calculator. You enter the monthly income you want to receive, and the simulator calculates the capital you need to invest to reach that goal.</p>
         <p>At its core, the math is straightforward: <strong>Required Capital = Annual Income Target ÷ Net Yield</strong>. But "net yield" is where things get real. Your net yield isn't the headline dividend yield you see on stock screeners — it's what remains after taxes eat a slice and fund expense ratios take another. A portfolio with a 3.5% advertised yield might only deliver 2.78% after a 15% tax rate and 0.20% fund fees. That difference alone can add <strong>$50,000–$100,000</strong> to the capital you need.</p>
